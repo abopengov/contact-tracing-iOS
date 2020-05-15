@@ -1,0 +1,20 @@
+PODS:
+  - IBMMobileFirstPlatformFoundation (8.0.2020032408)
+  - lottie-ios (3.1.6)
+
+DEPENDENCIES:
+  - IBMMobileFirstPlatformFoundation (= 8.0.2020032408)
+  - lottie-ios (= 3.1.6)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - IBMMobileFirstPlatformFoundation
+    - lottie-ios
+
+SPEC CHECKSUMS:
+  IBMMobileFirstPlatformFoundation: 7b47eb132e3b3c1aaca27f1cef11090347c01798
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
+
+PODFILE CHECKSUM: 29018c3ca127f913edee11d472fd5c3c69287d1c
+
+COCOAPODS: 1.8.4
