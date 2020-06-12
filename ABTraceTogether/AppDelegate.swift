@@ -41,6 +41,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+    
+    func checkIfAppRegistered() {
+        let registerPhoneURLString = "/adapters/smsOtpService/phone/isRegistered"
+        guard let registerPhoneUrl = URL(string: registerPhoneURLString) ,
+            let wlResourceRequest = WLResourceRequest(url: registerPhoneUrl, method:"GET") else {
+            return
+        }
+        
+        wlResourceRequest.send(completionHandler: { [weak self] (response, error) -> Void in
+            if (response?.responseJSON as? [String:Any])?["errorCode"] as? String == "APPLICATION_DOES_NOT_EXIST" {
+                
+                //show gray background to cover whole screen
+                let window = UIApplication.shared.keyWindow!
+                for subview in window.subviews {
+                    if subview.tag == 99 || subview.tag == 98 {
+                           subview.removeFromSuperview()
+                    }
+                }
+                let backgroundView = UIView(frame: window.bounds)
+                backgroundView.tag = 99
+                window.addSubview(backgroundView);
+                backgroundView.backgroundColor = UIColor.gray
+                backgroundView.alpha = 0.85
+                
+                
+                let alertBackgroundView = UIView()
+                alertBackgroundView.tag = 98
+                alertBackgroundView.backgroundColor = UIColor.white
+                alertBackgroundView.cornerRadius = 10
+                window.addSubview(alertBackgroundView)
+
+                alertBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+                alertBackgroundView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+                alertBackgroundView.leadingAnchor.constraint(greaterThanOrEqualTo: backgroundView.leadingAnchor, constant: 20).isActive = true
+                alertBackgroundView.trailingAnchor.constraint(greaterThanOrEqualTo: backgroundView.trailingAnchor, constant: -20).isActive = true
+                alertBackgroundView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor).isActive = true
+                
+                let label = UILabel()
+                label.translatesAutoresizingMaskIntoConstraints = false
+                label.textAlignment = .center
+                label.setLabel(with: "The version of the App you are trying to access has been updated. Download the latest version from the App Store. For additional details please refer to the FAQs", using: .body)
+                label.numberOfLines = 0
+                alertBackgroundView.addSubview(label)
+                
+                label.leadingAnchor.constraint(greaterThanOrEqualTo: alertBackgroundView.leadingAnchor, constant: 20).isActive = true
+                label.trailingAnchor.constraint(greaterThanOrEqualTo: alertBackgroundView.trailingAnchor, constant: -20).isActive = true
+                label.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
+                label.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor).isActive = true
+                
+                OnboardingManager.shared.completedIWantToHelp = false
+                self?.navigateToCorrectPage()
+                BluetraceManager.shared.toggleScanning(false)
+                BluetraceManager.shared.toggleAdvertisement(false)
+            }
+        })
+    }
 
     func navigateToCorrectPage() {
         let navController = self.window!.rootViewController! as! UINavigationController
@@ -87,6 +143,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Logger.DLog("applicationDidBecomeActive")
         pogoMM.startAccelerometerUpdates()
         SettingsBundleHelper.setVersionAndBuildNumber()
+        
+        checkIfAppRegistered()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

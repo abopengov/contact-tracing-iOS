@@ -56,6 +56,7 @@ class CentralController: NSObject {
         }
         central?.stopScan()
         central = nil
+        self.timerForScanning?.invalidate()
     }
 
     public func getState() -> CBManagerState? {
