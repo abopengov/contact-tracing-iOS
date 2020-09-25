@@ -23,11 +23,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var shareViewHeaderLabel: UILabel!
     @IBOutlet weak var shareViewDetailLabel: UILabel!
-    
-    @IBOutlet weak var conserveBatteryViewHeaderLabel: UILabel!
-    @IBOutlet weak var conserveBatteryViewDetailLabel: UILabel!
-    
-    
+        
     @IBOutlet weak var powerSaverCardViewHeaderLabel: UILabel!
     @IBOutlet weak var powerSaverCardViewDetailLabel: UILabel!
     
@@ -76,13 +72,6 @@ class HomeViewController: UIViewController {
                                       using: .body)
         shareViewDetailLabel.textAlignment = .left
 
-        
-        conserveBatteryViewHeaderLabel.setLabel(with: "Conserve Battery",
-                                      using: .h2)
-        conserveBatteryViewDetailLabel.setLabel(with: "Learn how to use power saving mode on this device. Learn More",
-                                      using: .body)
-        conserveBatteryViewDetailLabel.textAlignment = .left
-
         powerSaverCardViewHeaderLabel.setLabel(with: "Physical distancing makes a big difference.",
                                       using: .h2)
         powerSaverCardViewHeaderLabel.textAlignment = .left
@@ -97,11 +86,11 @@ class HomeViewController: UIViewController {
                                      using: .h2)
         appPermissionsLabel.textAlignment = .left
         
-        headerMessageLabel.setLabel(with: "by keeping your Bluetooth on and the app open, especially when you are out, on public transport, at work or in public places.", using: .body)
+        headerMessageLabel.setLabel(with: "by keeping your Bluetooth on while the app is running with your phone locked or unlocked, especially when you are out, on public transport, at work, or in public places.", using: .body)
         headerMessageLabel.textAlignment = .left
         
         if let appVersion = UIApplication.appVersion {
-            versionLabel.setLabel(with: "Version: \(appVersion)",
+            versionLabel.setLabel(with: "Version: \(appVersion) \(getVersionIdentifierForEnvironment())",
                                  using: .body)
             versionLabel.textAlignment = .left
             versionLabel.isHidden = false
@@ -114,6 +103,24 @@ class HomeViewController: UIViewController {
         animationView.loopMode = LottieLoopMode.playOnce
         self.playActivityAnimation()
     }
+
+    private func getVersionIdentifierForEnvironment() -> String {
+           let devString = "mfpdev"
+           let stagingString = "mfpstg"
+
+           guard let urlHostString = WLResourceRequest(url: URL(string: "/adapters"), method: "GET")?.url.host else {
+               return ""
+           }
+
+           if urlHostString.contains(stagingString) {
+               return "S"
+           } else if urlHostString.contains(devString) {
+               return "D"
+           }
+           
+           return ""
+           
+       }
 
     func observeNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
