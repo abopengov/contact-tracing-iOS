@@ -2,6 +2,7 @@ import UIKit
 import CoreData
 import CoreMotion
 import IBMMobileFirstPlatformFoundation
+import CoreBluetooth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         //Enable this to pin own certificate
-//        WLClient.sharedInstance().pinTrustedCertificatePublicKey(fromFile: "certificate.cer")
+//        WLClient.sharedInstance().pinTrustedCertificatePublicKey(fromFile: "customCertificate.cer")
         WLClient.sharedInstance().registerChallengeHandler(SMSCodeChallengeHandler(securityCheck: SMSCodeChallengeHandler.securityCheck))
         WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE)
         WLAnalytics.sharedInstance().send()
@@ -153,13 +154,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         Logger.DLog("applicationDidEnterBackground")
-
-        let magicNumber = Int.random(in: 0 ... PushNotificationConstants.dailyRemPushNotifContents.count - 1)
-        pogoMM.stopAllMotion()
-
-        BlueTraceLocalNotifications.shared.removePendingNotificationRequests()
-
-        BlueTraceLocalNotifications.shared.triggerCalendarLocalPushNotifications(pnContent: PushNotificationConstants.dailyRemPushNotifContents[magicNumber], identifier: "appBackgroundNotifId")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

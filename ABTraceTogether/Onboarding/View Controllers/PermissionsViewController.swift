@@ -27,7 +27,7 @@ class PermissionsViewController: UIViewController {
     @IBAction func nextButtonPressed(_ sender: Any) {
         registerForPushNotifications()
         requestBluetoothPermissions()
-        self.performSegue(withIdentifier: "showPermissionToOptimizeSegue", sender: self)
+        self.performSegue(withIdentifier: "showFullySetUpFromTurnOnBtSegue", sender: self)
     }
     
     func registerForPushNotifications() {
