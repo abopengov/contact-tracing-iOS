@@ -167,7 +167,8 @@ class HomeViewController: UIViewController {
         bleAuthorized = BluetraceManager.shared.isBluetoothAuthorized()
         BlueTraceLocalNotifications.shared.checkAuthorization { (pnsGranted) in
             self.pushNotificationGranted = pnsGranted
-            self.allPermissionOn = self.blePoweredOn && self.bleAuthorized && self.pushNotificationGranted
+            self.locationAuthorized = LocationManager.shared.isLocationAuthorized()
+            self.allPermissionOn = self.blePoweredOn && self.bleAuthorized && self.pushNotificationGranted && self.locationAuthorized
 
             self.togglePermissionViews()
         }
