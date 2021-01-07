@@ -26,6 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let bluetoothAuthorised = BluetraceManager.shared.isBluetoothAuthorized()
         if  OnboardingManager.shared.completedBluetoothOnboarding && bluetoothAuthorised {
             BluetraceManager.shared.turnOn()
+            if !LocationManager.shared.isLocationAuthorized() {
+                LocationManager.shared.turnOn()
+                LocationManager.shared.start()
+            } else {
+                LocationManager.shared.start()
+            }
+
         } else {
             print("Onboarding not yet done.")
         }

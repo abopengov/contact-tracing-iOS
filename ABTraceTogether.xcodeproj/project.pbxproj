@@ -13,6 +13,7 @@
 		B63980F02457E5DF00F67DC7 /* coronavirus-hologram.json in Resources */ = {isa = PBXBuildFile; fileRef = B63980EE2457E5DE00F67DC7 /* coronavirus-hologram.json */; };
 		B63980F324586B8400F67DC7 /* mansitting.json in Resources */ = {isa = PBXBuildFile; fileRef = B63980F124586B8400F67DC7 /* mansitting.json */; };
 		B6650097245881940056712D /* images in Resources */ = {isa = PBXBuildFile; fileRef = B6650095245881940056712D /* images */; };
+		B6996E3225A793E700C67ED7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6996E3125A793E700C67ED7 /* LocationManager.swift */; };
 		B6A5B2D7246C35EA008EEBD8 /* mfpclient.plist in Resources */ = {isa = PBXBuildFile; fileRef = B621CF6F2459CD9A00836928 /* mfpclient.plist */; };
 		B6C0E7722450A01D00E714F2 /* HowItWorksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DEB6812423AE2E00D99925 /* HowItWorksViewController.swift */; };
 		B6C0E7732450A01D00E714F2 /* BlueTraceLocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DCEA6243DBDDF0014B07E /* BlueTraceLocalNotifications.swift */; };
@@ -147,6 +148,7 @@
 		B6650095245881940056712D /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		B6932CE624260E2B003D1810 /* UploadData.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UploadData.storyboard; sourceTree = "<group>"; };
 		B6932CE92426288E003D1810 /* UploadDataStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDataStep2VC.swift; sourceTree = "<group>"; };
+		B6996E3125A793E700C67ED7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B6C0E7C42450A01D00E714F2 /* ABTraceTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABTraceTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C0E7C62450BCBD00E714F2 /* OptimizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimizeViewController.swift; sourceTree = "<group>"; };
 		B6DF6C672461D15200EE6C69 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				5DC7B8D0242B8536008E1715 /* BluetraceConfig.swift */,
 				872DCEA6243DBDDF0014B07E /* BlueTraceLocalNotifications.swift */,
 				5D269C0A23E22CC400ADF2DE /* DeviceInfo.swift */,
+				B6996E3125A793E700C67ED7 /* LocationManager.swift */,
 			);
 			path = Bluetrace;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				B6C0E77F2450A01D00E714F2 /* BluetraceConfig.swift in Sources */,
 				B6C0E7802450A01D00E714F2 /* Encounter+Event.swift in Sources */,
 				B6C0E7812450A01D00E714F2 /* ContactViewController.swift in Sources */,
+				B6996E3225A793E700C67ED7 /* LocationManager.swift in Sources */,
 				B6C0E7822450A01D00E714F2 /* TurnOnBluetoothViewController.swift in Sources */,
 				B6C0E7832450A01D00E714F2 /* LogViewController.swift in Sources */,
 				B6C0E7842450A01D00E714F2 /* HomeViewController.swift in Sources */,

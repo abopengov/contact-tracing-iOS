@@ -9,20 +9,11 @@ class EncounterMessageManager {
 
     static let shared = EncounterMessageManager()
 
-//    lazy var functions = Functions.functions(region: "asia-east2")
-
     var tempId: String? {
-        guard var tempIds = UserDefaults.standard.array(forKey: userDefaultsTempIdArrayKey) as! [[String: Any]]? else {
+        guard let tempIds = UserDefaults.standard.array(forKey: userDefaultsTempIdArrayKey) as! [[String: Any]]? else {
             return "not_found"
         }
-
-        if let bmExpiry = tempIds.first?["expiryTime"] as? Date {
-            while Date() > bmExpiry {
-                tempIds.removeFirst()
-            }
-        }
-
-        guard let validBm = tempIds.first?["tempID"] as? String else { return "" }
+        guard let validBm = cleanupAndgetTempId(tempIds, currentDate: Date()) else { return "" }
         return validBm
     }
 
@@ -33,6 +24,22 @@ class EncounterMessageManager {
     // This variable stores the expiry date of the broadcast message. At the same time, we will use this expiry date as the expiry date for the encryted advertisement payload
     var advtPayloadExpiry: Date? {
         return UserDefaults.standard.object(forKey: userDefaultsAdvtExpiryKey) as? Date
+    }
+
+    func cleanupAndgetTempId(_ tempIdList: [[String: Any]], currentDate: Date) -> String? {
+        var newTempIdList = tempIdList
+
+        for item in tempIdList {
+            guard let expiryTimeInterval = item["expiryTime"] as? TimeInterval else {return nil}
+
+            if currentDate > Date(timeIntervalSince1970: expiryTimeInterval) {
+                newTempIdList.removeFirst()
+            } else {
+                break
+            }
+        }
+
+        return newTempIdList.first?["tempID"] as? String
     }
 
     func setup() {
@@ -65,15 +72,7 @@ class EncounterMessageManager {
                 UserDefaults.standard.set(response.tempIds, forKey: self.userDefaultsTempIdArrayKey)
                 UserDefaults.standard.set(response.refreshDate, forKey: self.userDefaultsAdvtExpiryKey)
 
-                var dataArray = response
-
-                if let bmExpiry = dataArray.tempIds.first?["expiryTime"] as? Date {
-                    while Date() > bmExpiry {
-                        dataArray.tempIds.removeFirst()
-                    }
-                }
-
-                guard let validBm = dataArray.tempIds.first?["tempID"] as? String else { return }
+                guard let validBm = cleanupAndgetTempId(response.tempIds, currentDate: Date()) else { return }
                 UserDefaults.standard.set(validBm, forKey: self.userDefaultsTempIdKey)
 
                 onComplete(validBm)
@@ -150,16 +149,7 @@ class EncounterMessageManager {
 
     func setAdvtPayloadIntoUserDefaultsv2(_ response: (tempIds: [[String: Any]], refreshDate: Date)) -> Data? {
 
-        var dataArray = response
-
-        // Pop out expired tempId
-        if let bmExpiry = dataArray.tempIds.first?["expiryTime"] as? Date {
-            while Date() > bmExpiry {
-                dataArray.tempIds.removeFirst()
-            }
-        }
-
-        guard let validBm = dataArray.tempIds.first?["tempID"] as? String else { return nil }
+        guard let validBm = cleanupAndgetTempId(response.tempIds, currentDate: Date()) else { return nil }
 
         let peripheralCharStruct = PeripheralCharacteristicsDataV2(mp: DeviceInfo.getModel(), id: validBm, o: BluetraceConfig.OrgID, v: BluetraceConfig.ProtocolVersion)
 

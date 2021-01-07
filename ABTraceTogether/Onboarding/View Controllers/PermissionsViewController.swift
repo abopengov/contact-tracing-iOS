@@ -18,7 +18,7 @@ class PermissionsViewController: UIViewController {
         stepsLabel.setLabel(with: "Step 3 of 3", using: .stepText)
         headerLabel.setLabel(with: "Enable app permissions",
                              using: .h2)
-        subHeaderLabel.setLabel(with: "We need permission to enable your mobile phone's Bluetooth connection and send you alerts through push notifications. When you’re ready, tap Next and choose “Allow” when the two popups appear.",
+        subHeaderLabel.setLabel(with: "We need permission to enable your mobile phone's Bluetooth connection and send you alerts through push notifications. When you’re ready, tap Next and choose “Allow” when the three popups appear.",
                                 using: .body)
         permissionsProgressButton.setButton(with: "Next",
                                             and: .arrow)
@@ -27,6 +27,7 @@ class PermissionsViewController: UIViewController {
     @IBAction func nextButtonPressed(_ sender: Any) {
         registerForPushNotifications()
         requestBluetoothPermissions()
+        requestLocationPermissions()
         self.performSegue(withIdentifier: "showFullySetUpFromTurnOnBtSegue", sender: self)
     }
     
@@ -42,5 +43,10 @@ class PermissionsViewController: UIViewController {
         
         BlueTraceLocalNotifications.shared.checkAuthorization { (granted) in
         }
+    }
+
+    private func requestLocationPermissions(){
+        LocationManager.shared.turnOn()
+        OnboardingManager.shared.allowedLocationPermissions = true
     }
 }

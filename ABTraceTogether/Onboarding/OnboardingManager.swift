@@ -16,7 +16,7 @@ class OnboardingManager {
             return "consent"
         } else if !isUserAuthenticated() {
             return "phoneNumber"
-        } else if !allowedPermissions {
+        } else if !allowedPermissions || !allowedLocationPermissions {
             return "permissions"
         } else if !completedBluetoothOnboarding {
             return "turnOnBluetooth"
@@ -61,6 +61,15 @@ extension OnboardingManager {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "allowedPermissions")
+        }
+    }
+
+    var allowedLocationPermissions: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "allowedLocationPermissions")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "allowedLocationPermissions")
         }
     }
 }
