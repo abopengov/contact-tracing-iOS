@@ -18,6 +18,7 @@ struct BluetraceConfig {
     static let CentralScanInterval = 60.0 // in seconds
     static let CentralScanDuration = 10 // in seconds
     static let ScreenWakeNotificationInterval = 300.0// in seconds
+    static let rangeForBeaconUUID = UUID(uuidString: "c3ec9647-4534-4e78-8c01-3c1567892439")
     
     static let TTLDays = -21
 }

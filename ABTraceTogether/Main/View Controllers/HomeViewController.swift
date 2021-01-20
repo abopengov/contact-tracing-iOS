@@ -11,6 +11,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var bluetoothPermissionOffView: UIView!
     @IBOutlet weak var bluetoothPermissionOnView: UIView!
     @IBOutlet weak var pushNotificationOnView: UIView!
+
+    @IBOutlet weak var locationPermissionOnView: UIView!
     @IBOutlet weak var pushNotificationOffView: UIView!
     @IBOutlet weak var incompleteHeaderView: UIView!
     @IBOutlet weak var successHeaderView: UIView!
@@ -37,7 +39,10 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var pushNotificationOnViewLabel: UILabel!
     @IBOutlet weak var pushNotificationOnViewImageView: UIImageView!
-    
+
+    @IBOutlet weak var locationPermissionOnViewLabel: UILabel!
+    @IBOutlet weak var locationPermissionOnViewImageView: UIImageView!
+
     @IBOutlet weak var headerMessageLabel: UILabel!
     @IBOutlet weak var logoTextLabel: UILabel!
     
@@ -51,6 +56,7 @@ class HomeViewController: UIViewController {
     var bleAuthorized = true
     var blePoweredOn = true
     var pushNotificationGranted = true
+    var locationAuthorized = true
 //    var remoteConfig = RemoteConfig.remoteConfig()
 
     var _preferredScreenEdgesDeferringSystemGestures: UIRectEdge = []
@@ -61,6 +67,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        readPermissionsAndUpdateViews()
         headerLabel.setLabel(with: "Help stop the spread \nof COVID-19", using: .h2)
         headerLabel.textAlignment = .left
         
@@ -150,6 +157,7 @@ class HomeViewController: UIViewController {
         togglePushNotificationsStatusView()
         toggleBluetoothStatusView()
         toggleBluetoothPermissionStatusView()
+        toggleLocationPermissionStatusView()
         toggleIncompleteHeaderView()
     }
 
@@ -159,7 +167,8 @@ class HomeViewController: UIViewController {
         bleAuthorized = BluetraceManager.shared.isBluetoothAuthorized()
         BlueTraceLocalNotifications.shared.checkAuthorization { (pnsGranted) in
             self.pushNotificationGranted = pnsGranted
-            self.allPermissionOn = self.blePoweredOn && self.bleAuthorized && self.pushNotificationGranted
+            self.locationAuthorized = LocationManager.shared.isLocationAuthorized()
+            self.allPermissionOn = self.blePoweredOn && self.bleAuthorized && self.pushNotificationGranted && self.locationAuthorized
 
             self.togglePermissionViews()
         }
@@ -193,6 +202,18 @@ class HomeViewController: UIViewController {
         } else {
             bluetoothPermissionOnViewLabel.setLabel(with: "Permissions Enabled: Yes", using: .body)
             bluetoothPermissionOnViewImageView.image = UIImage(named: "StatusIconOn")
+        }
+    }
+
+    private func toggleLocationPermissionStatusView () {
+        locationPermissionOnViewLabel.textAlignment = .left
+        if !self.allPermissionOn && !self.locationAuthorized {
+            //permission power off
+            locationPermissionOnViewLabel.setLabel(with: "Location Permissions Enabled: No", using: .body)
+            locationPermissionOnViewImageView.image = UIImage(named: "StatusIconOff")
+        } else {
+            locationPermissionOnViewLabel.setLabel(with: "Location Permissions Enabled: Yes", using: .body)
+            locationPermissionOnViewImageView.image = UIImage(named: "StatusIconOn")
         }
     }
 
