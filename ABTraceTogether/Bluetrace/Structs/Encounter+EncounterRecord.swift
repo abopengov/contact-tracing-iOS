@@ -2,11 +2,10 @@
 //  Encounter+EncounterRecord.swift
 //  OpenTrace
 
-import UIKit
 import CoreData
+import UIKit
 
 extension EncounterRecord {
-
     func saveToCoreData() {
         DispatchQueue.main.async {
             guard let appDelegate =
@@ -24,5 +23,4 @@ extension EncounterRecord {
             }
         }
     }
-
 }

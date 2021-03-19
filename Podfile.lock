@@ -1,20 +1,24 @@
 PODS:
-  - IBMMobileFirstPlatformFoundation (8.0.2020032408)
+  - Herald (1.2.0)
+  - IBMMobileFirstPlatformFoundation (8.0.2020050515)
   - lottie-ios (3.1.6)
 
 DEPENDENCIES:
-  - IBMMobileFirstPlatformFoundation (= 8.0.2020032408)
+  - Herald (= 1.2.0)
+  - IBMMobileFirstPlatformFoundation (= 8.0.2020050515)
   - lottie-ios (= 3.1.6)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Herald
     - IBMMobileFirstPlatformFoundation
     - lottie-ios
 
 SPEC CHECKSUMS:
-  IBMMobileFirstPlatformFoundation: 7b47eb132e3b3c1aaca27f1cef11090347c01798
+  Herald: a45e5beb91e281da0e10d7d4857e50fd153fcbc0
+  IBMMobileFirstPlatformFoundation: 8b98039d8a767150570ee2e923e942f26254e1f3
   lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
 
-PODFILE CHECKSUM: 29018c3ca127f913edee11d472fd5c3c69287d1c
+PODFILE CHECKSUM: 9059191513a5e124869870f4388fa87eb56d8d92
 
-COCOAPODS: 1.9.2
+COCOAPODS: 1.10.1

@@ -2,7 +2,7 @@
 //  PushNotificationConstants.swift
 //  OpenTrace
 
-struct PushNotificationConstants {
+enum PushNotificationConstants {
     // Bluetooth Status
     static let btStatusPushNotifContents = [
         [

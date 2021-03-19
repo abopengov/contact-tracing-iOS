@@ -1,64 +1,70 @@
-import UIKit
-import CoreData
 import CoreBluetooth
+import CoreData
+import UIKit
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
     static let shared = LocationManager()
-    let locationManager: CLLocationManager
+    let locationManager = CLLocationManager()
+    private var requestLocationAuthorizationCallback: ((CLAuthorizationStatus) -> Void)?
 
-    private let rangeForBeacon: UUID = BluetraceConfig.rangeForBeaconUUID ?? UUID(uuidString: "c3ec6985-7444-4e22-8c44-1233456454")!
-
-    override init() {
-        self.locationManager = CLLocationManager()
-    }
-
-    func turnOn() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestAlwaysAuthorization()
+    func requestLocationAuthorization(completion: @escaping (_ granted: Bool) -> Void) {
+        self.locationManager.delegate = self
         locationManager.startUpdatingLocation()
         locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        if #available(iOS 14.0, *) {
+            locationManager.desiredAccuracy = kCLLocationAccuracyReduced
+        } else {
+            locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        }
         locationManager.distanceFilter = CLLocationDistanceMax
         locationManager.allowsBackgroundLocationUpdates = true
         if #available(iOS 11.0, *) {
             locationManager.showsBackgroundLocationIndicator = false
         }
 
-        // Start beacon ranging
-        self.start()
+        let currentStatus = CLLocationManager.authorizationStatus()
+
+        // Only ask authorization if it was never asked before
+        guard currentStatus == .notDetermined || currentStatus == .authorizedWhenInUse else {
+            completion(true)
+            return
+        }
+
+        // Starting on iOS 13.4.0, to get .authorizedAlways permission, you need to
+        // first ask for WhenInUse permission, then ask for Always permission to
+        // get to a second system alert
+        if #available(iOS 13.4, *) {
+            self.requestLocationAuthorizationCallback = { status in
+                if status == .authorizedWhenInUse {
+                    self.locationManager.requestAlwaysAuthorization()
+                } else {
+                    completion(true)
+                }
+            }
+            self.locationManager.requestWhenInUseAuthorization()
+        } else {
+            self.locationManager.requestAlwaysAuthorization()
+        }
+        if (currentStatus == .authorizedWhenInUse) {
+            completion(true)
+        }
     }
 
     func isLocationAuthorized() -> Bool {
         switch CLLocationManager.authorizationStatus() {
-        case .denied, .restricted, .notDetermined:
-            return false
         case .authorizedAlways:
             return true
-        case .authorizedWhenInUse:
-            locationManager.requestAlwaysAuthorization()
-            locationManager.requestLocation()
-            return true
+
+        default:
+            return false
         }
     }
 
-    func start() {
-        if #available(iOS 13.0, *) {
-            locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: rangeForBeacon))
-        } else {
-            let beaconRegion = CLBeaconRegion(proximityUUID: rangeForBeacon, identifier: rangeForBeacon.uuidString)
-            locationManager.startRangingBeacons(in: beaconRegion)
-        }
+    // MARK: - CLLocationManagerDelegate
+    public func locationManager(_ manager: CLLocationManager,
+                                didChangeAuthorization status: CLAuthorizationStatus) {
+        self.requestLocationAuthorizationCallback?(status)
     }
-
-    func stop() {
-        locationManager.stopUpdatingLocation()
-        // Stop beacon ranging
-        if #available(iOS 13.0, *) {
-            locationManager.stopRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: rangeForBeacon))
-        } else {
-            let beaconRegion = CLBeaconRegion(proximityUUID: rangeForBeacon, identifier: rangeForBeacon.uuidString)
-            locationManager.stopRangingBeacons(in: beaconRegion)
-        }
-    }
+    
+    
 }

@@ -1,8 +1,8 @@
-import UIKit
 import CoreData
+import UIKit
 
 final class LogViewController: UIViewController {
-    @IBOutlet var logTableView: UITableView!
+    @IBOutlet private var logTableView: UITableView!
 
     var fetchedResultsController: NSFetchedResultsController<Encounter>?
 
@@ -14,8 +14,10 @@ final class LogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logTableView.dataSource = self
-        logTableView.register(UITableViewCell.self,
-                              forCellReuseIdentifier: "LogCell")
+        logTableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: "LogCell"
+        )
     }
 
     func fetchEncounters() {
@@ -34,7 +36,6 @@ final class LogViewController: UIViewController {
         } catch let error as NSError {
             print("Could not perform fetch. \(error), \(error.userInfo)")
         }
-
     }
 }
 
@@ -83,23 +84,25 @@ extension LogViewController: NSFetchedResultsControllerDelegate {
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-
         switch type {
         case .insert:
             if let indexPath = newIndexPath {
                 logTableView.insertRows(at: [indexPath], with: .fade)
             }
             break
+
         case .delete:
             if let indexPath = indexPath {
                 logTableView.deleteRows(at: [indexPath], with: .fade)
             }
             break
+
         case .update:
             if let indexPath = indexPath, let cell = logTableView.cellForRow(at: indexPath) {
                 configureCell(cell, at: indexPath)
             }
             break
+
         case .move:
             if let indexPath = indexPath {
                 logTableView.deleteRows(at: [indexPath], with: .fade)
@@ -108,6 +111,7 @@ extension LogViewController: NSFetchedResultsControllerDelegate {
                 logTableView.insertRows(at: [newIndexPath], with: .fade)
             }
             break
+
         default:
             break
         }

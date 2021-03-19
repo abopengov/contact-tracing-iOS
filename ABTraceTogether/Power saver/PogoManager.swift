@@ -2,8 +2,8 @@
 //  PogoMotionManager.swift
 //  OpenTrace
 
-import Foundation
 import CoreMotion
+import Foundation
 import UIKit
 
 extension Notification.Name {
@@ -13,8 +13,8 @@ extension Notification.Name {
     static let enableUserInteraction = Notification.Name("enableUserInteraction")
 }
 
-class PogoMotionManager: NSObject {
-
+// swiftlint:disable all
+public class PogoMotionManager: NSObject {
     var motionManager: CMMotionManager!
     let blackScreenTag = 123
     var window: UIWindow?
@@ -30,8 +30,10 @@ class PogoMotionManager: NSObject {
         let splitAngle: Double = 0.5
         let updateTimer: TimeInterval = 0.5
         motionManager?.accelerometerUpdateInterval = updateTimer
-        motionManager?.startAccelerometerUpdates(to: (OperationQueue.current)!, withHandler: { [weak self]
-            (acceleroMeterData, error) -> Void in
+        motionManager?.startAccelerometerUpdates(
+            to: (OperationQueue.current)!,
+            withHandler: { [weak self]
+            acceleroMeterData, error -> Void in
             if error == nil {
                 let acceleration = (acceleroMeterData?.acceleration)!
 
@@ -43,7 +45,8 @@ class PogoMotionManager: NSObject {
             } else {
                 print("error : \(error!)")
             }
-        })
+        }
+        )
     }
 
     public func stopAccelerometerUpdates() {
@@ -86,5 +89,5 @@ class PogoMotionManager: NSObject {
         self.dismissBlackscreen()
         self.stopAccelerometerUpdates()
     }
-
 }
+// swiftlint:enable all

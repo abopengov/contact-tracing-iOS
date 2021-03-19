@@ -1,14 +1,10 @@
-import UIKit
 import CoreData
+import UIKit
 
 final class InfoViewController: UIViewController {
-    @IBOutlet weak var devicesEncounteredLabel: UILabel!
-    @IBOutlet weak var clearLogsButton: UIButton!
-    @IBOutlet weak var advertisementSwitch: UISwitch!
-    @IBOutlet weak var scanningSwitch: UISwitch!
-    @IBOutlet weak var centralStateLabel: UILabel!
-    @IBOutlet weak var obtainBluetoothStateButton: UIButton!
-    @IBOutlet weak var peripheralStateLabel: UILabel!
+    @IBOutlet private var devicesEncounteredLabel: UILabel!
+    @IBOutlet private var clearLogsButton: UIButton!
+    @IBOutlet private var heraldSwitch: UISwitch!
     private var devicesEncounteredCount: Int?
 
     override func viewWillAppear(_ animated: Bool) {
@@ -18,17 +14,17 @@ final class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        advertisementSwitch.addTarget(self, action: #selector(self.advertisementSwitchChanged), for: UIControl.Event.valueChanged)
-        scanningSwitch.addTarget(self, action: #selector(self.scanningSwitchChanged), for: UIControl.Event.valueChanged)
+        heraldSwitch.addTarget(self, action: #selector(self.heraldSwitchChanged), for: UIControl.Event.valueChanged)
         clearLogsButton.addTarget(self, action: #selector(self.clearLogsButtonClicked), for: .touchUpInside)
-        obtainBluetoothStateButton.addTarget(self, action: #selector(self.obtainBluetoothStateButtonClicked), for: .touchUpInside)
     }
 
-    @IBAction func logoutBtn(_ sender: UIButton) {
-            let navController = self.navigationController!
-            let storyboard = navController.storyboard!
-            let introVC = storyboard.instantiateViewController(withIdentifier: "intro")
-            navController.setViewControllers([introVC], animated: false)
+    @IBAction private func logoutBtn(_ sender: UIButton) {
+        guard let navController = self.navigationController,
+            let storyboard = navController.storyboard else {
+            return
+        }
+        let introVC = storyboard.instantiateViewController(withIdentifier: "intro")
+        navController.setViewControllers([introVC], animated: false)
     }
 
     @objc
@@ -51,13 +47,8 @@ final class InfoViewController: UIViewController {
     }
 
     @objc
-    func advertisementSwitchChanged(mySwitch: UISwitch) {
-        BluetraceManager.shared.toggleAdvertisement(mySwitch.isOn)
-    }
-
-    @objc
-    func scanningSwitchChanged(mySwitch: UISwitch) {
-        BluetraceManager.shared.toggleScanning(mySwitch.isOn)
+    func heraldSwitchChanged(mySwitch: UISwitch) {
+        return mySwitch.isOn ? HeraldManager.shared.start() : HeraldManager.shared.stop()
     }
 
     @objc
@@ -77,11 +68,5 @@ final class InfoViewController: UIViewController {
         } catch {
             print("Could not perform delete. \(error)")
         }
-    }
-
-    @objc
-    func obtainBluetoothStateButtonClicked() {
-        self.centralStateLabel.text = "Central state: \(BluetraceManager.shared.getCentralStateText())"
-        self.peripheralStateLabel.text = "Peripheral state: \(BluetraceManager.shared.getPeripheralStateText())"
     }
 }

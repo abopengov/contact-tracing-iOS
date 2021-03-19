@@ -79,12 +79,12 @@
 	<string>App exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Grant App permissions to access your camera if you would like to upload a photo as part of a support request</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Please allow Location Permissions - Apple requires this for your phone to scan for another phone’s Bluetooth. We do not use or store your location.</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Please allow Location Permissions - Apple requires this for your phone to scan for another phone’s Bluetooth. We do not use or store your location.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Please allow Location Permissions - Apple requires this for your phone to scan for another phone’s Bluetooth. We do not use or store your location.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Please allow Location Permissions - Apple requires this for your phone to scan for another phone’s Bluetooth. We do not use or store your location.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Please allow Location Permissions - Apple requires this for your phone to scan for another phone’s Bluetooth. We do not use or store your location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please allow Location Permissions - Apple requires this for your phone to scan for another phone’s Bluetooth. We do not use or store your location.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Grant App permissions to access your photo library if you would like to upload a photo as part of a support request</string>
 	<key>TRACER_SVC_ID</key>
@@ -106,6 +106,7 @@
 	<array>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

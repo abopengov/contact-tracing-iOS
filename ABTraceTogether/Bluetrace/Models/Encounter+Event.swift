@@ -2,11 +2,10 @@
 //  Encounter+Event.swift
 //  OpenTrace
 
-import UIKit
 import CoreData
+import UIKit
 
 extension Encounter {
-
     enum Event: String {
         case scanningStarted = "Scanning started"
         case scanningStopped = "Scanning stopped"
@@ -31,5 +30,4 @@ extension Encounter {
             }
         }
     }
-
 }

@@ -6,7 +6,6 @@ import UIKit
 
 @IBDesignable
 class UITextViewFixed: UITextView {
-
     override func layoutSubviews() {
         super.layoutSubviews()
         setup()
@@ -16,5 +15,4 @@ class UITextViewFixed: UITextView {
         textContainerInset = UIEdgeInsets.zero
         textContainer.lineFragmentPadding = 0
     }
-
 }

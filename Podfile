@@ -9,5 +9,8 @@ target 'ABTraceTogether' do
 
   # Pods for tracer
   pod 'lottie-ios', '3.1.6'
-  pod 'IBMMobileFirstPlatformFoundation', '8.0.2020032408'
+  pod 'IBMMobileFirstPlatformFoundation', '8.0.2020050515'
+  pod 'Herald', '1.2.0'
 end
+
+

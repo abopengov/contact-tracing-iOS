@@ -22,6 +22,17 @@ struct EncounterRecord: Encodable {
         self.modelP = modelP
     }
 
+    init(msg: String?, modelC: String?, modelP: String?, rssi: Double?, txPower: Double?, org: String?, v: Int?) {
+        self.timestamp = Date()
+        self.msg = msg
+        self.modelC = modelC
+        self.modelP = modelP
+        self.rssi = rssi
+        self.txPower = txPower
+        self.org = org
+        self.v = v
+    }
+
     // This initializer is used when central discovered a peripheral, and need to record down the rssi and txpower, and have not yet connected with the peripheral to get the msg
     init(rssi: Double, txPower: Double?) {
         self.timestamp = Date()
@@ -32,16 +43,6 @@ struct EncounterRecord: Encodable {
         self.txPower = txPower
         self.org = nil
         self.v = nil
-    }
-
-    init(from centralWriteDataV2: CentralWriteDataV2) {
-        self.timestamp = Date()
-        self.msg = centralWriteDataV2.id
-        self.modelC = centralWriteDataV2.mc
-        self.modelP = DeviceInfo.getModel()
-        self.rssi = centralWriteDataV2.rs
-        self.org = centralWriteDataV2.o
-        self.v = centralWriteDataV2.v
     }
 
     init(msg: String) {
