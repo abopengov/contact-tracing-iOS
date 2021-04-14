@@ -1,8 +1,8 @@
-import UIKit
 import CoreData
+import UIKit
 
 final class ContactViewController: UIViewController {
-    @IBOutlet var contactTableView: UITableView!
+    @IBOutlet private var contactTableView: UITableView!
     var sortedContacts:[(contactId: String, count: Int)] = []
     var fetchedResultsController: NSFetchedResultsController<Encounter>?
 
@@ -14,8 +14,10 @@ final class ContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         contactTableView.dataSource = self
-        contactTableView.register(UITableViewCell.self,
-                                  forCellReuseIdentifier: "ContactCell")
+        contactTableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: "ContactCell"
+        )
     }
 
     func fetchContacts() {
@@ -33,7 +35,6 @@ final class ContactViewController: UIViewController {
         } catch let error as NSError {
             print("Could not perform fetch. \(error), \(error.userInfo)")
         }
-
     }
 
     func updateSortedContacts() {
@@ -59,7 +60,7 @@ final class ContactViewController: UIViewController {
 
 extension ContactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sortedContacts.count
+        self.sortedContacts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,7 +74,6 @@ extension ContactViewController: UITableViewDataSource {
 
 extension ContactViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-
         updateSortedContacts()
         contactTableView.reloadData()
     }

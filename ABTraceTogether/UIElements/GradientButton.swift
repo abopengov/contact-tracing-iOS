@@ -8,11 +8,9 @@ import UIKit
 class GradientButton: UIButton {
     let gradientLayer = CAGradientLayer()
 
-    @IBInspectable
-    var topGradientColor: UIColor?
+    @IBInspectable var topGradientColor: UIColor?
 
-    @IBInspectable
-    var bottomGradientColor: UIColor?
+    @IBInspectable var bottomGradientColor: UIColor?
 
     private func setGradient(topGradientColor: UIColor?, bottomGradientColor: UIColor?) {
         if let topGradientColor = topGradientColor, let bottomGradientColor = bottomGradientColor {
@@ -35,5 +33,4 @@ class GradientButton: UIButton {
 
         setGradient(topGradientColor: topGradientColor, bottomGradientColor: bottomGradientColor)
     }
-
 }

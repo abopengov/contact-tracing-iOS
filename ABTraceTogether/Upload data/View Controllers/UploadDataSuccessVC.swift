@@ -1,23 +1,29 @@
-//
-//  UploadDataSuccessVC.swift
-//  OpenTrace
-
 import Foundation
 import UIKit
 
 class UploadDataSuccessVC: UIViewController {
-    @IBOutlet weak var successMessageLabel: UILabel!
-    @IBOutlet weak var successProgressButton: UIButton!
-    @IBOutlet weak var successHeaderLabel: UILabel!
-    
-    
+    @IBOutlet private var successMessageLabel: UILabel!
+    @IBOutlet private var successProgressButton: UIButton!
+    @IBOutlet private var successHeaderLabel: UILabel!
+
     override func viewDidLoad() {
-        successProgressButton.setButton(with: "Finish", and: .check)
+        super.viewDidLoad()
+        successProgressButton.setButton(
+            with: uploadSuccessButton,
+            and: .check
+        )
+        successHeaderLabel.setLabel(
+            with: uploadSuccessHeader,
+            using: .h2
+        )
+        successMessageLabel.setLabel(
+            with: uploadSuccessSubHeader,
+            using: .body
+        )
     }
-    
-    @IBAction func doneBtnTapped(_ sender: UIButton) {
+
+    @IBAction private func doneBtnTapped(_ sender: UIButton) {
         // Bring user back to home tab
-        self.navigationController?.tabBarController?.selectedIndex = 0
+        HomeScreenEnum.showHomeScreen()
     }
-    
 }

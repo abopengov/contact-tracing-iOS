@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,34 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="App-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="DXK-xw-ZIO">
+                                <rect key="frame" x="80" y="435.66666666666669" width="255" height="25"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Alberta-Gov-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="f0m-ro-Et1">
+                                <rect key="frame" x="158.66666666666666" y="611.66666666666663" width="97" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="9Ao-0v-Cj8"/>
+                                    <constraint firstAttribute="width" constant="97" id="HEl-PO-gjR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brought to you by the Government of Alberta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVs-LF-jM6">
+                                <rect key="frame" x="110" y="648.66666666666663" width="194" height="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.23921568630000001" green="0.12549019610000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DXK-xw-ZIO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="EuC-Tw-zfk"/>
+                            <constraint firstItem="f0m-ro-Et1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JFC-b4-slG"/>
+                            <constraint firstItem="DXK-xw-ZIO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="XXh-Ko-JYx"/>
+                            <constraint firstItem="f0m-ro-Et1" firstAttribute="top" secondItem="DXK-xw-ZIO" secondAttribute="bottom" constant="151" id="jHk-lN-z7a"/>
+                            <constraint firstItem="XVs-LF-jM6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="rBL-n0-I4R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DXK-xw-ZIO" secondAttribute="trailing" constant="79" id="xMJ-pw-mK1"/>
+                            <constraint firstItem="XVs-LF-jM6" firstAttribute="top" secondItem="f0m-ro-Et1" secondAttribute="bottom" constant="12" id="xVn-bW-HBC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -24,4 +51,8 @@
             <point key="canvasLocation" x="48.75" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Alberta-Gov-Logo" width="97" height="25"/>
+        <image name="App-Logo" width="232" height="25"/>
+    </resources>
 </document>

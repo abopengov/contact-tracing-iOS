@@ -5,29 +5,25 @@
 import UIKit
 
 extension UIView {
-
-    @IBInspectable
-    var cornerRadius: CGFloat {
+    @IBInspectable var cornerRadius: CGFloat {
         get {
-            return layer.cornerRadius
+            layer.cornerRadius
         }
         set {
             layer.cornerRadius = newValue
         }
     }
 
-    @IBInspectable
-    var borderWidth: CGFloat {
+    @IBInspectable var borderWidth: CGFloat {
         get {
-            return layer.borderWidth
+            layer.borderWidth
         }
         set {
             layer.borderWidth = newValue
         }
     }
 
-    @IBInspectable
-    var borderColor: UIColor? {
+    @IBInspectable var borderColor: UIColor? {
         get {
             if let color = layer.borderColor {
                 return UIColor(cgColor: color)
@@ -43,38 +39,34 @@ extension UIView {
         }
     }
 
-    @IBInspectable
-    var shadowRadius: CGFloat {
+    @IBInspectable var shadowRadius: CGFloat {
         get {
-            return layer.shadowRadius
+            layer.shadowRadius
         }
         set {
             layer.shadowRadius = newValue
         }
     }
 
-    @IBInspectable
-    var shadowOpacity: Float {
+    @IBInspectable var shadowOpacity: Float {
         get {
-            return layer.shadowOpacity
+            layer.shadowOpacity
         }
         set {
             layer.shadowOpacity = newValue
         }
     }
 
-    @IBInspectable
-    var shadowOffset: CGSize {
+    @IBInspectable var shadowOffset: CGSize {
         get {
-            return layer.shadowOffset
+            layer.shadowOffset
         }
         set {
             layer.shadowOffset = newValue
         }
     }
 
-    @IBInspectable
-    var shadowColor: UIColor? {
+    @IBInspectable var shadowColor: UIColor? {
         get {
             if let color = layer.shadowColor {
                 return UIColor(cgColor: color)
@@ -91,16 +83,14 @@ extension UIView {
     }
 }
 
-//Have made a separate extension for new methods
+// Have made a separate extension for new methods
 extension UIView {
-
     var isVisible: Bool {
         get {
-            return !self.isHidden
+            !self.isHidden
         }
         set {
             self.isHidden = !newValue
         }
     }
-
 }

@@ -2,13 +2,12 @@
 //  Encounter+CoreDataProperties.swift
 //  OpenTrace
 
-import Foundation
-import CoreData
-import UIKit
 import CoreBluetooth
+import CoreData
+import Foundation
+import UIKit
 
 extension Encounter {
-
     enum CodingKeys: String, CodingKey {
         case timestamp
         case msg
@@ -21,7 +20,7 @@ extension Encounter {
     }
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Encounter> {
-        return NSFetchRequest<Encounter>(entityName: "Encounter")
+        NSFetchRequest<Encounter>(entityName: "Encounter")
     }
 
     @nonobjc public class func fetchRequestForRecords() -> NSFetchRequest<Encounter> {
@@ -73,5 +72,4 @@ extension Encounter {
             try container.encode(v?.intValue, forKey: .v)
         }
     }
-
 }

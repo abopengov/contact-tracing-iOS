@@ -15,9 +15,7 @@
 		B6650097245881940056712D /* images in Resources */ = {isa = PBXBuildFile; fileRef = B6650095245881940056712D /* images */; };
 		B6996E3225A793E700C67ED7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6996E3125A793E700C67ED7 /* LocationManager.swift */; };
 		B6A5B2D7246C35EA008EEBD8 /* mfpclient.plist in Resources */ = {isa = PBXBuildFile; fileRef = B621CF6F2459CD9A00836928 /* mfpclient.plist */; };
-		B6C0E7722450A01D00E714F2 /* HowItWorksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DEB6812423AE2E00D99925 /* HowItWorksViewController.swift */; };
 		B6C0E7732450A01D00E714F2 /* BlueTraceLocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DCEA6243DBDDF0014B07E /* BlueTraceLocalNotifications.swift */; };
-		B6C0E7742450A01D00E714F2 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3753A862450185600E8C584 /* MainTabBarController.swift */; };
 		B6C0E7752450A01D00E714F2 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62FF1AD244E52730004715C /* UIButtonExtension.swift */; };
 		B6C0E7762450A01D00E714F2 /* UIProgressView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615C5A623F8EB1700345969 /* UIProgressView + Extension.swift */; };
 		B6C0E7772450A01D00E714F2 /* PogoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87260F2D243D9C51009C6E14 /* PogoManager.swift */; };
@@ -30,50 +28,97 @@
 		B6C0E77F2450A01D00E714F2 /* BluetraceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7B8D0242B8536008E1715 /* BluetraceConfig.swift */; };
 		B6C0E7802450A01D00E714F2 /* Encounter+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FADDAD23F6896C006C125F /* Encounter+Event.swift */; };
 		B6C0E7812450A01D00E714F2 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8DD05923E2F08400E097EF /* ContactViewController.swift */; };
-		B6C0E7822450A01D00E714F2 /* TurnOnBluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D817823F16C3900345771 /* TurnOnBluetoothViewController.swift */; };
 		B6C0E7832450A01D00E714F2 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8DD05B23E2F0A700E097EF /* LogViewController.swift */; };
-		B6C0E7842450A01D00E714F2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F83AF23F045A800770DEF /* HomeViewController.swift */; };
 		B6C0E7852450A01D00E714F2 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8DD05D23E2F0BA00E097EF /* InfoViewController.swift */; };
-		B6C0E7862450A01D00E714F2 /* PogoInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F19B4DC23F565850071A11E /* PogoInstructionsViewController.swift */; };
 		B6C0E7872450A01D00E714F2 /* CodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E91BEA23EFEA0B002D592A /* CodeInputView.swift */; };
 		B6C0E7882450A01D00E714F2 /* EncounterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE1CAE23F1349F005DCE4F /* EncounterRecord.swift */; };
 		B6C0E7892450A01D00E714F2 /* UploadDataStep1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F8BE5242667CB0007A641 /* UploadDataStep1VC.swift */; };
-		B6C0E78A2450A01D00E714F2 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553AA5CD243EC91700EE326F /* OnboardingManager.swift */; };
-		B6C0E78C2450A01D00E714F2 /* Bluetrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F6C8824348A7300E4F52F /* Bluetrace.swift */; };
 		B6C0E78D2450A01D00E714F2 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F8BE3242659810007A641 /* UILabelExtension.swift */; };
 		B6C0E78E2450A01D00E714F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD41D3A23DCB03B00FD4AB0 /* AppDelegate.swift */; };
-		B6C0E78F2450A01D00E714F2 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8B248A23F146C500DBB74D /* PhoneNumberViewController.swift */; };
 		B6C0E7902450A01D00E714F2 /* BluetraceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7B8D2242B8D87008E1715 /* BluetraceUtils.swift */; };
 		B6C0E7912450A01D00E714F2 /* Encounter+EncounterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE1CB023F134D0005DCE4F /* Encounter+EncounterRecord.swift */; };
-		B6C0E7922450A01D00E714F2 /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE1CB423F15D47005DCE4F /* OTPViewController.swift */; };
 		B6C0E7932450A01D00E714F2 /* Encounter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8DD05F23E319B300E097EF /* Encounter+CoreDataClass.swift */; };
-		B6C0E7942450A01D00E714F2 /* BluetraceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D269C0C23E2958F00ADF2DE /* BluetraceManager.swift */; };
-		B6C0E7952450A01D00E714F2 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5046D5B23EF18600046E96D /* IntroViewController.swift */; };
 		B6C0E7962450A01D00E714F2 /* UploadDataSuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B605A7AE24273642008BA819 /* UploadDataSuccessVC.swift */; };
-		B6C0E7972450A01D00E714F2 /* BluetraceV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3100A243C7ECD00D760B0 /* BluetraceV2.swift */; };
-		B6C0E7982450A01D00E714F2 /* PeripheralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD41D5223DD4CA400FD4AB0 /* PeripheralController.swift */; };
 		B6C0E7992450A01D00E714F2 /* UITextViewFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D209FB23F4476F007233BE /* UITextViewFixed.swift */; };
 		B6C0E79A2450A01D00E714F2 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C585C83A23EEB99B0061B7C6 /* GradientButton.swift */; };
 		B6C0E79B2450A01D00E714F2 /* EncounterMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F83AC23F023F600770DEF /* EncounterMessageManager.swift */; };
-		B6C0E79C2450A01D00E714F2 /* CentralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD41D4E23DCB05600FD4AB0 /* CentralController.swift */; };
-		B6C0E79D2450A01D00E714F2 /* ConsentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56CF43E23F18A15006B05B0 /* ConsentViewController.swift */; };
 		B6C0E79E2450A01D00E714F2 /* UploadDataToNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879EF840243609DA0061C75F /* UploadDataToNoteViewController.swift */; };
 		B6C0E79F2450A01D00E714F2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557FD392243E4062006BDF38 /* DatabaseManager.swift */; };
 		B6C0E7A02450A01D00E714F2 /* UploadFileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE1CA923F108BA005DCE4F /* UploadFileData.swift */; };
-		B6C0E7A22450A01D00E714F2 /* BluetraceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F6C8B24348CC200E4F52F /* BluetraceProtocol.swift */; };
-		B6C0E7A32450A01D00E714F2 /* SMSCodeChallengeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B4CDD244808410078506E /* SMSCodeChallengeHandler.swift */; };
-		B6C0E7A42450A01D00E714F2 /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2F0BA123EFFF75006D7404 /* PermissionsViewController.swift */; };
 		B6C0E7A52450A01D00E714F2 /* PushNotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F36305E23F7F81400CC6E1D /* PushNotificationConstants.swift */; };
 		B6C0E7A62450A01D00E714F2 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615C5A823FA403400345969 /* UIViewController + Extension.swift */; };
 		B6C0E7A72450A01D00E714F2 /* Encounter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8DD06023E319B300E097EF /* Encounter+CoreDataProperties.swift */; };
 		B6C0E7AC2450A01D00E714F2 /* UploadData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6932CE624260E2B003D1810 /* UploadData.storyboard */; };
 		B6C0E7AD2450A01D00E714F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30BE1CAC23F119FD005DCE4F /* Localizable.strings */; };
-		B6C0E7B32450A01D00E714F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD41D4523DCB03D00FD4AB0 /* LaunchScreen.storyboard */; };
 		B6C0E7B42450A01D00E714F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD41D4323DCB03D00FD4AB0 /* Assets.xcassets */; };
 		B6C0E7B92450A01D00E714F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD41D4023DCB03B00FD4AB0 /* Main.storyboard */; };
 		B6C0E7BA2450A01D00E714F2 /* ActivityIndicator.json in Resources */ = {isa = PBXBuildFile; fileRef = 7785BB04240E09C600802EBC /* ActivityIndicator.json */; };
-		B6C0E7C82450BCBD00E714F2 /* OptimizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E7C62450BCBD00E714F2 /* OptimizeViewController.swift */; };
 		B6DF6C682461D15200EE6C69 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B6DF6C672461D15200EE6C69 /* Settings.bundle */; };
+		D34E302326000009004C7938 /* BlueTraceSensorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E301826000009004C7938 /* BlueTraceSensorDelegate.swift */; };
+		D34E302426000009004C7938 /* TempIdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E301926000009004C7938 /* TempIdProvider.swift */; };
+		D34E302526000009004C7938 /* BlueTraceDataPersisting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E301A26000009004C7938 /* BlueTraceDataPersisting.swift */; };
+		D34E302626000009004C7938 /* BlueTracePayloadDataSupplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E301B26000009004C7938 /* BlueTracePayloadDataSupplier.swift */; };
+		D34E302726000009004C7938 /* HeraldEnvelopeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E301C26000009004C7938 /* HeraldEnvelopeHeader.swift */; };
+		D34E302826000009004C7938 /* FairEfficacyInstrumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E301D26000009004C7938 /* FairEfficacyInstrumentation.swift */; };
+		D34E302926000009004C7938 /* BlueTracePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E301E26000009004C7938 /* BlueTracePayload.swift */; };
+		D34E302A26000009004C7938 /* HeraldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E301F26000009004C7938 /* HeraldManager.swift */; };
+		D34E302B26000009004C7938 /* BluetoothStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E302026000009004C7938 /* BluetoothStateManager.swift */; };
+		D34E302C26000009004C7938 /* TempIdProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E302126000009004C7938 /* TempIdProvidable.swift */; };
+		D34E302D26000009004C7938 /* BlueTraceDataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E302226000009004C7938 /* BlueTraceDataPersistence.swift */; };
+		D34E3035260000FB004C7938 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3034260000FB004C7938 /* UIViewControllerExtension.swift */; };
+		D34E30382600011E004C7938 /* english.json in Resources */ = {isa = PBXBuildFile; fileRef = D34E30372600011E004C7938 /* english.json */; };
+		D34E30402600012A004C7938 /* HomeScreenEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E303A2600012A004C7938 /* HomeScreenEnum.swift */; };
+		D34E30412600012A004C7938 /* DynamicUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E303B2600012A004C7938 /* DynamicUrl.swift */; };
+		D34E30422600012A004C7938 /* AlertViewControllerEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E303C2600012A004C7938 /* AlertViewControllerEnum.swift */; };
+		D34E30432600012A004C7938 /* TabName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E303D2600012A004C7938 /* TabName.swift */; };
+		D34E30442600012A004C7938 /* JsonFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E303E2600012A004C7938 /* JsonFileError.swift */; };
+		D34E30452600012A004C7938 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E303F2600012A004C7938 /* Tag.swift */; };
+		D34E30482600016F004C7938 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30472600016F004C7938 /* SettingsBundleHelper.swift */; };
+		D34E3051260002A0004C7938 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34E304F260002A0004C7938 /* LaunchScreen.storyboard */; };
+		D34E3056260002D6004C7938 /* BKLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3053260002D6004C7938 /* BKLocalization.swift */; };
+		D34E3057260002D6004C7938 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3054260002D6004C7938 /* LoadingViewController.swift */; };
+		D34E3058260002D6004C7938 /* BKLocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3055260002D6004C7938 /* BKLocalizationManager.swift */; };
+		D34E305B26000379004C7938 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E305A26000379004C7938 /* StatisticsViewController.swift */; };
+		D34E305E2600039B004C7938 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E305D2600039B004C7938 /* HomeViewController.swift */; };
+		D34E3062260003B5004C7938 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3061260003B4004C7938 /* MapViewController.swift */; };
+		D34E3065260003D9004C7938 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3064260003D9004C7938 /* MainTabBarController.swift */; };
+		D34E3068260003ED004C7938 /* GuidanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3067260003ED004C7938 /* GuidanceViewController.swift */; };
+		D34E306D26000429004C7938 /* HomeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E306C26000429004C7938 /* HomeViewControllerDelegate.swift */; };
+		D34E307E2600044B004C7938 /* RegistrationSuccessfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30702600044B004C7938 /* RegistrationSuccessfulViewController.swift */; };
+		D34E307F2600044B004C7938 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30712600044B004C7938 /* BaseViewController.swift */; };
+		D34E30802600044B004C7938 /* ExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30722600044B004C7938 /* ExplanationViewController.swift */; };
+		D34E30812600044B004C7938 /* OTPVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30732600044B004C7938 /* OTPVerificationViewController.swift */; };
+		D34E30822600044B004C7938 /* OnboardingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30742600044B004C7938 /* OnboardingNavigator.swift */; };
+		D34E30832600044B004C7938 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30752600044B004C7938 /* WelcomeViewController.swift */; };
+		D34E30842600044B004C7938 /* LocationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30762600044B004C7938 /* LocationPermissionViewController.swift */; };
+		D34E30852600044B004C7938 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30772600044B004C7938 /* OnboardingViewController.swift */; };
+		D34E30862600044B004C7938 /* SMSCodeChallengeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30782600044B004C7938 /* SMSCodeChallengeHandler.swift */; };
+		D34E30872600044B004C7938 /* BlueToothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30792600044B004C7938 /* BlueToothViewController.swift */; };
+		D34E30882600044B004C7938 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E307A2600044B004C7938 /* PrivacyViewController.swift */; };
+		D34E30892600044B004C7938 /* PhoneNumberRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E307B2600044B004C7938 /* PhoneNumberRegistrationViewController.swift */; };
+		D34E308A2600044B004C7938 /* PushNotificationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E307C2600044B004C7938 /* PushNotificationPermissionViewController.swift */; };
+		D34E308B2600044B004C7938 /* HowItWorksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E307D2600044B004C7938 /* HowItWorksViewController.swift */; };
+		D34E309126000678004C7938 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E309026000678004C7938 /* Localization.swift */; };
+		D34E30A9260006A2004C7938 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3094260006A2004C7938 /* MapView.swift */; };
+		D34E30AA260006A2004C7938 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34E3095260006A2004C7938 /* MapView.xib */; };
+		D34E30AB260006A2004C7938 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3096260006A2004C7938 /* MapViewDelegate.swift */; };
+		D34E30AC260006A2004C7938 /* CaseSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3098260006A2004C7938 /* CaseSummaryView.swift */; };
+		D34E30AD260006A2004C7938 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34E3099260006A2004C7938 /* MessageView.xib */; };
+		D34E30AE260006A2004C7938 /* AppPermissionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34E309A260006A2004C7938 /* AppPermissionView.xib */; };
+		D34E30AF260006A2004C7938 /* HeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E309B260006A2004C7938 /* HeaderViewDelegate.swift */; };
+		D34E30B0260006A2004C7938 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34E309C260006A2004C7938 /* HeaderView.xib */; };
+		D34E30B1260006A2004C7938 /* CaseSummaryViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E309D260006A2004C7938 /* CaseSummaryViewDelegate.swift */; };
+		D34E30B2260006A2004C7938 /* ShareAppView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34E309E260006A2004C7938 /* ShareAppView.xib */; };
+		D34E30B3260006A2004C7938 /* UploadDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34E309F260006A2004C7938 /* UploadDataView.xib */; };
+		D34E30B4260006A2004C7938 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30A0260006A2004C7938 /* HeaderView.swift */; };
+		D34E30B5260006A2004C7938 /* CaseSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34E30A1260006A2004C7938 /* CaseSummaryView.xib */; };
+		D34E30B6260006A2004C7938 /* BroughtToYouByView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34E30A2260006A2004C7938 /* BroughtToYouByView.xib */; };
+		D34E30B7260006A2004C7938 /* ShareAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30A3260006A2004C7938 /* ShareAppView.swift */; };
+		D34E30B8260006A2004C7938 /* AppPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30A4260006A2004C7938 /* AppPermissionView.swift */; };
+		D34E30B9260006A2004C7938 /* UploadDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30A5260006A2004C7938 /* UploadDataView.swift */; };
+		D34E30BA260006A2004C7938 /* BroughtToYouByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30A6260006A2004C7938 /* BroughtToYouByView.swift */; };
+		D34E30BB260006A2004C7938 /* AppPermissionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30A7260006A2004C7938 /* AppPermissionDelegate.swift */; };
+		D34E30BC260006A2004C7938 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E30A8260006A2004C7938 /* MessageView.swift */; };
 		F33129ED2457261900B979B9 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B640AC8D2451F24900EC3834 /* HelpViewController.swift */; };
 		F33129F02457319F00B979B9 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33129EE24572FA300B979B9 /* UITextViewExtension.swift */; };
 /* End PBXBuildFile section */
@@ -87,19 +132,14 @@
 		30BE1CAC23F119FD005DCE4F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		30BE1CAE23F1349F005DCE4F /* EncounterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterRecord.swift; sourceTree = "<group>"; };
 		30BE1CB023F134D0005DCE4F /* Encounter+EncounterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encounter+EncounterRecord.swift"; sourceTree = "<group>"; };
-		30BE1CB423F15D47005DCE4F /* OTPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
 		30E91BEA23EFEA0B002D592A /* CodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputView.swift; sourceTree = "<group>"; };
 		30FADDAD23F6896C006C125F /* Encounter+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encounter+Event.swift"; sourceTree = "<group>"; };
 		36D16B81FB525C418E094D8E /* Pods_ABTraceTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABTraceTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D53DA94CA9AD62EFF296F0B /* Pods-OpenTrace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenTrace.release.xcconfig"; path = "Target Support Files/Pods-OpenTrace/Pods-OpenTrace.release.xcconfig"; sourceTree = "<group>"; };
 		479AAF046370CB093DA20DF9 /* Pods_ABTraceTogether_AdHocStage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABTraceTogether_AdHocStage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		553AA5CD243EC91700EE326F /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		557FD392243E4062006BDF38 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		5D269C0A23E22CC400ADF2DE /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
-		5D269C0C23E2958F00ADF2DE /* BluetraceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetraceManager.swift; sourceTree = "<group>"; };
 		5D5F83AC23F023F600770DEF /* EncounterMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterMessageManager.swift; sourceTree = "<group>"; };
-		5D5F83AF23F045A800770DEF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		5D8B248A23F146C500DBB74D /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		5D8DD05923E2F08400E097EF /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		5D8DD05B23E2F0A700E097EF /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		5D8DD05D23E2F0BA00E097EF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -110,16 +150,11 @@
 		5DD41D3A23DCB03B00FD4AB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DD41D4123DCB03B00FD4AB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5DD41D4323DCB03D00FD4AB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5DD41D4623DCB03D00FD4AB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DD41D4823DCB03D00FD4AB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DD41D4E23DCB05600FD4AB0 /* CentralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralController.swift; sourceTree = "<group>"; };
-		5DD41D5223DD4CA400FD4AB0 /* PeripheralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralController.swift; sourceTree = "<group>"; };
 		5DD41D7823DE141700FD4AB0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		5DDB85EA23EE39C000B186BC /* Project Bluetrace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Project Bluetrace.entitlements"; sourceTree = "<group>"; };
 		6DE1C3ADA3F2CBDC5C4C912A /* Pods-ABTraceTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABTraceTogether.debug.xcconfig"; path = "Target Support Files/Pods-ABTraceTogether/Pods-ABTraceTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		7785BB04240E09C600802EBC /* ActivityIndicator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ActivityIndicator.json; sourceTree = "<group>"; };
-		7F19B4DC23F565850071A11E /* PogoInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PogoInstructionsViewController.swift; sourceTree = "<group>"; };
-		7F2F0BA123EFFF75006D7404 /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		7F36305E23F7F81400CC6E1D /* PushNotificationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationConstants.swift; sourceTree = "<group>"; };
 		7FEC361423F16A1E00127AFB /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		87260F2D243D9C51009C6E14 /* PogoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PogoManager.swift; sourceTree = "<group>"; };
@@ -138,7 +173,6 @@
 		B60F8BE5242667CB0007A641 /* UploadDataStep1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDataStep1VC.swift; sourceTree = "<group>"; };
 		B615C5A623F8EB1700345969 /* UIProgressView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProgressView + Extension.swift"; sourceTree = "<group>"; };
 		B615C5A823FA403400345969 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
-		B61B4CDD244808410078506E /* SMSCodeChallengeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeChallengeHandler.swift; sourceTree = "<group>"; };
 		B621CF6F2459CD9A00836928 /* mfpclient.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = mfpclient.plist; sourceTree = "<group>"; };
 		B626AA9F2457492C006040B2 /* OCLoggerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCLoggerExtension.swift; sourceTree = "<group>"; };
 		B62FF1AD244E52730004715C /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
@@ -150,24 +184,80 @@
 		B6932CE92426288E003D1810 /* UploadDataStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDataStep2VC.swift; sourceTree = "<group>"; };
 		B6996E3125A793E700C67ED7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B6C0E7C42450A01D00E714F2 /* ABTraceTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABTraceTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6C0E7C62450BCBD00E714F2 /* OptimizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimizeViewController.swift; sourceTree = "<group>"; };
 		B6DF6C672461D15200EE6C69 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		C5046D5B23EF18600046E96D /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
-		C56CF43E23F18A15006B05B0 /* ConsentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentViewController.swift; sourceTree = "<group>"; };
 		C585C83A23EEB99B0061B7C6 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
-		C58D817823F16C3900345771 /* TurnOnBluetoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnOnBluetoothViewController.swift; sourceTree = "<group>"; };
 		C5D209FB23F4476F007233BE /* UITextViewFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewFixed.swift; sourceTree = "<group>"; };
-		D81F6C8824348A7300E4F52F /* Bluetrace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetrace.swift; sourceTree = "<group>"; };
-		D81F6C8B24348CC200E4F52F /* BluetraceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetraceProtocol.swift; sourceTree = "<group>"; };
-		D8D3100A243C7ECD00D760B0 /* BluetraceV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetraceV2.swift; sourceTree = "<group>"; };
-		D8DEB6812423AE2E00D99925 /* HowItWorksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksViewController.swift; sourceTree = "<group>"; };
+		D34E301826000009004C7938 /* BlueTraceSensorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueTraceSensorDelegate.swift; sourceTree = "<group>"; };
+		D34E301926000009004C7938 /* TempIdProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempIdProvider.swift; sourceTree = "<group>"; };
+		D34E301A26000009004C7938 /* BlueTraceDataPersisting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueTraceDataPersisting.swift; sourceTree = "<group>"; };
+		D34E301B26000009004C7938 /* BlueTracePayloadDataSupplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueTracePayloadDataSupplier.swift; sourceTree = "<group>"; };
+		D34E301C26000009004C7938 /* HeraldEnvelopeHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeraldEnvelopeHeader.swift; sourceTree = "<group>"; };
+		D34E301D26000009004C7938 /* FairEfficacyInstrumentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FairEfficacyInstrumentation.swift; sourceTree = "<group>"; };
+		D34E301E26000009004C7938 /* BlueTracePayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueTracePayload.swift; sourceTree = "<group>"; };
+		D34E301F26000009004C7938 /* HeraldManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeraldManager.swift; sourceTree = "<group>"; };
+		D34E302026000009004C7938 /* BluetoothStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothStateManager.swift; sourceTree = "<group>"; };
+		D34E302126000009004C7938 /* TempIdProvidable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempIdProvidable.swift; sourceTree = "<group>"; };
+		D34E302226000009004C7938 /* BlueTraceDataPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueTraceDataPersistence.swift; sourceTree = "<group>"; };
+		D34E3034260000FB004C7938 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		D34E30372600011E004C7938 /* english.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = english.json; sourceTree = "<group>"; };
+		D34E303A2600012A004C7938 /* HomeScreenEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenEnum.swift; sourceTree = "<group>"; };
+		D34E303B2600012A004C7938 /* DynamicUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicUrl.swift; sourceTree = "<group>"; };
+		D34E303C2600012A004C7938 /* AlertViewControllerEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewControllerEnum.swift; sourceTree = "<group>"; };
+		D34E303D2600012A004C7938 /* TabName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabName.swift; sourceTree = "<group>"; };
+		D34E303E2600012A004C7938 /* JsonFileError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonFileError.swift; sourceTree = "<group>"; };
+		D34E303F2600012A004C7938 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		D34E30472600016F004C7938 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
+		D34E3050260002A0004C7938 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ABTraceTogether/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D34E3053260002D6004C7938 /* BKLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKLocalization.swift; sourceTree = "<group>"; };
+		D34E3054260002D6004C7938 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		D34E3055260002D6004C7938 /* BKLocalizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BKLocalizationManager.swift; sourceTree = "<group>"; };
+		D34E305A26000379004C7938 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		D34E305D2600039B004C7938 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D34E3061260003B4004C7938 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D34E3064260003D9004C7938 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		D34E3067260003ED004C7938 /* GuidanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceViewController.swift; sourceTree = "<group>"; };
+		D34E306C26000429004C7938 /* HomeViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewControllerDelegate.swift; sourceTree = "<group>"; };
+		D34E30702600044B004C7938 /* RegistrationSuccessfulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationSuccessfulViewController.swift; sourceTree = "<group>"; };
+		D34E30712600044B004C7938 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D34E30722600044B004C7938 /* ExplanationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplanationViewController.swift; sourceTree = "<group>"; };
+		D34E30732600044B004C7938 /* OTPVerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPVerificationViewController.swift; sourceTree = "<group>"; };
+		D34E30742600044B004C7938 /* OnboardingNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingNavigator.swift; sourceTree = "<group>"; };
+		D34E30752600044B004C7938 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		D34E30762600044B004C7938 /* LocationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionViewController.swift; sourceTree = "<group>"; };
+		D34E30772600044B004C7938 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		D34E30782600044B004C7938 /* SMSCodeChallengeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSCodeChallengeHandler.swift; sourceTree = "<group>"; };
+		D34E30792600044B004C7938 /* BlueToothViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueToothViewController.swift; sourceTree = "<group>"; };
+		D34E307A2600044B004C7938 /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		D34E307B2600044B004C7938 /* PhoneNumberRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRegistrationViewController.swift; sourceTree = "<group>"; };
+		D34E307C2600044B004C7938 /* PushNotificationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationPermissionViewController.swift; sourceTree = "<group>"; };
+		D34E307D2600044B004C7938 /* HowItWorksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorksViewController.swift; sourceTree = "<group>"; };
+		D34E309026000678004C7938 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		D34E3094260006A2004C7938 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D34E3095260006A2004C7938 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		D34E3096260006A2004C7938 /* MapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
+		D34E3098260006A2004C7938 /* CaseSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseSummaryView.swift; sourceTree = "<group>"; };
+		D34E3099260006A2004C7938 /* MessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
+		D34E309A260006A2004C7938 /* AppPermissionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppPermissionView.xib; sourceTree = "<group>"; };
+		D34E309B260006A2004C7938 /* HeaderViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewDelegate.swift; sourceTree = "<group>"; };
+		D34E309C260006A2004C7938 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		D34E309D260006A2004C7938 /* CaseSummaryViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaseSummaryViewDelegate.swift; sourceTree = "<group>"; };
+		D34E309E260006A2004C7938 /* ShareAppView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareAppView.xib; sourceTree = "<group>"; };
+		D34E309F260006A2004C7938 /* UploadDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadDataView.xib; sourceTree = "<group>"; };
+		D34E30A0260006A2004C7938 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		D34E30A1260006A2004C7938 /* CaseSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseSummaryView.xib; sourceTree = "<group>"; };
+		D34E30A2260006A2004C7938 /* BroughtToYouByView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroughtToYouByView.xib; sourceTree = "<group>"; };
+		D34E30A3260006A2004C7938 /* ShareAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareAppView.swift; sourceTree = "<group>"; };
+		D34E30A4260006A2004C7938 /* AppPermissionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPermissionView.swift; sourceTree = "<group>"; };
+		D34E30A5260006A2004C7938 /* UploadDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadDataView.swift; sourceTree = "<group>"; };
+		D34E30A6260006A2004C7938 /* BroughtToYouByView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroughtToYouByView.swift; sourceTree = "<group>"; };
+		D34E30A7260006A2004C7938 /* AppPermissionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPermissionDelegate.swift; sourceTree = "<group>"; };
+		D34E30A8260006A2004C7938 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		D8EB201C23FBE216001C60EC /* help_center_article_style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = help_center_article_style.css; sourceTree = "<group>"; };
 		DCD10C90C17C06B5DE95B543 /* Pods-ABTraceTogether_AdHocStage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABTraceTogether_AdHocStage.debug.xcconfig"; path = "Target Support Files/Pods-ABTraceTogether_AdHocStage/Pods-ABTraceTogether_AdHocStage.debug.xcconfig"; sourceTree = "<group>"; };
 		E0EDA6A0CCF4EEBEA28D0FBE /* Pods-OpenTrace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenTrace.debug.xcconfig"; path = "Target Support Files/Pods-OpenTrace/Pods-OpenTrace.debug.xcconfig"; sourceTree = "<group>"; };
 		E836A45282D2B99347AE3956 /* Pods_ABTraceTogether_AdHocDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABTraceTogether_AdHocDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE86217C22496D69077306D0 /* Pods-tracer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tracer.release.xcconfig"; path = "Target Support Files/Pods-tracer/Pods-tracer.release.xcconfig"; sourceTree = "<group>"; };
 		F33129EE24572FA300B979B9 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
-		F3753A862450185600E8C584 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,10 +285,6 @@
 			children = (
 				5D7DC310243E0FA4007180E9 /* Structs */,
 				5D7DC30F243E0F74007180E9 /* Models */,
-				5D7DC319243E1559007180E9 /* Protocol */,
-				5D269C0C23E2958F00ADF2DE /* BluetraceManager.swift */,
-				5DD41D4E23DCB05600FD4AB0 /* CentralController.swift */,
-				5DD41D5223DD4CA400FD4AB0 /* PeripheralController.swift */,
 				5D5F83AC23F023F600770DEF /* EncounterMessageManager.swift */,
 				5DC7B8D2242B8D87008E1715 /* BluetraceUtils.swift */,
 				5DC7B8D0242B8536008E1715 /* BluetraceConfig.swift */,
@@ -219,16 +305,6 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		5D7DC309243E0E96007180E9 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				5D7DC314243E121E007180E9 /* View Controllers */,
-				553AA5CD243EC91700EE326F /* OnboardingManager.swift */,
-				B61B4CDD244808410078506E /* SMSCodeChallengeHandler.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
 		5D7DC30A243E0EAE007180E9 /* Power saver */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,11 +316,16 @@
 		5D7DC30B243E0ECE007180E9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D34E305A26000379004C7938 /* StatisticsViewController.swift */,
 				B640AC8D2451F24900EC3834 /* HelpViewController.swift */,
-				B6C0E7C62450BCBD00E714F2 /* OptimizeViewController.swift */,
-				5D5F83AF23F045A800770DEF /* HomeViewController.swift */,
+				D34E305D2600039B004C7938 /* HomeViewController.swift */,
+				D34E3061260003B4004C7938 /* MapViewController.swift */,
 				B615C5A823FA403400345969 /* UIViewController + Extension.swift */,
-				F3753A862450185600E8C584 /* MainTabBarController.swift */,
+				D34E3064260003D9004C7938 /* MainTabBarController.swift */,
+				D34E3067260003ED004C7938 /* GuidanceViewController.swift */,
+				D34E306C26000429004C7938 /* HomeViewControllerDelegate.swift */,
+				D34E3097260006A2004C7938 /* HomeSubviews */,
+				D34E3093260006A2004C7938 /* MapSubView */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -314,21 +395,6 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		5D7DC314243E121E007180E9 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				C5046D5B23EF18600046E96D /* IntroViewController.swift */,
-				D8DEB6812423AE2E00D99925 /* HowItWorksViewController.swift */,
-				C56CF43E23F18A15006B05B0 /* ConsentViewController.swift */,
-				5D8B248A23F146C500DBB74D /* PhoneNumberViewController.swift */,
-				30BE1CB423F15D47005DCE4F /* OTPViewController.swift */,
-				7F2F0BA123EFFF75006D7404 /* PermissionsViewController.swift */,
-				C58D817823F16C3900345771 /* TurnOnBluetoothViewController.swift */,
-				7F19B4DC23F565850071A11E /* PogoInstructionsViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
 		5D7DC315243E122C007180E9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +414,7 @@
 				B626AA9F2457492C006040B2 /* OCLoggerExtension.swift */,
 				B60B05F12461C85400C4E0AB /* UIApplicationExtension.swift */,
 				B6DF6C672461D15200EE6C69 /* Settings.bundle */,
+				D34E30472600016F004C7938 /* SettingsBundleHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -355,27 +422,16 @@
 		5D7DC317243E12A4007180E9 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				D34E30372600011E004C7938 /* english.json */,
 				7F36305E23F7F81400CC6E1D /* PushNotificationConstants.swift */,
+				D34E303C2600012A004C7938 /* AlertViewControllerEnum.swift */,
+				D34E303B2600012A004C7938 /* DynamicUrl.swift */,
+				D34E303A2600012A004C7938 /* HomeScreenEnum.swift */,
+				D34E303E2600012A004C7938 /* JsonFileError.swift */,
+				D34E303D2600012A004C7938 /* TabName.swift */,
+				D34E303F2600012A004C7938 /* Tag.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		5D7DC319243E1559007180E9 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				D81F6C8B24348CC200E4F52F /* BluetraceProtocol.swift */,
-				5D7DC31D243E196A007180E9 /* v2 */,
-				D81F6C8824348A7300E4F52F /* Bluetrace.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		5D7DC31D243E196A007180E9 /* v2 */ = {
-			isa = PBXGroup;
-			children = (
-				D8D3100A243C7ECD00D760B0 /* BluetraceV2.swift */,
-			);
-			path = v2;
 			sourceTree = "<group>";
 		};
 		5DD41D2E23DCB03B00FD4AB0 = {
@@ -399,20 +455,25 @@
 		5DD41D3923DCB03B00FD4AB0 /* ABTraceTogether */ = {
 			isa = PBXGroup;
 			children = (
+				D34E301726000009004C7938 /* HeraldIntegration */,
 				B621CF712459CDAB00836928 /* Configuration */,
 				557FD391243E4048006BDF38 /* Core Data */,
 				C585C83923EEB93A0061B7C6 /* UIElements */,
 				5D7DC317243E12A4007180E9 /* Constants */,
 				5D7DC316243E1297007180E9 /* Utils */,
 				5DD41D4023DCB03B00FD4AB0 /* Main.storyboard */,
-				5DD41D4523DCB03D00FD4AB0 /* LaunchScreen.storyboard */,
+				D34E304F260002A0004C7938 /* LaunchScreen.storyboard */,
+				D34E3053260002D6004C7938 /* BKLocalization.swift */,
+				D34E3055260002D6004C7938 /* BKLocalizationManager.swift */,
+				D34E3054260002D6004C7938 /* LoadingViewController.swift */,
 				5DD41D3A23DCB03B00FD4AB0 /* AppDelegate.swift */,
 				5DD41D4823DCB03D00FD4AB0 /* Info.plist */,
 				30BE1CAC23F119FD005DCE4F /* Localizable.strings */,
+				D34E309026000678004C7938 /* Localization.swift */,
 				5DD41D4323DCB03D00FD4AB0 /* Assets.xcassets */,
 				5D7DC312243E1166007180E9 /* Debug logs */,
 				5D7DC308243E0E8B007180E9 /* Main */,
-				5D7DC309243E0E96007180E9 /* Onboarding */,
+				D34E306F2600044B004C7938 /* NewOnboarding */,
 				5D7DC30D243E0F29007180E9 /* Upload data */,
 				5D7DC30A243E0EAE007180E9 /* Power saver */,
 				5D7DC305243E0D20007180E9 /* Bluetrace */,
@@ -489,8 +550,82 @@
 				B60F8BE3242659810007A641 /* UILabelExtension.swift */,
 				B62FF1AD244E52730004715C /* UIButtonExtension.swift */,
 				F33129EE24572FA300B979B9 /* UITextViewExtension.swift */,
+				D34E3034260000FB004C7938 /* UIViewControllerExtension.swift */,
 			);
 			path = UIElements;
+			sourceTree = "<group>";
+		};
+		D34E301726000009004C7938 /* HeraldIntegration */ = {
+			isa = PBXGroup;
+			children = (
+				D34E301826000009004C7938 /* BlueTraceSensorDelegate.swift */,
+				D34E301926000009004C7938 /* TempIdProvider.swift */,
+				D34E301A26000009004C7938 /* BlueTraceDataPersisting.swift */,
+				D34E301B26000009004C7938 /* BlueTracePayloadDataSupplier.swift */,
+				D34E301C26000009004C7938 /* HeraldEnvelopeHeader.swift */,
+				D34E301D26000009004C7938 /* FairEfficacyInstrumentation.swift */,
+				D34E301E26000009004C7938 /* BlueTracePayload.swift */,
+				D34E301F26000009004C7938 /* HeraldManager.swift */,
+				D34E302026000009004C7938 /* BluetoothStateManager.swift */,
+				D34E302126000009004C7938 /* TempIdProvidable.swift */,
+				D34E302226000009004C7938 /* BlueTraceDataPersistence.swift */,
+			);
+			path = HeraldIntegration;
+			sourceTree = "<group>";
+		};
+		D34E306F2600044B004C7938 /* NewOnboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D34E30702600044B004C7938 /* RegistrationSuccessfulViewController.swift */,
+				D34E30712600044B004C7938 /* BaseViewController.swift */,
+				D34E30722600044B004C7938 /* ExplanationViewController.swift */,
+				D34E30732600044B004C7938 /* OTPVerificationViewController.swift */,
+				D34E30742600044B004C7938 /* OnboardingNavigator.swift */,
+				D34E30752600044B004C7938 /* WelcomeViewController.swift */,
+				D34E30762600044B004C7938 /* LocationPermissionViewController.swift */,
+				D34E30772600044B004C7938 /* OnboardingViewController.swift */,
+				D34E30782600044B004C7938 /* SMSCodeChallengeHandler.swift */,
+				D34E30792600044B004C7938 /* BlueToothViewController.swift */,
+				D34E307A2600044B004C7938 /* PrivacyViewController.swift */,
+				D34E307B2600044B004C7938 /* PhoneNumberRegistrationViewController.swift */,
+				D34E307C2600044B004C7938 /* PushNotificationPermissionViewController.swift */,
+				D34E307D2600044B004C7938 /* HowItWorksViewController.swift */,
+			);
+			path = NewOnboarding;
+			sourceTree = "<group>";
+		};
+		D34E3093260006A2004C7938 /* MapSubView */ = {
+			isa = PBXGroup;
+			children = (
+				D34E3094260006A2004C7938 /* MapView.swift */,
+				D34E3095260006A2004C7938 /* MapView.xib */,
+				D34E3096260006A2004C7938 /* MapViewDelegate.swift */,
+			);
+			path = MapSubView;
+			sourceTree = "<group>";
+		};
+		D34E3097260006A2004C7938 /* HomeSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				D34E3098260006A2004C7938 /* CaseSummaryView.swift */,
+				D34E3099260006A2004C7938 /* MessageView.xib */,
+				D34E309A260006A2004C7938 /* AppPermissionView.xib */,
+				D34E309B260006A2004C7938 /* HeaderViewDelegate.swift */,
+				D34E309C260006A2004C7938 /* HeaderView.xib */,
+				D34E309D260006A2004C7938 /* CaseSummaryViewDelegate.swift */,
+				D34E309E260006A2004C7938 /* ShareAppView.xib */,
+				D34E309F260006A2004C7938 /* UploadDataView.xib */,
+				D34E30A0260006A2004C7938 /* HeaderView.swift */,
+				D34E30A1260006A2004C7938 /* CaseSummaryView.xib */,
+				D34E30A2260006A2004C7938 /* BroughtToYouByView.xib */,
+				D34E30A3260006A2004C7938 /* ShareAppView.swift */,
+				D34E30A4260006A2004C7938 /* AppPermissionView.swift */,
+				D34E30A5260006A2004C7938 /* UploadDataView.swift */,
+				D34E30A6260006A2004C7938 /* BroughtToYouByView.swift */,
+				D34E30A7260006A2004C7938 /* AppPermissionDelegate.swift */,
+				D34E30A8260006A2004C7938 /* MessageView.swift */,
+			);
+			path = HomeSubviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -552,16 +687,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D34E30B6260006A2004C7938 /* BroughtToYouByView.xib in Resources */,
 				B6650097245881940056712D /* images in Resources */,
 				B6C0E7AC2450A01D00E714F2 /* UploadData.storyboard in Resources */,
 				B6C0E7AD2450A01D00E714F2 /* Localizable.strings in Resources */,
+				D34E30B0260006A2004C7938 /* HeaderView.xib in Resources */,
 				B6A5B2D7246C35EA008EEBD8 /* mfpclient.plist in Resources */,
+				D34E30AD260006A2004C7938 /* MessageView.xib in Resources */,
 				B63980F324586B8400F67DC7 /* mansitting.json in Resources */,
-				B6C0E7B32450A01D00E714F2 /* LaunchScreen.storyboard in Resources */,
 				B6C0E7B42450A01D00E714F2 /* Assets.xcassets in Resources */,
+				D34E30B5260006A2004C7938 /* CaseSummaryView.xib in Resources */,
+				D34E30B2260006A2004C7938 /* ShareAppView.xib in Resources */,
+				D34E30AA260006A2004C7938 /* MapView.xib in Resources */,
+				D34E30AE260006A2004C7938 /* AppPermissionView.xib in Resources */,
+				D34E30B3260006A2004C7938 /* UploadDataView.xib in Resources */,
 				B6C0E7B92450A01D00E714F2 /* Main.storyboard in Resources */,
 				B63980F02457E5DF00F67DC7 /* coronavirus-hologram.json in Resources */,
 				B6C0E7BA2450A01D00E714F2 /* ActivityIndicator.json in Resources */,
+				D34E3051260002A0004C7938 /* LaunchScreen.storyboard in Resources */,
+				D34E30382600011E004C7938 /* english.json in Resources */,
 				B6DF6C682461D15200EE6C69 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,61 +830,97 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6C0E7722450A01D00E714F2 /* HowItWorksViewController.swift in Sources */,
 				B6C0E7732450A01D00E714F2 /* BlueTraceLocalNotifications.swift in Sources */,
-				B6C0E7742450A01D00E714F2 /* MainTabBarController.swift in Sources */,
-				B6C0E7C82450BCBD00E714F2 /* OptimizeViewController.swift in Sources */,
 				B6C0E7752450A01D00E714F2 /* UIButtonExtension.swift in Sources */,
+				D34E302426000009004C7938 /* TempIdProvider.swift in Sources */,
 				B6C0E7762450A01D00E714F2 /* UIProgressView + Extension.swift in Sources */,
+				D34E30822600044B004C7938 /* OnboardingNavigator.swift in Sources */,
+				D34E307F2600044B004C7938 /* BaseViewController.swift in Sources */,
+				D34E30852600044B004C7938 /* OnboardingViewController.swift in Sources */,
 				B6C0E7772450A01D00E714F2 /* PogoManager.swift in Sources */,
 				F33129F02457319F00B979B9 /* UITextViewExtension.swift in Sources */,
 				B6C0E7782450A01D00E714F2 /* UploadDataStep2VC.swift in Sources */,
+				D34E30412600012A004C7938 /* DynamicUrl.swift in Sources */,
+				D34E3057260002D6004C7938 /* LoadingViewController.swift in Sources */,
+				D34E306D26000429004C7938 /* HomeViewControllerDelegate.swift in Sources */,
+				D34E302726000009004C7938 /* HeraldEnvelopeHeader.swift in Sources */,
+				D34E30422600012A004C7938 /* AlertViewControllerEnum.swift in Sources */,
 				B6C0E7792450A01D00E714F2 /* tracer.xcdatamodeld in Sources */,
 				B6C0E77A2450A01D00E714F2 /* Logger.swift in Sources */,
 				B6C0E77C2450A01D00E714F2 /* UIViewExtension.swift in Sources */,
+				D34E30BC260006A2004C7938 /* MessageView.swift in Sources */,
 				B6C0E77D2450A01D00E714F2 /* DeviceInfo.swift in Sources */,
+				D34E302D26000009004C7938 /* BlueTraceDataPersistence.swift in Sources */,
 				B6C0E77E2450A01D00E714F2 /* PlistHelper.swift in Sources */,
 				B6C0E77F2450A01D00E714F2 /* BluetraceConfig.swift in Sources */,
 				B6C0E7802450A01D00E714F2 /* Encounter+Event.swift in Sources */,
+				D34E3058260002D6004C7938 /* BKLocalizationManager.swift in Sources */,
+				D34E302526000009004C7938 /* BlueTraceDataPersisting.swift in Sources */,
+				D34E30AC260006A2004C7938 /* CaseSummaryView.swift in Sources */,
 				B6C0E7812450A01D00E714F2 /* ContactViewController.swift in Sources */,
 				B6996E3225A793E700C67ED7 /* LocationManager.swift in Sources */,
-				B6C0E7822450A01D00E714F2 /* TurnOnBluetoothViewController.swift in Sources */,
 				B6C0E7832450A01D00E714F2 /* LogViewController.swift in Sources */,
-				B6C0E7842450A01D00E714F2 /* HomeViewController.swift in Sources */,
+				D34E302C26000009004C7938 /* TempIdProvidable.swift in Sources */,
+				D34E3056260002D6004C7938 /* BKLocalization.swift in Sources */,
+				D34E30482600016F004C7938 /* SettingsBundleHelper.swift in Sources */,
 				B6C0E7852450A01D00E714F2 /* InfoViewController.swift in Sources */,
-				B6C0E7862450A01D00E714F2 /* PogoInstructionsViewController.swift in Sources */,
 				B6C0E7872450A01D00E714F2 /* CodeInputView.swift in Sources */,
+				D34E30AB260006A2004C7938 /* MapViewDelegate.swift in Sources */,
 				B6C0E7882450A01D00E714F2 /* EncounterRecord.swift in Sources */,
 				B6C0E7892450A01D00E714F2 /* UploadDataStep1VC.swift in Sources */,
-				B6C0E78A2450A01D00E714F2 /* OnboardingManager.swift in Sources */,
-				B6C0E78C2450A01D00E714F2 /* Bluetrace.swift in Sources */,
 				B61C0F2324577E7D00036ABE /* OCLoggerExtension.swift in Sources */,
 				B6C0E78D2450A01D00E714F2 /* UILabelExtension.swift in Sources */,
+				D34E3068260003ED004C7938 /* GuidanceViewController.swift in Sources */,
+				D34E305E2600039B004C7938 /* HomeViewController.swift in Sources */,
 				B6C0E78E2450A01D00E714F2 /* AppDelegate.swift in Sources */,
-				B6C0E78F2450A01D00E714F2 /* PhoneNumberViewController.swift in Sources */,
+				D34E30872600044B004C7938 /* BlueToothViewController.swift in Sources */,
 				B6C0E7902450A01D00E714F2 /* BluetraceUtils.swift in Sources */,
+				D34E30812600044B004C7938 /* OTPVerificationViewController.swift in Sources */,
+				D34E30B9260006A2004C7938 /* UploadDataView.swift in Sources */,
+				D34E30892600044B004C7938 /* PhoneNumberRegistrationViewController.swift in Sources */,
 				B6C0E7912450A01D00E714F2 /* Encounter+EncounterRecord.swift in Sources */,
-				B6C0E7922450A01D00E714F2 /* OTPViewController.swift in Sources */,
+				D34E30882600044B004C7938 /* PrivacyViewController.swift in Sources */,
 				B6C0E7932450A01D00E714F2 /* Encounter+CoreDataClass.swift in Sources */,
-				B6C0E7942450A01D00E714F2 /* BluetraceManager.swift in Sources */,
-				B6C0E7952450A01D00E714F2 /* IntroViewController.swift in Sources */,
+				D34E30B4260006A2004C7938 /* HeaderView.swift in Sources */,
+				D34E30B8260006A2004C7938 /* AppPermissionView.swift in Sources */,
+				D34E3062260003B5004C7938 /* MapViewController.swift in Sources */,
+				D34E308B2600044B004C7938 /* HowItWorksViewController.swift in Sources */,
 				B6C0E7962450A01D00E714F2 /* UploadDataSuccessVC.swift in Sources */,
-				B6C0E7972450A01D00E714F2 /* BluetraceV2.swift in Sources */,
-				B6C0E7982450A01D00E714F2 /* PeripheralController.swift in Sources */,
+				D34E309126000678004C7938 /* Localization.swift in Sources */,
+				D34E305B26000379004C7938 /* StatisticsViewController.swift in Sources */,
+				D34E30802600044B004C7938 /* ExplanationViewController.swift in Sources */,
+				D34E30832600044B004C7938 /* WelcomeViewController.swift in Sources */,
+				D34E308A2600044B004C7938 /* PushNotificationPermissionViewController.swift in Sources */,
+				D34E30862600044B004C7938 /* SMSCodeChallengeHandler.swift in Sources */,
 				B6C0E7992450A01D00E714F2 /* UITextViewFixed.swift in Sources */,
 				B6C0E79A2450A01D00E714F2 /* GradientButton.swift in Sources */,
 				B6C0E79B2450A01D00E714F2 /* EncounterMessageManager.swift in Sources */,
-				B6C0E79C2450A01D00E714F2 /* CentralController.swift in Sources */,
+				D34E30A9260006A2004C7938 /* MapView.swift in Sources */,
+				D34E30AF260006A2004C7938 /* HeaderViewDelegate.swift in Sources */,
+				D34E302B26000009004C7938 /* BluetoothStateManager.swift in Sources */,
 				F33129ED2457261900B979B9 /* HelpViewController.swift in Sources */,
-				B6C0E79D2450A01D00E714F2 /* ConsentViewController.swift in Sources */,
+				D34E302326000009004C7938 /* BlueTraceSensorDelegate.swift in Sources */,
+				D34E3035260000FB004C7938 /* UIViewControllerExtension.swift in Sources */,
+				D34E302A26000009004C7938 /* HeraldManager.swift in Sources */,
+				D34E30452600012A004C7938 /* Tag.swift in Sources */,
+				D34E302926000009004C7938 /* BlueTracePayload.swift in Sources */,
+				D34E30432600012A004C7938 /* TabName.swift in Sources */,
+				D34E30402600012A004C7938 /* HomeScreenEnum.swift in Sources */,
 				B6C0E79E2450A01D00E714F2 /* UploadDataToNoteViewController.swift in Sources */,
 				B6C0E79F2450A01D00E714F2 /* DatabaseManager.swift in Sources */,
+				D34E30842600044B004C7938 /* LocationPermissionViewController.swift in Sources */,
 				B6C0E7A02450A01D00E714F2 /* UploadFileData.swift in Sources */,
-				B6C0E7A22450A01D00E714F2 /* BluetraceProtocol.swift in Sources */,
-				B6C0E7A32450A01D00E714F2 /* SMSCodeChallengeHandler.swift in Sources */,
-				B6C0E7A42450A01D00E714F2 /* PermissionsViewController.swift in Sources */,
+				D34E30BB260006A2004C7938 /* AppPermissionDelegate.swift in Sources */,
+				D34E30B1260006A2004C7938 /* CaseSummaryViewDelegate.swift in Sources */,
+				D34E302626000009004C7938 /* BlueTracePayloadDataSupplier.swift in Sources */,
+				D34E307E2600044B004C7938 /* RegistrationSuccessfulViewController.swift in Sources */,
+				D34E3065260003D9004C7938 /* MainTabBarController.swift in Sources */,
+				D34E30442600012A004C7938 /* JsonFileError.swift in Sources */,
+				D34E302826000009004C7938 /* FairEfficacyInstrumentation.swift in Sources */,
 				B6C0E7A52450A01D00E714F2 /* PushNotificationConstants.swift in Sources */,
+				D34E30B7260006A2004C7938 /* ShareAppView.swift in Sources */,
 				B6C0E7A62450A01D00E714F2 /* UIViewController + Extension.swift in Sources */,
+				D34E30BA260006A2004C7938 /* BroughtToYouByView.swift in Sources */,
 				B60B05F22461C85400C4E0AB /* UIApplicationExtension.swift in Sources */,
 				B6C0E7A72450A01D00E714F2 /* Encounter+CoreDataProperties.swift in Sources */,
 			);
@@ -757,10 +937,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		5DD41D4523DCB03D00FD4AB0 /* LaunchScreen.storyboard */ = {
+		D34E304F260002A0004C7938 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5DD41D4623DCB03D00FD4AB0 /* Base */,
+				D34E3050260002A0004C7938 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
