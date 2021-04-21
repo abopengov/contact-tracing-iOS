@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>ca.tracetogether</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -20,53 +24,6 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>STG</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>&lt;staging</string>
-				<string>url</string>
-				<string>scheme&gt;</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>PROD</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>&lt;production</string>
-				<string>url</string>
-				<string>scheme&gt;</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>&lt;staging-identifier&gt;</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>&lt;opentrace&gt;</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>&lt;prod-identifier&gt;</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>&lt;opentrace&gt;</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GitBranchInfo</key>
@@ -74,19 +31,19 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>App exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
+	<string>APP NAME exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>App exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
+	<string>APP NAME exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Grant App permissions to access your camera if you would like to upload a photo as part of a support request</string>
+	<string>Grant APP NAME permissions to access your camera if you would like to upload a photo as part of a support request</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Please allow Location Permissions - Apple requires this for your phone to scan for another phone’s Bluetooth. We do not use or store your location.</string>
+	<string>Location services must be enabled for Bluetooth scan to work and capture encounters when the application is in the background. The APP NAME application does not capture or use information about location. In addition, location data is not collected or shared by *THIS ORG* or *THIS ORG* for any purpose.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Please allow Location Permissions - Apple requires this for your phone to scan for another phone’s Bluetooth. We do not use or store your location.</string>
+	<string>Location services must be enabled for Bluetooth scan to work and capture encounters when the application is in the background. The APP NAME application does not capture or use information about location. In addition, location data is not collected or shared by *THIS ORG* or *THIS ORG* Services for any purpose.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please allow Location Permissions - Apple requires this for your phone to scan for another phone’s Bluetooth. We do not use or store your location.</string>
+	<string>Location services must be enabled for Bluetooth scan to work and capture encounters when the application is in the background. The ABTraceTogether application does not capture or use information about location. In addition, location data is not collected or shared by *THIS ORG* or *THIS ORG* for any purpose.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Grant App permissions to access your photo library if you would like to upload a photo as part of a support request</string>
+	<string>Grant ABTraceTogether permissions to access your photo library if you would like to upload a photo as part of a support request</string>
 	<key>TRACER_SVC_ID</key>
 	<string>${SERVICE_UUID}</string>
 	<key>UIAppFonts</key>

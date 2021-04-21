@@ -8,6 +8,14 @@ class UploadDataStep1VC: UIViewController {
     @IBOutlet private var nextBtn: UIButton!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
 
+    var covidTestData: CovidTestData?
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? UploadDataStep2VC {
+            destinationVC.covidTestData = covidTestData
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         uploadDataHeader.setLabel(

@@ -3,41 +3,66 @@ import IBMMobileFirstPlatformFoundation
 import Herald
 
 class EncounterMessageManager {
+    private let userDefaultsTempIdArrayKey = "BROAD_MSG_ARRAY"
+    private let userDefaultsAdvtExpiryKey = "ADVT_EXPIRY"
     static let TEMP_ID_NOT_FOUND = "not_found"
-
-    let userDefaultsTempIdKey = "BROADCAST_MSG"
-    let userDefaultsTempIdArrayKey = "BROAD_MSG_ARRAY"
-    let userDefaultsAdvtExpiryKey = "ADVT_EXPIRY"
-
     static let shared = EncounterMessageManager()
 
+    private var currentTempId: TemporaryId? = nil
+    
     var tempId: String? {
-        guard let tempIds = UserDefaults.standard.array(forKey: userDefaultsTempIdArrayKey) as! [[String: Any]]? else {
+        if let currentTempId = currentTempId, currentTempId.isValid() {
+            return currentTempId.tempID
+        }
+        
+        guard let tempIds = self.savedTempIds else {
             return EncounterMessageManager.TEMP_ID_NOT_FOUND
         }
-        guard let validBm = cleanupAndgetTempId(tempIds, currentDate: Date()) else { return "" }
-        return validBm
+
+        guard let currentTempId = cleanupAndgetTempId(tempIds, currentDate: Date()) else { return "" }
+
+        self.currentTempId = currentTempId
+        return currentTempId.tempID
     }
 
     // This variable stores the expiry date of the broadcast message. At the same time, we will use this expiry date as the expiry date for the encryted advertisement payload
-    var advtPayloadExpiry: Date? {
-        UserDefaults.standard.object(forKey: userDefaultsAdvtExpiryKey) as? Date
+    private var advtPayloadExpiry: Date? {
+        get {
+            UserDefaults.standard.object(forKey: userDefaultsAdvtExpiryKey) as? Date
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: self.userDefaultsAdvtExpiryKey)
+        }
+    }
+    
+    private var savedTempIds: [[String: Any]]? {
+        get {
+            UserDefaults.standard.array(forKey: userDefaultsTempIdArrayKey) as! [[String: Any]]?
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: self.userDefaultsTempIdArrayKey)
+        }
     }
 
-    func cleanupAndgetTempId(_ tempIdList: [[String: Any]], currentDate: Date) -> String? {
+    func cleanupAndgetTempId(_ tempIdList: [[String: Any]], currentDate: Date) -> TemporaryId? {
         var newTempIdList = tempIdList
 
         for item in tempIdList {
             guard let expiryTimeInterval = item["expiryTime"] as? TimeInterval else {return nil}
 
-            if currentDate > Date(timeIntervalSince1970: expiryTimeInterval) {
+            if currentDate >= Date(timeIntervalSince1970: expiryTimeInterval) {
                 newTempIdList.removeFirst()
             } else {
                 break
             }
         }
 
-        return newTempIdList.first?["tempID"] as? String
+        guard let tempId = newTempIdList.first?["tempID"] as? String,
+              let expiryTime = newTempIdList.first?["expiryTime"] as? TimeInterval else {
+            return nil
+        }
+
+        return TemporaryId(tempID: tempId, expiryTime: Date(timeIntervalSince1970: expiryTime))
     }
 
     func setup() {
@@ -48,13 +73,14 @@ class EncounterMessageManager {
                     Logger.DLog("No response, Error: \(String(describing: error))")
                     return
                 }
-                self.setAdvtExpiry(response)
-                UserDefaults.standard.set(response.tempIds, forKey: self.userDefaultsTempIdArrayKey)
+                
+                self.advtPayloadExpiry = response.refreshDate
+                self.savedTempIds = response.tempIds
             }
         }
     }
 
-    func getTempId(onComplete: @escaping (String?) -> Void) {
+    func fetchNewTempIds(onComplete: @escaping (String?) -> Void) {
         // Check refreshDate
         if advtPayloadExpiry == nil ||  Date() > advtPayloadExpiry! {
             fetchBatchTempIdsFromServer { [unowned self](error: Error?, resp: (tempIds: [[String: Any]], refreshDate: Date)?) in
@@ -63,14 +89,10 @@ class EncounterMessageManager {
                     return
                 }
 
-                self.setAdvtExpiry(response)
-                UserDefaults.standard.set(response.tempIds, forKey: self.userDefaultsTempIdArrayKey)
-                UserDefaults.standard.set(response.refreshDate, forKey: self.userDefaultsAdvtExpiryKey)
+                self.advtPayloadExpiry = response.refreshDate
+                self.savedTempIds = response.tempIds
 
-                guard let validBm = cleanupAndgetTempId(response.tempIds, currentDate: Date()) else { return }
-                UserDefaults.standard.set(validBm, forKey: self.userDefaultsTempIdKey)
-
-                onComplete(validBm)
+                onComplete(self.tempId)
                 return
             }
         }
@@ -85,7 +107,7 @@ class EncounterMessageManager {
         }
     }
 
-    func fetchBatchTempIdsFromServer(onComplete: ((Error?, ([[String: Any]], Date)?) -> Void)?) {
+    private func fetchBatchTempIdsFromServer(onComplete: ((Error?, ([[String: Any]], Date)?) -> Void)?) {
         guard !FairEfficacyInstrumentation.shared.enabled else {
             var tempIds: [[String: Any]] = []
             var tempId: [String: Any] = [:]
@@ -146,9 +168,5 @@ class EncounterMessageManager {
 
             onComplete?(nil, (tempIDs, Date(timeIntervalSince1970: bmRefreshTime)))
         })
-    }
-
-    func setAdvtExpiry(_ response: (tempIds: [[String: Any]], refreshDate: Date)) {
-        UserDefaults.standard.set(response.refreshDate, forKey: self.userDefaultsAdvtExpiryKey)
     }
 }

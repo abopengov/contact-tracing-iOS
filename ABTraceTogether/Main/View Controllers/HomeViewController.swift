@@ -13,14 +13,18 @@ class HomeViewController: UIViewController {
     var locationAuthorized = true
     var localPreferredScreenEdgesDeferringSystemGestures: UIRectEdge = []
     var fetchedResultsController: NSFetchedResultsController<Encounter>?
+    var blurredStatusBar: UIVisualEffectView?
     weak var appPermissionDelegate: AppPermissionDelegate?
-    weak var headerViewDelegate: HeaderViewDelegate?
-    weak var caseSummaryViewDelegate: CaseSummaryViewDelegate?
+    weak var appNotWorkingDelegate: AppNotWorkingDelegate?
 
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = homeScreenBackgroundColor
+        scrollView.backgroundColor = .white
+        scrollView.clipsToBounds = false
+        scrollView.contentInset = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.size.height * -1 - 6, left: 0, bottom: 0, right: 0)
+        scrollView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.delegate = self
         return scrollView
     }()
 
@@ -28,10 +32,8 @@ class HomeViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.backgroundColor = homeScreenBackgroundColor
-        stackView.distribution = UIStackView.Distribution.equalSpacing
-        stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
-
+        stackView.spacing = 10
         return stackView
     }()
 
@@ -42,92 +44,60 @@ class HomeViewController: UIViewController {
         return view
     }()
 
-    var headerView: UIView? {
-        guard let headerNibView = getView("HeaderView") as? HeaderView else {
+    lazy var appWorkingView: UIView? = {
+        guard let appWorkingNibView = getView("AppWorkingView") as? AppWorkingView else {
             return nil
         }
-        headerViewDelegate = headerNibView
-        headerNibView.translatesAutoresizingMaskIntoConstraints = false
-        headerNibView.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        return headerNibView
-    }
-    var uploadDataView: UIView? {
-        guard let uploadDataNibView = getView("UploadDataView") as? UploadDataView else {
+        appWorkingNibView.homeViewControllerDelegate = self
+        appWorkingNibView.translatesAutoresizingMaskIntoConstraints = false
+        return appWorkingNibView
+    }()
+    lazy var appNotWorkingView: UIView? = {
+        guard let appNotWorkingNibView = getView("AppNotWorkingView") as? AppNotWorkingView else {
             return nil
         }
-        uploadDataNibView.homeViewControllerDelegate = self
-        uploadDataNibView.translatesAutoresizingMaskIntoConstraints = false
-        uploadDataNibView.heightAnchor.constraint(equalToConstant: 290).isActive = true
-        return uploadDataNibView
-    }
-
-    var caseSummaryView: UIView? {
-        guard let caseSummaryNibView = getView("CaseSummaryView") as? CaseSummaryView else {
-            return nil
-        }
-
-        var caseSummaryWebViewHeight: CGFloat?
-        if let height = UserDefaults.standard.object(forKey: "caseSummaryWebViewKey") as? Int {
-            caseSummaryWebViewHeight = CGFloat(height + 100)
-        }
-
-        caseSummaryViewDelegate = caseSummaryNibView
-        caseSummaryNibView.homeViewControllerDelegate = self
-        caseSummaryNibView.translatesAutoresizingMaskIntoConstraints = false
-        caseSummaryNibView.backgroundColor = homeScreenBackgroundColor
-        caseSummaryNibView.heightAnchor.constraint(equalToConstant: caseSummaryWebViewHeight ?? 600).isActive = true
-        caseSummaryNibView.tag = 99
-        return caseSummaryNibView
-    }
-
-    var appPermissionView: UIView? {
+        appNotWorkingNibView.homeViewControllerDelegate = self
+        appNotWorkingNibView.translatesAutoresizingMaskIntoConstraints = false
+        appNotWorkingDelegate = appNotWorkingNibView
+        return appNotWorkingNibView
+    }()
+    lazy var appPermissionView: UIView? = {
         guard let appPermissionNibView = getView("AppPermissionView") as? AppPermissionView else {
             return nil
         }
         appPermissionNibView.homeViewControllerDelegate = self
         appPermissionDelegate = appPermissionNibView
         appPermissionNibView.translatesAutoresizingMaskIntoConstraints = false
-        appPermissionNibView.backgroundColor = .clear
-        appPermissionNibView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         return appPermissionNibView
-    }
-
-    var messageView: UIView? {
-        guard let messageNibView = getView("MessageView") as? MessageView else {
+    }()
+    lazy var caseHighlightsView: UIView? = {
+        guard let caseHighlightsNibView = getView("CaseHighlightsView") as? CaseHighlightsView else {
             return nil
         }
-
-        messageNibView.translatesAutoresizingMaskIntoConstraints = false
-        messageNibView.backgroundColor = homeScreenBackgroundColor
-        messageNibView.heightAnchor.constraint(equalToConstant: 450).isActive = true
-        return messageNibView
-    }
-
-    var shareAppView: UIView? {
-        guard let shareAppNibView = getView("ShareAppView") as? ShareAppView else {
+        caseHighlightsNibView.homeViewControllerDelegate = self
+        caseHighlightsNibView.translatesAutoresizingMaskIntoConstraints = false
+        return caseHighlightsNibView
+    }()
+    lazy var shareAppButton: UIButton? = {
+        let shareAppButton = UIButton()
+        shareAppButton.layer.cornerRadius = 10
+        shareAppButton.setButton(with: homeSharedApp, and: .secondaryShare, buttonStyle: .secondaryMedium)
+        shareAppButton.addTarget(self, action: #selector(shareAppButtonPressed(_:)), for: .touchUpInside)
+        shareAppButton.translatesAutoresizingMaskIntoConstraints = false
+        return shareAppButton
+    }()
+    lazy var uploadDataView: UIView? = {
+        guard let uploadDataNibView = getView("UploadDataView") as? UploadDataView else {
             return nil
         }
-        shareAppNibView.homeViewControllerDelegate = self
-        shareAppNibView.translatesAutoresizingMaskIntoConstraints = false
-        shareAppNibView.backgroundColor = homeScreenBackgroundColor
-        shareAppNibView.heightAnchor.constraint(equalToConstant: 90).isActive = true
-        return shareAppNibView
-    }
-
-    var broughtToYouByView: UIView? {
-        guard let broughtToYouByNibView = getView("BroughtToYouByView") as? BroughtToYouByView else {
-            return nil
-        }
-        broughtToYouByNibView.translatesAutoresizingMaskIntoConstraints = false
-        broughtToYouByNibView.backgroundColor = homeScreenBackgroundColor
-        broughtToYouByNibView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        return broughtToYouByNibView
-    }
+        uploadDataNibView.homeViewControllerDelegate = self
+        uploadDataNibView.translatesAutoresizingMaskIntoConstraints = false
+        return uploadDataNibView
+    }()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.readPermissionsAndUpdateViews()
-        self.fetchEncounters()
         BKLocalizationManager.sharedInstance.loadLocalization()
     }
 
@@ -135,9 +105,6 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(animated)
         WLAnalytics.sharedInstance()?.send()
         OCLogger.send()
-        if let webViewUrl = BKLocalizationManager.sharedInstance.dynamicUrl?.home {
-            reloadWebView(webViewUrl)
-        }
     }
 
     override func viewDidLoad() {
@@ -148,10 +115,20 @@ class HomeViewController: UIViewController {
 
         readPermissionsAndUpdateViews()
         observeNotifications()
+
+        updateWhatsNewBadge()
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+
+    private func updateWhatsNewBadge() {
+        if let tabItems = tabBarController?.tabBar.items {
+            let tabItem = tabItems[2]
+
+            tabItem.badgeValue = AppData.userHasSeenWhatsNew ? nil : "1"
+        }
     }
 
     private func getView(_ viewName: String) -> UIView? {
@@ -163,53 +140,41 @@ class HomeViewController: UIViewController {
     }
 
     private func setupViews() {
-        scrollView.backgroundColor = .lightGray
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
 
-        if let headerView = headerView {
-            stackView.addArrangedSubview(headerView)
+        if let appWorkingView = appWorkingView {
+            stackView.addArrangedSubview(appWorkingView)
+            stackView.setCustomSpacing(0, after: appWorkingView)
         }
 
-        if let caseSummaryView = caseSummaryView as? CaseSummaryView {
-            stackView.addArrangedSubview(caseSummaryView)
-            hideCaseSummaryView(caseSummaryView.caseSummaryURLString == nil)
+        if let appNotWorkingView = appNotWorkingView {
+            appNotWorkingView.isVisible = false
+            stackView.addArrangedSubview(appNotWorkingView)
+            stackView.setCustomSpacing(0, after: appNotWorkingView)
         }
 
         if let appPermissionView = appPermissionView {
             stackView.addArrangedSubview(appPermissionView)
         }
 
+        if let caseHighlightsView = caseHighlightsView {
+            stackView.addArrangedSubview(caseHighlightsView)
+        }
+
+        if let shareAppButton = shareAppButton {
+            stackView.addArrangedSubview(shareAppButton)
+            shareAppButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 20).isActive = true
+            shareAppButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20).isActive = true
+            shareAppButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        }
+
         if let uploadDataView = uploadDataView {
             stackView.addArrangedSubview(uploadDataView)
         }
 
-        if let messageView = messageView {
-            stackView.addArrangedSubview(messageView)
-        }
-
-        if let shareAppView = shareAppView {
-            stackView.addArrangedSubview(shareAppView)
-        }
-
-        if let broughtToYouByView = broughtToYouByView {
-            stackView.addArrangedSubview(broughtToYouByView)
-        }
-    }
-
-    func hideCaseSummaryView(_ hide: Bool) {
-        DispatchQueue.main.async {
-            // swiftlint:disable:next trailing_closure
-            self.stackView
-                .subviews
-                .first(
-                    where: {
-                        $0.tag == 99
-                    }
-                )?.isHidden = hide
-            self.stackView.layoutIfNeeded()
-        }
+        addBlurStatusBar()
     }
 
     private func setupLayout() {
@@ -240,48 +205,6 @@ class HomeViewController: UIViewController {
             name: UIApplication.didBecomeActiveNotification,
             object: nil
         )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(enableDeferringSystemGestures(_:)),
-            name: .enableDeferringSystemGestures,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(disableDeferringSystemGestures(_:)),
-            name: .disableDeferringSystemGestures,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(disableUserInteraction(_:)),
-            name: .disableUserInteraction,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(enableUserInteraction(_:)),
-            name: .enableUserInteraction,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(refreshWebView(_:)),
-            name: Notification.Name("urlFetched"),
-            object: nil
-        )
-    }
-
-    @objc
-    func refreshWebView(_ notification: Notification) {
-        if let data = notification.userInfo as? [String: String],
-            let url = data[caseSummaryKey] {
-            reloadWebView(url)
-        }
-    }
-
-    private func reloadWebView(_ urlString: String) {
-        caseSummaryViewDelegate?.updateCaseSummaryView(urlString)
     }
 
     @objc private
@@ -292,7 +215,6 @@ class HomeViewController: UIViewController {
     private func togglePermissionViews() {
         togglePushNotificationsStatusView()
         toggleBluetoothStatusView()
-        toggleBluetoothPermissionStatusView()
         toggleLocationPermissionStatusView()
     }
 
@@ -302,103 +224,102 @@ class HomeViewController: UIViewController {
         BlueTraceLocalNotifications.shared.checkAuthorization { pnsGranted in
             self.pushNotificationGranted = pnsGranted
             self.locationAuthorized = CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways
-            self.allPermissionOn = self.blePoweredOn && self.bleAuthorized && self.pushNotificationGranted && self.locationAuthorized
+            self.allPermissionOn = self.blePoweredOn && self.bleAuthorized && self.locationAuthorized
             self.togglePermissionViews()
+            self.toggleAppWorking()
         }
     }
 
-    private func toggleBluetoothStatusView() {
-        appPermissionDelegate?.setBlueToothEnabledStatus(!self.allPermissionOn && !self.blePoweredOn)
+    private func toggleAppWorking() {
+        appWorkingView?.isVisible = self.allPermissionOn
+        appNotWorkingView?.isVisible = !self.allPermissionOn
     }
 
-    private func toggleBluetoothPermissionStatusView() {
-        appPermissionDelegate?.setPermisttionStatus(!self.allPermissionOn && !self.bleAuthorized)
+    private func toggleBluetoothStatusView() {
+        appPermissionDelegate?.setBluetoothEnabledStatus(!self.allPermissionOn && !self.blePoweredOn)
+        appNotWorkingDelegate?.showHowToEnableBluetooth(self.bleAuthorized && !self.blePoweredOn)
+        appNotWorkingDelegate?.showHowToEnableBluetoothPermission(!self.bleAuthorized)
     }
 
     private func toggleLocationPermissionStatusView () {
         appPermissionDelegate?.setLocationServicesStatus(!self.allPermissionOn && !self.locationAuthorized)
+        appNotWorkingDelegate?.showHowToEnableLocationServices(!self.allPermissionOn && !self.locationAuthorized)
     }
 
     private func togglePushNotificationsStatusView() {
-        appPermissionDelegate?.setPushNotificationStatus(!self.allPermissionOn && !self.pushNotificationGranted)
+        appPermissionDelegate?.setPushNotificationStatus(!self.pushNotificationGranted)
     }
 
-    @objc
-    func enableUserInteraction(_ notification: Notification) {
-        self.view.isUserInteractionEnabled = true
+    private func addBlurStatusBar() {
+        let blurryEffect = UIBlurEffect(style: .regular)
+        let blurredStatusBar = UIVisualEffectView(effect: blurryEffect)
+        blurredStatusBar.translatesAutoresizingMaskIntoConstraints = false
+        blurredStatusBar.alpha = 0
+        view.addSubview(blurredStatusBar)
+        blurredStatusBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        blurredStatusBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        blurredStatusBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        blurredStatusBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        blurredStatusBar.transform = CGAffineTransform(translationX: 0, y: -1 * blurredStatusBar.frame.height)
+        self.blurredStatusBar = blurredStatusBar
     }
 
-    @objc
-    func disableUserInteraction(_ notification: Notification) {
-        self.view.isUserInteractionEnabled = false
-    }
-
-    @objc
-    func enableDeferringSystemGestures(_ notification: Notification) {
-        if #available(iOS 11.0, *) {
-            localPreferredScreenEdgesDeferringSystemGestures = .bottom
-            setNeedsUpdateOfScreenEdgesDeferringSystemGestures()
-        }
-    }
-
-    @objc
-    func disableDeferringSystemGestures(_ notification: Notification) {
-        if #available(iOS 11.0, *) {
-            localPreferredScreenEdgesDeferringSystemGestures = []
-            setNeedsUpdateOfScreenEdgesDeferringSystemGestures()
-        }
-    }
-
-    func fetchEncounters() {
-        let sortByDate = NSSortDescriptor(key: "timestamp", ascending: false)
-        fetchedResultsController = DatabaseManager.shared().getFetchedResultsController(
-            Encounter.self,
-            with: nil,
-            with: sortByDate,
-            prefetchKeyPaths: nil,
-            delegate: self
-        )
-        do {
-            try fetchedResultsController?.performFetch()
-            setInitialLastUpdatedTime()
-        } catch let error as NSError {
-            print("Could not perform fetch. \(error), \(error.userInfo)")
-        }
-    }
-
-    func setInitialLastUpdatedTime() {
-        guard let firstEncounterDate = fetchedResultsController?.fetchedObjects?.first?.timestamp else {
+    private func blurStatusBar() {
+        guard let blurredStatusBar = blurredStatusBar else {
             return
         }
-        updateLastUpdatedTime(date: firstEncounterDate)
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1.0,
+            initialSpringVelocity: 1.0,
+            options: .curveEaseInOut,
+            animations: {
+                blurredStatusBar.alpha = 0.9
+                blurredStatusBar.transform = CGAffineTransform(translationX: 0, y: 0)
+            },
+            completion: nil
+        )
     }
 
-    func updateLastUpdatedTime(date: Date) {
-        headerViewDelegate?.updateLastUpdatedTime(date)
-    }
-
-    func playActivityAnimation() {
-        headerViewDelegate?.playAnimation()
-    }
-}
-
-// MARK: - NSFetchedResultsControllerDelegate
-extension HomeViewController: NSFetchedResultsControllerDelegate {
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            let encounter = anObject as! Encounter
-            if ![Encounter.Event.scanningStarted.rawValue, Encounter.Event.scanningStopped.rawValue].contains(encounter.msg) {
-                self.playActivityAnimation()
-            }
-            self.updateLastUpdatedTime(date: Date())
-            break
-
-        default:
-
-            self.updateLastUpdatedTime(date: Date())
-            break
+    private func unblurStatusBar() {
+        guard let blurredStatusBar = blurredStatusBar else {
+            return
         }
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1.0,
+            initialSpringVelocity: 1.0,
+            options: .curveEaseInOut,
+            animations: {
+                blurredStatusBar.alpha = 0.0
+                blurredStatusBar.transform = CGAffineTransform(translationX: 0, y: -1 * blurredStatusBar.frame.height)
+            },
+            completion: nil
+        )
+    }
+
+    @objc
+    private func shareAppButtonPressed(_ sender: Any) {
+        let shareURL = URL(string: "https://www.example.com/share")
+        let activityController = UIActivityViewController(
+            activityItems: [
+                NSLocalizedString(
+                    shareText,
+                    tableName: "",
+                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
+                    value: BKLocalizationManager.sharedInstance.defaultStrings[shareText] ?? "",
+                    comment: ""
+                ),
+                shareURL as Any
+            ],
+            applicationActivities: nil
+        )
+        activityController.popoverPresentationController?.sourceView = self.view
+        presentViewController(activityController)
     }
 }
 
@@ -408,8 +329,8 @@ extension HomeViewController: HomeViewControllerDelegate {
         self.tabBarController?.selectedIndex = tabName.tabIndex
     }
 
-    func presentDebugMode(_ identifier: String) {
-        performSegue(withIdentifier: identifier, sender: self)
+    func presentDebugMode() {
+        performSegue(withIdentifier: "HomeToDebugSegue", sender: self)
     }
     func presentViewController(_ viewController: UIViewController) {
         present(viewController, animated: true, completion: nil)
@@ -418,6 +339,17 @@ extension HomeViewController: HomeViewControllerDelegate {
         let uploadViewController = UIStoryboard(name: "UploadData", bundle: nil).instantiateViewController(withIdentifier: "uploadStart")
         if let window = UIApplication.shared.delegate?.window {
             window?.rootViewController = uploadViewController
+        }
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y < 100) {
+            unblurStatusBar()
+        } else {
+            blurStatusBar()
         }
     }
 }

@@ -1,7 +1,7 @@
-//This class abstracts a fair bit of the Core Data functionality. Improvements can be made with respect to extending it to better support FetchedResultsControllers.
+// This class abstracts a fair bit of the Core Data functionality. Improvements can be made with respect to extending it to better support FetchedResultsControllers.
 
-import Foundation
 import CoreData
+import Foundation
 import UIKit
 
 protocol AsynchronousFetchCallbackHandler: NSObjectProtocol {
@@ -9,8 +9,8 @@ protocol AsynchronousFetchCallbackHandler: NSObjectProtocol {
     func fetchFailed(_ handlerContext: [AnyHashable: Any]?)
 }
 
+// swiftlint:disable all
 class DatabaseManager {
-
     var persistentContainer: NSPersistentContainer!
 
     private static var sharedManager: DatabaseManager?
@@ -23,7 +23,6 @@ class DatabaseManager {
     }
 
     func saveDatabaseContext () {
-
         let context = persistentContainer.viewContext
 
         if context.hasChanges {
@@ -38,11 +37,17 @@ class DatabaseManager {
         }
     }
 
-    func getObjectsWithMultipleFiltersOf<T>(_ classObject: T.Type, with predicates: [NSPredicate]?, predicateType: NSCompoundPredicate.LogicalType = NSCompoundPredicate.LogicalType.and, with sortDescriptor: NSSortDescriptor?, prefetchKeyPaths prefetchKeypaths: [Any]?, fetchLimit: Int = 100) -> [T]? where T: NSManagedObject {
-
+    func getObjectsWithMultipleFiltersOf<T>(
+        _ classObject: T.Type,
+        with predicates: [NSPredicate]?,
+        with sortDescriptor: NSSortDescriptor?,
+        prefetchKeyPaths prefetchKeypaths: [Any]?,
+        fetchLimit: Int = 100,
+        predicateType: NSCompoundPredicate.LogicalType = NSCompoundPredicate.LogicalType.and
+    ) -> [T]? where T: NSManagedObject {
         var compositePredicate: NSPredicate?
 
-        if let predicates = predicates, predicates.count > 0 {
+        if let predicates = predicates, !predicates.isEmpty {
             if predicates.count > 1 {
                 compositePredicate = NSCompoundPredicate(type: predicateType, subpredicates: predicates)
             } else {
@@ -53,9 +58,14 @@ class DatabaseManager {
         return getObjectsOf(classObject, with: compositePredicate, with: sortDescriptor, prefetchKeyPaths: prefetchKeypaths)
     }
 
-    private func getFetchRequestFor<T>(_ classObject: T.Type, with predicate: NSPredicate?, with sortDescriptor: NSSortDescriptor?, prefetchKeyPaths prefetchKeypaths: [Any]?, fetchLimit: Int = 100, context: NSManagedObjectContext)
-        -> NSFetchRequest<T> where T: NSManagedObject {
-
+    private func getFetchRequestFor<T>(
+        _ classObject: T.Type,
+        with predicate: NSPredicate?,
+        with sortDescriptor: NSSortDescriptor?,
+        prefetchKeyPaths prefetchKeypaths: [Any]?,
+        context: NSManagedObjectContext,
+        fetchLimit: Int = 100
+    ) -> NSFetchRequest<T> where T: NSManagedObject {
         let fetchRequest = NSFetchRequest<T>()
         let entityDescription = NSEntityDescription.entity(forEntityName: NSStringFromClass(classObject.self), in: context)
         fetchRequest.entity = entityDescription
@@ -77,14 +87,13 @@ class DatabaseManager {
         return fetchRequest
     }
 
-    //This fetches objects synchronously.
-    //This needs to be called only from the main thread since it uses the main view context
-    //Refactor to use context.perform if we want to support flexibility with the context later
+    // This fetches objects synchronously.
+    // This needs to be called only from the main thread since it uses the main view context
+    // Refactor to use context.perform if we want to support flexibility with the context later
     func getObjectsOf<T>(_ classObject: T.Type, with predicate: NSPredicate?, with sortDescriptor: NSSortDescriptor?, prefetchKeyPaths prefetchKeypaths: [Any]?, fetchLimit: Int = -1) -> [T]? where T: NSManagedObject {
-
         let context = persistentContainer.viewContext
 
-        let fetchRequest = getFetchRequestFor(classObject, with: predicate, with: sortDescriptor, prefetchKeyPaths: prefetchKeypaths, fetchLimit: fetchLimit, context: context)
+        let fetchRequest = getFetchRequestFor(classObject, with: predicate, with: sortDescriptor, prefetchKeyPaths: prefetchKeypaths, context: context, fetchLimit: fetchLimit)
 
         var result: [T]!
 
@@ -101,18 +110,27 @@ class DatabaseManager {
         return result
     }
 
-    //This fetches objects asynchronously
-    func getObjectsOfClassAsynchronous(_ classObject: NSManagedObject.Type, with predicate: NSPredicate?, with sortDescriptor: NSSortDescriptor?, prefetchKeyPaths prefetchKeypaths: [Any]?, fetchLimit: Int = -1, callbackHandler: AsynchronousFetchCallbackHandler?, handlerContext: [AnyHashable: Any]?) {
-
+    // This fetches objects asynchronously
+    // swiftlint:disable:next function_parameter_count
+    func getObjectsOfClassAsynchronous(
+        _ classObject: NSManagedObject.Type,
+        with predicate: NSPredicate?,
+        with sortDescriptor: NSSortDescriptor?,
+        prefetchKeyPaths prefetchKeypaths: [Any]?,
+        callbackHandler: AsynchronousFetchCallbackHandler?,
+        handlerContext: [AnyHashable: Any]?,
+        fetchLimit: Int = -1
+    ) {
         let context: NSManagedObjectContext = persistentContainer.viewContext
 
-        let fetchRequest = getFetchRequestFor(classObject, with: predicate, with: sortDescriptor, prefetchKeyPaths: prefetchKeypaths, fetchLimit: fetchLimit, context: context)
-
+        let fetchRequest = getFetchRequestFor(classObject, with: predicate, with: sortDescriptor, prefetchKeyPaths: prefetchKeypaths, context: context, fetchLimit: fetchLimit)
         let asynchronousFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest, completionBlock: { result in
             DispatchQueue.main.async(execute: {
                 callbackHandler?.fetchSuccess(result.finalResult, handlerContext: handlerContext)
-            })
-        })
+            }
+            )
+        }
+        )
 
         context.perform {
             do {
@@ -125,10 +143,9 @@ class DatabaseManager {
     }
 
     func getFetchedResultsController<T>(_ classObject: T.Type, with predicate: NSPredicate?, with sortDescriptor: NSSortDescriptor?, prefetchKeyPaths prefetchKeypaths: [Any]?, fetchLimit: Int = -1, delegate: NSFetchedResultsControllerDelegate? = nil) -> NSFetchedResultsController<T> where T: NSManagedObject {
-
         let context = persistentContainer.viewContext
 
-        let fetchRequest = getFetchRequestFor(classObject, with: predicate, with: sortDescriptor, prefetchKeyPaths: prefetchKeypaths, fetchLimit: fetchLimit, context: context)
+        let fetchRequest = getFetchRequestFor(classObject, with: predicate, with: sortDescriptor, prefetchKeyPaths: prefetchKeypaths, context: context, fetchLimit: fetchLimit)
 
         let fetchedResultsController = NSFetchedResultsController<T>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
 
@@ -140,7 +157,6 @@ class DatabaseManager {
     }
 
     func deleteObjectsOf<T>(_ classObject: T.Type, with predicate: NSPredicate?) where T: NSManagedObject {
-
         let context = persistentContainer.viewContext
 
         context.perform {
@@ -171,7 +187,6 @@ class DatabaseManager {
     }
 
     func createObjectOf<T>(_ classObject: T.Type) -> T? where T: NSManagedObject {
-
         let context = persistentContainer.viewContext
 
         let entityDescription = NSEntityDescription.entity(forEntityName: NSStringFromClass(classObject.self), in: context)
@@ -182,7 +197,6 @@ class DatabaseManager {
     }
 
     func createObjectOf<T>(_ classObject: T.Type, andProperties properties: [AnyHashable: Any]?) -> T? where T: NSManagedObject {
-
         let context = persistentContainer.viewContext
 
         let entityDescription = NSEntityDescription.entity(forEntityName: NSStringFromClass(classObject.self), in: context)
@@ -197,11 +211,10 @@ class DatabaseManager {
             if createdObject?.responds(to: NSSelectorFromString(propertyKey as! String)) ?? false && properties?[propertyKey] != nil && !(properties?[propertyKey] is NSNull) {
                 createdObject?.setValue(properties?[propertyKey], forKey: propertyKey as! String)
             } else {
-
             }
         }
 
         return createdObject
     }
-
 }
+// swiftlint:enable all

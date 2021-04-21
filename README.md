@@ -21,6 +21,11 @@ To configure PROD variables, define them in `Targets > ABTraceTogether > Build S
 
 There is a debug screen accessible within the staging version of the app. This allows you to view the app's Bluetooth communication log. To access it, you first have to set up the app. Then, tap on the home screen image.
 
+## Linting
+
+There's a build script in `Targets > ABTraceTogether > Build Phases > Swiftlint` which runs [SwiftLint](https://github.com/realm/SwiftLint) on Build.
+Run `{PODS_ROOT}/SwiftLint/swiftlint autocorrect` to auto-fix some linting errors.
+
 ## Security Enhancements
 
 SSL pinning is not included as part of the repo

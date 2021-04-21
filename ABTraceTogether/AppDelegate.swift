@@ -8,8 +8,6 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    // swiftlint:disable:next implicitly_unwrapped_optional
-    var pogoMM: PogoMotionManager!
 
     let onboardingNavigator = OnboardingNavigator(navigationController: UINavigationController())
 
@@ -28,13 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setupHerald()
 
-        // setup pogo mode
-        pogoMM = PogoMotionManager(window: self.window)
         return true
     }
     func applicationDidBecomeActive(_ application: UIApplication) {
         Logger.DLog("applicationDidBecomeActive")
-        pogoMM.startAccelerometerUpdates()
+
         SettingsBundleHelper.setVersionAndBuildNumber()
         if (!FairEfficacyInstrumentation.shared.enabled) {
             checkIfAppRegistered()
@@ -44,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         Logger.DLog("applicationWillEnterForeground")
-        pogoMM.stopAllMotion()
+
         BluetraceUtils.removeData21DaysOld()
 
         BlueTraceLocalNotifications.shared.removePendingNotificationRequests()
@@ -52,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         Logger.DLog("applicationWillTerminate")
-        pogoMM.stopAllMotion()
     }
 
     // MARK: Core Data stack
@@ -140,11 +135,13 @@ extension AppDelegate {
                 let dynamicUrl = try JSONDecoder().decode(DynamicUrl.self, from: data)
                 UserDefaults.standard.set(dynamicUrl.guidance, forKey: guidanceKey)
                 UserDefaults.standard.set(dynamicUrl.stats, forKey: statisticsKey)
+                UserDefaults.standard.set(dynamicUrl.home, forKey: caseSummaryKey)
                 UserDefaults.standard.set(dynamicUrl.faq, forKey: faqUrlKey)
                 UserDefaults.standard.set(dynamicUrl.privacy, forKey: privacyUrlKey)
                 UserDefaults.standard.set(dynamicUrl.mhr, forKey: mhrKey)
                 UserDefaults.standard.set(dynamicUrl.gis, forKey: gisKey)
                 UserDefaults.standard.set(dynamicUrl.helpEmail, forKey: helpEmailKey)
+                UserDefaults.standard.set(dynamicUrl.closeContactsFaq, forKey: closeContactsFaqKey)
                 NotificationCenter.default.post(
                     name: Notification.Name(notificationNameUrl),
                     object: nil,

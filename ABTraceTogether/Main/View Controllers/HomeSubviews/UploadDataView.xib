@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,75 +10,102 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UploadDataView" customModule="ABTTDev" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="290"/>
+            <rect key="frame" x="0.0" y="0.0" width="667" height="322"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyZ-Sy-wsG" userLabel="UploadDataCardView">
-                    <rect key="frame" x="18" y="77" width="378" height="192"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UploadDataCardImage" translatesAutoresizingMaskIntoConstraints="NO" id="7wH-As-GhR">
-                            <rect key="frame" x="0.0" y="0.0" width="378" height="91"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gh9-oq-Fw1" userLabel="UploadDataMessageLabel">
-                            <rect key="frame" x="22" y="105" width="334" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY8-sf-vUa">
-                            <rect key="frame" x="20" y="141" width="338" height="54"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="54" id="y2t-Vv-iiM"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="startUploadFlow:" destination="iN0-l3-epB" eventType="touchUpInside" id="BMa-5Z-etn"/>
-                            </connections>
-                        </button>
-                    </subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yvn-m5-j46" userLabel="TopView">
+                    <rect key="frame" x="0.0" y="0.0" width="667" height="25"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="7wH-As-GhR" firstAttribute="trailing" secondItem="dyZ-Sy-wsG" secondAttribute="trailing" id="741-f5-qkc"/>
-                        <constraint firstItem="Gh9-oq-Fw1" firstAttribute="trailing" secondItem="dyZ-Sy-wsG" secondAttribute="trailing" constant="-22" id="7Ji-xN-rgZ"/>
-                        <constraint firstItem="oY8-sf-vUa" firstAttribute="top" secondItem="Gh9-oq-Fw1" secondAttribute="bottom" constant="15" id="BK0-7F-bAc"/>
-                        <constraint firstItem="Gh9-oq-Fw1" firstAttribute="leading" secondItem="dyZ-Sy-wsG" secondAttribute="leading" constant="22" id="LQr-FP-LHb"/>
-                        <constraint firstItem="oY8-sf-vUa" firstAttribute="trailing" secondItem="dyZ-Sy-wsG" secondAttribute="trailing" constant="-20" id="NDf-CD-3Qc"/>
-                        <constraint firstItem="7wH-As-GhR" firstAttribute="top" secondItem="dyZ-Sy-wsG" secondAttribute="top" id="YW9-jv-xRP"/>
-                        <constraint firstItem="Gh9-oq-Fw1" firstAttribute="top" secondItem="7wH-As-GhR" secondAttribute="bottom" constant="14" id="jtw-Sy-pgn"/>
-                        <constraint firstItem="7wH-As-GhR" firstAttribute="leading" secondItem="dyZ-Sy-wsG" secondAttribute="leading" id="nbf-jz-9Ol"/>
-                        <constraint firstItem="oY8-sf-vUa" firstAttribute="leading" secondItem="dyZ-Sy-wsG" secondAttribute="leading" constant="20" id="sxB-Cg-GsD"/>
+                        <constraint firstAttribute="height" constant="25" id="dPo-wb-dE9"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0C-N7-cnf" userLabel="UploadDataLabel">
-                    <rect key="frame" x="18" y="44" width="166" height="21"/>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="egw-X8-86H" userLabel="UploadView">
+                    <rect key="frame" x="265.5" y="50" width="136" height="185"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="VirusBlackIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ngd-6x-3Ms">
+                            <rect key="frame" x="0.0" y="163" width="26" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="26" id="bq2-QC-u1U"/>
+                                <constraint firstAttribute="height" constant="22" id="vtT-QO-WHY"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="547-qc-eOV">
+                            <rect key="frame" x="36" y="0.0" width="100" height="185"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Upload Data">
+                                    <attributes>
+                                        <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" metaFont="system" size="18"/>
+                                        <font key="NSOriginalFont" metaFont="system" size="18"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        <integer key="NSUnderline" value="1"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="547-qc-eOV" secondAttribute="bottom" id="Fcg-cV-WX7"/>
+                        <constraint firstItem="ngd-6x-3Ms" firstAttribute="bottom" secondItem="547-qc-eOV" secondAttribute="bottom" id="FdY-48-wZn"/>
+                        <constraint firstAttribute="trailing" secondItem="547-qc-eOV" secondAttribute="trailing" id="H0Y-bR-Imz"/>
+                        <constraint firstAttribute="leading" secondItem="ngd-6x-3Ms" secondAttribute="leading" id="bAS-Lo-iDT"/>
+                        <constraint firstItem="547-qc-eOV" firstAttribute="leading" secondItem="ngd-6x-3Ms" secondAttribute="trailing" constant="10" id="hFx-jz-Pt0"/>
+                        <constraint firstItem="547-qc-eOV" firstAttribute="top" secondItem="egw-X8-86H" secondAttribute="top" id="rSF-jh-aa9"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" text="Uploading your anonymous data is only required if *THIS ORG* contacts you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pp9-uu-i46">
+                    <rect key="frame" x="40" y="245" width="587" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.41176470588235292" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4kc-xG-e0f" userLabel="Version Divider View">
+                    <rect key="frame" x="20" y="277" width="627" height="1"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.69803921568627447" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Klj-56-ILS"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpR-JB-95d" userLabel="Version Label">
+                    <rect key="frame" x="312.5" y="294" width="42" height="12"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="dyZ-Sy-wsG" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-18" id="0C6-VG-TQO"/>
-                <constraint firstItem="dyZ-Sy-wsG" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-21" id="G8e-TY-W39"/>
-                <constraint firstItem="dyZ-Sy-wsG" firstAttribute="top" secondItem="z0C-N7-cnf" secondAttribute="bottom" constant="12" id="SW5-02-4Xn"/>
-                <constraint firstItem="z0C-N7-cnf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="18" id="Y3K-8Z-O7e"/>
-                <constraint firstItem="z0C-N7-cnf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="a4y-fL-KBG"/>
-                <constraint firstItem="z0C-N7-cnf" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-230" id="ath-hp-Fcb"/>
-                <constraint firstItem="dyZ-Sy-wsG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="18" id="mfl-Pb-Kza"/>
+                <constraint firstItem="Pp9-uu-i46" firstAttribute="top" secondItem="egw-X8-86H" secondAttribute="bottom" constant="10" id="0y1-lH-xcW"/>
+                <constraint firstItem="Pp9-uu-i46" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="BKe-wI-geI"/>
+                <constraint firstAttribute="trailing" secondItem="Yvn-m5-j46" secondAttribute="trailing" id="Eud-W8-A87"/>
+                <constraint firstItem="4kc-xG-e0f" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="F7u-2e-v43"/>
+                <constraint firstAttribute="bottom" secondItem="hpR-JB-95d" secondAttribute="bottom" constant="16" id="PWW-et-s1B"/>
+                <constraint firstItem="egw-X8-86H" firstAttribute="top" secondItem="Yvn-m5-j46" secondAttribute="bottom" constant="25" id="Pia-pX-dzn"/>
+                <constraint firstItem="4kc-xG-e0f" firstAttribute="top" secondItem="Pp9-uu-i46" secondAttribute="bottom" constant="15" id="Ucn-cw-kxy"/>
+                <constraint firstItem="hpR-JB-95d" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ZLE-eR-dct"/>
+                <constraint firstAttribute="trailing" secondItem="4kc-xG-e0f" secondAttribute="trailing" constant="20" id="aUK-AU-iS0"/>
+                <constraint firstItem="Yvn-m5-j46" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cRB-2p-7xm"/>
+                <constraint firstItem="hpR-JB-95d" firstAttribute="top" secondItem="4kc-xG-e0f" secondAttribute="bottom" constant="16" id="cYY-QZ-3Ra"/>
+                <constraint firstAttribute="trailing" secondItem="Pp9-uu-i46" secondAttribute="trailing" constant="40" id="flE-ss-T6g"/>
+                <constraint firstItem="Yvn-m5-j46" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mme-UV-hN0"/>
+                <constraint firstItem="egw-X8-86H" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qgQ-ZX-kjH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="uploadDataButton" destination="oY8-sf-vUa" id="raQ-sn-ftX"/>
-                <outlet property="uploadDataCardView" destination="dyZ-Sy-wsG" id="m4a-of-MCd"/>
-                <outlet property="uploadDataHeaderLabel" destination="z0C-N7-cnf" id="Nxj-Wh-KHF"/>
-                <outlet property="uploadDataMessageLabel" destination="Gh9-oq-Fw1" id="PDi-uM-Eyk"/>
+                <outlet property="topView" destination="Yvn-m5-j46" id="iuq-ba-1cW"/>
+                <outlet property="uploadDescriptionLabel" destination="Pp9-uu-i46" id="dow-e7-KxC"/>
+                <outlet property="uploadIcon" destination="ngd-6x-3Ms" id="jTO-Ze-iBZ"/>
+                <outlet property="uploadLabel" destination="547-qc-eOV" id="7K9-m0-lM9"/>
+                <outlet property="versionLabel" destination="hpR-JB-95d" id="yn0-cM-KOI"/>
             </connections>
-            <point key="canvasLocation" x="-196" y="80"/>
+            <point key="canvasLocation" x="323.91304347826087" y="384.375"/>
         </view>
     </objects>
     <resources>
-        <image name="UploadDataCardImage" width="339" height="91"/>
+        <image name="VirusBlackIcon" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -3,11 +3,6 @@ import IBMMobileFirstPlatformFoundation
 import UIKit
 
 enum HomeScreenEnum {
-static func setUpHomeBackgroundDesign (view: UIView ) {
-    view.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-    view.borderWidth = 1
-    view.layer.borderColor = UIColor(red: 0.847, green: 0.847, blue: 0.847, alpha: 1).cgColor
-}
 static func getVersionIdentifierForEnvironment() -> String {
     let devString = "mfpdev"
     let stagingString = "mfpstg"

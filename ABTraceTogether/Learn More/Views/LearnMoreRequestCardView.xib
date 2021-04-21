@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LearnMoreRequestCardView" customModule="ABTTDev" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="412"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="Bluetooth" translatesAutoresizingMaskIntoConstraints="NO" id="6Lc-MS-NbZ">
+                    <rect key="frame" x="369" y="16" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="diV-I3-T78"/>
+                        <constraint firstAttribute="width" constant="35" id="fq9-w0-bEp"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location permission will:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryG-m9-Iet">
+                    <rect key="frame" x="16" y="16" width="353" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueCheck" translatesAutoresizingMaskIntoConstraints="NO" id="rZL-vQ-fWI">
+                    <rect key="frame" x="16" y="65.5" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="AMF-M6-r4M"/>
+                        <constraint firstAttribute="width" constant="20" id="jBR-Nl-YxJ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detect other devices around you" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmp-lX-w3g">
+                    <rect key="frame" x="50" y="65.5" width="354" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="9ND-2j-yfE">
+                    <rect key="frame" x="16" y="85" width="388" height="0.0"/>
+                    <subviews>
+                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueCheck" translatesAutoresizingMaskIntoConstraints="NO" id="PQo-Tb-yrb">
+                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="pl4-ky-YnG"/>
+                                <constraint firstAttribute="height" constant="20" id="ryM-DH-EWa"/>
+                            </constraints>
+                        </imageView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Allow to communicate anonymously with other devices that have the app" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gbt-a1-Xkp">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Bluetooth permission will not:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79y-gc-Tbb">
+                    <rect key="frame" x="16" y="130" width="388" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="750" image="RedXMedium" translatesAutoresizingMaskIntoConstraints="NO" id="qzP-e3-WSK">
+                    <rect key="frame" x="16" y="179.5" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="FLu-SL-b1k"/>
+                        <constraint firstAttribute="width" constant="20" id="qqJ-ah-hNc"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="750" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Share any of your personal data to any nearby devices" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtI-vb-0pd">
+                    <rect key="frame" x="50" y="179.5" width="354" height="38.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="TvO-t4-goM">
+                    <rect key="frame" x="16" y="218" width="388" height="0.0"/>
+                    <subviews>
+                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueCheck" translatesAutoresizingMaskIntoConstraints="NO" id="NIY-xQ-2G2">
+                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="1NL-WA-4il"/>
+                                <constraint firstAttribute="width" constant="20" id="fSK-4Q-dnm"/>
+                            </constraints>
+                        </imageView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Allow to communicate anonymously with other devices that have the app" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHY-qs-shH">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.90196078431372551" green="0.94901960784313721" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="hmp-lX-w3g" firstAttribute="leading" secondItem="rZL-vQ-fWI" secondAttribute="trailing" constant="14" id="1zW-rZ-jmJ"/>
+                <constraint firstItem="qzP-e3-WSK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="2eS-Zm-gbT"/>
+                <constraint firstItem="hmp-lX-w3g" firstAttribute="top" secondItem="ryG-m9-Iet" secondAttribute="bottom" constant="28" id="2uC-6i-eAt"/>
+                <constraint firstItem="vtI-vb-0pd" firstAttribute="top" secondItem="79y-gc-Tbb" secondAttribute="bottom" constant="28" id="5kp-CF-ek9"/>
+                <constraint firstItem="79y-gc-Tbb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="6Oa-dl-46e"/>
+                <constraint firstAttribute="trailing" secondItem="9ND-2j-yfE" secondAttribute="trailing" constant="16" id="6u4-mS-Dc4"/>
+                <constraint firstAttribute="trailing" secondItem="6Lc-MS-NbZ" secondAttribute="trailing" constant="16" id="AZD-EE-z7G"/>
+                <constraint firstItem="vtI-vb-0pd" firstAttribute="leading" secondItem="qzP-e3-WSK" secondAttribute="trailing" constant="14" id="ChS-lz-Yi7"/>
+                <constraint firstAttribute="trailing" secondItem="79y-gc-Tbb" secondAttribute="trailing" constant="16" id="CwW-oo-GxW"/>
+                <constraint firstItem="qzP-e3-WSK" firstAttribute="top" secondItem="vtI-vb-0pd" secondAttribute="top" id="FbY-tG-nPX"/>
+                <constraint firstAttribute="trailing" secondItem="TvO-t4-goM" secondAttribute="trailing" constant="16" id="HrI-1E-A9E"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TvO-t4-goM" secondAttribute="bottom" constant="20" id="I9V-22-Wn9"/>
+                <constraint firstItem="rZL-vQ-fWI" firstAttribute="top" secondItem="ryG-m9-Iet" secondAttribute="bottom" constant="28" id="RCc-SH-MuN"/>
+                <constraint firstAttribute="trailing" secondItem="hmp-lX-w3g" secondAttribute="trailing" constant="16" id="SJS-af-JEW"/>
+                <constraint firstItem="79y-gc-Tbb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9ND-2j-yfE" secondAttribute="bottom" constant="25" id="SN9-Mt-gmG"/>
+                <constraint firstItem="rZL-vQ-fWI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="SQ1-A2-eyK"/>
+                <constraint firstAttribute="trailing" secondItem="vtI-vb-0pd" secondAttribute="trailing" constant="16" id="X0Z-1w-O8m"/>
+                <constraint firstItem="6Lc-MS-NbZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="Yfh-Sk-LDh"/>
+                <constraint firstItem="TvO-t4-goM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="cmA-PU-3LI"/>
+                <constraint firstItem="6Lc-MS-NbZ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1:7" priority="999" id="cqr-hx-loi"/>
+                <constraint firstItem="9ND-2j-yfE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ctO-ra-TS1"/>
+                <constraint firstItem="6Lc-MS-NbZ" firstAttribute="leading" secondItem="ryG-m9-Iet" secondAttribute="trailing" id="hNv-65-JzP"/>
+                <constraint firstItem="9ND-2j-yfE" firstAttribute="top" secondItem="hmp-lX-w3g" secondAttribute="bottom" id="lZl-Cf-TIZ"/>
+                <constraint firstItem="ryG-m9-Iet" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="qdp-yk-flj"/>
+                <constraint firstItem="ryG-m9-Iet" firstAttribute="top" secondItem="6Lc-MS-NbZ" secondAttribute="top" id="rbd-0r-DZb"/>
+                <constraint firstItem="TvO-t4-goM" firstAttribute="top" secondItem="vtI-vb-0pd" secondAttribute="bottom" id="ros-hN-k2U"/>
+                <constraint firstItem="79y-gc-Tbb" firstAttribute="top" secondItem="9ND-2j-yfE" secondAttribute="bottom" priority="1" constant="45" id="s1X-ru-LcS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="topIconView" destination="6Lc-MS-NbZ" id="88v-ER-iff"/>
+                <outlet property="willItem1ImageView" destination="rZL-vQ-fWI" id="lrc-f9-Gzy"/>
+                <outlet property="willItem1Label" destination="hmp-lX-w3g" id="ZzO-1W-a04"/>
+                <outlet property="willItem2ImageView" destination="PQo-Tb-yrb" id="H0m-Jx-5k7"/>
+                <outlet property="willItem2Label" destination="Gbt-a1-Xkp" id="viR-UP-ybV"/>
+                <outlet property="willItem2TopSpaceConstraint" destination="lZl-Cf-TIZ" id="VBO-mM-6oB"/>
+                <outlet property="willNotItem1ImageView" destination="qzP-e3-WSK" id="FBN-ej-qRa"/>
+                <outlet property="willNotItem1Label" destination="vtI-vb-0pd" id="DJm-5g-7MR"/>
+                <outlet property="willNotItem2ImageView" destination="NIY-xQ-2G2" id="RKd-I4-jnV"/>
+                <outlet property="willNotItem2Label" destination="vHY-qs-shH" id="3Q0-C4-Nxs"/>
+                <outlet property="willNotItem2TopSpaceConstraint" destination="ros-hN-k2U" id="2lY-IW-gMe"/>
+                <outlet property="willNotTitleLabel" destination="79y-gc-Tbb" id="mEO-4g-Xdh"/>
+                <outlet property="willTitleLabel" destination="ryG-m9-Iet" id="KfY-3P-6yT"/>
+            </connections>
+            <point key="canvasLocation" x="143.47826086956522" y="-20.758928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BlueCheck" width="20" height="20"/>
+        <image name="Bluetooth" width="13" height="22"/>
+        <image name="RedXMedium" width="20" height="20"/>
+    </resources>
+</document>
