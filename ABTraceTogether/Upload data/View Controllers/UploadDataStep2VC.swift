@@ -3,6 +3,8 @@ import Foundation
 import IBMMobileFirstPlatformFoundation
 import UIKit
 
+let ENCOUNTER_PARTITION_SIZE = 50_000
+
 class UploadDataStep2VC: UIViewController {
     @IBOutlet private var codeInputView: CodeInputView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
@@ -10,6 +12,8 @@ class UploadDataStep2VC: UIViewController {
     @IBOutlet private var uploadDataButton: UIButton!
     @IBOutlet private var uploadDataHeader: UILabel!
     @IBOutlet  private var uploadDataSubHeader: UILabel!
+
+    var covidTestData: CovidTestData?
 
     let UPLOAD_TOKEN_LENGTH = 6
 
@@ -115,24 +119,41 @@ class UploadDataStep2VC: UIViewController {
             }
         })
     }
-    // swiftlint:disable:next cyclomatic_complexity
+
     func uploadFile(token: String, _ result: @escaping (Bool) -> Void) {
-        let manufacturer = "Apple"
-        let model = DeviceInfo.getModel().replacingOccurrences(of: " ", with: "")
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd_HH-mm-ss"
-        let todayDate = dateFormatter.string(from: date)
-
-        let file = "StreetPassRecord_\(manufacturer)_\(model)_\(todayDate).json"
-
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
 
         let managedContext = appDelegate.persistentContainer.viewContext
-        let recordsFetchRequest: NSFetchRequest<Encounter> = Encounter.fetchRequestForRecords()
         let eventsFetchRequest: NSFetchRequest<Encounter> = Encounter.fetchRequestForEvents()
+
+        self.activityIndicator.startAnimating()
+
+        managedContext.perform { [weak self] in
+            guard let events = try? eventsFetchRequest.execute() else {
+                Logger.DLog("Error fetching events")
+                result(false)
+                return
+            }
+
+            self?.uploadEncounterData(managedContext: managedContext, token: token, events: events, offset: 0) { success in
+                self?.activityIndicator.stopAnimating()
+                result(success)
+            }
+        }
+    }
+
+    private func uploadEncounterData(managedContext: NSManagedObjectContext, token: String, events: [Encounter], offset: Int, _ result: @escaping (Bool) -> Void) {
+        let recordsFetchRequest: NSFetchRequest<Encounter> = Encounter.fetchRequestForRecords()
+        recordsFetchRequest.fetchLimit = ENCOUNTER_PARTITION_SIZE
+        recordsFetchRequest.fetchOffset = offset
+
+        guard let covidTestData = self.covidTestData else {
+            Logger.DLog("Error missing Covid test data")
+            result(false)
+            return
+        }
 
         managedContext.perform { [weak self] in
             guard let records = try? recordsFetchRequest.execute() else {
@@ -141,76 +162,74 @@ class UploadDataStep2VC: UIViewController {
                 return
             }
 
-            guard let events = try? eventsFetchRequest.execute() else {
-                Logger.DLog("Error fetching events")
-                result(false)
+            if records.isEmpty && offset != 0 {
+                result(true)
                 return
             }
 
-            let data = UploadFileData(token: token, records: records, events: events)
-            let encoder = JSONEncoder()
-            guard let json = try? encoder.encode(data) else {
-                Logger.DLog("Error serializing data")
-                result(false)
-                return
-            }
-
-            guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-                Logger.DLog("Error locating user documents directory")
-                result(false)
-                return
-            }
-
-            let fileURL = directory.appendingPathComponent(file)
-
-            do {
-                try json.write(to: fileURL, options: [])
-            } catch {
-                Logger.DLog("Error writing to file")
-                result(false)
-                return
-            }
-
-            guard let userid = UserDefaults.standard.string(forKey: userDefaultsPinKey) else {
-                Logger.logError(with: "uploadFile, user id not found")
-                self?.showSystemError()
-                return
-            }
-
-            let encountersUploadURLString = "/adapters/uploadData/uploadData"
-            guard let encountersUploadURL = URL(string: encountersUploadURLString) else {
-                Logger.logError(with: "Get upload data error. Error converting from getUploadTokenURLString to URL: \(encountersUploadURLString)")
-                self?.showSystemError()
-                return
-            }
-
-            guard let wlResourceRequest = WLResourceRequest(url: encountersUploadURL, method: "POST", timeout: 0) else {
-                Logger.logError(with: "Get upload data error. Error converting to wlResourceRequest. \(encountersUploadURL)")
-                self?.showSystemError()
-                return
-            }
-
-            wlResourceRequest.queryParameters = ["userId": userid]
-            wlResourceRequest.setHeaderValue("application/json" as NSObject, forName: "content-type")
-            self?.activityIndicator.startAnimating()
-            wlResourceRequest.send(with: json) { response, error in
-                self?.activityIndicator.stopAnimating()
-                guard error == nil else {
-                    Logger.logError(with: "Get upload data error. Response: \(response ?? WLResponse()) Error: \(error?.localizedDescription ?? "Error is nil")")
-                    guard let error = error as NSError? else {
-                        Logger.DLog("Cloud function error, unable to convert error to NSError.")
-                        result(false)
-                        return
+            self?.uploadJson(token: token, covidTestData: covidTestData, events: events, records: records) { success in
+                if success {
+                    if records.count < ENCOUNTER_PARTITION_SIZE {
+                        result(true)
+                    } else {
+                        self?.uploadEncounterData(managedContext: managedContext, token: token, events: events, offset: offset + ENCOUNTER_PARTITION_SIZE, result)
                     }
-                    let code = error.code
-                    let message = error.localizedDescription
-                    Logger.DLog("Cloud function error. Code: \(String(describing: code)), Message: \(message)")
+                } else {
+                    result(false)
+                }
+            }
+        }
+    }
 
+    private func uploadJson(token: String, covidTestData: CovidTestData, events: [Encounter], records: [Encounter], _ result: @escaping (Bool) -> Void) {
+        let data = UploadFileData(covidTestData: covidTestData, token: token, records: records, events: events)
+        let encoder = JSONEncoder()
+        guard let json = try? encoder.encode(data) else {
+            Logger.DLog("Error serializing data")
+            result(false)
+            return
+        }
+
+        guard let userid = UserDefaults.standard.string(forKey: userDefaultsPinKey) else {
+            Logger.logError(with: "uploadFile, user id not found")
+            self.showSystemError()
+            result(false)
+            return
+        }
+
+        let encountersUploadURLString = "/adapters/uploadData/uploadData"
+        guard let encountersUploadURL = URL(string: encountersUploadURLString) else {
+            Logger.logError(with: "Get upload data error. Error converting from getUploadTokenURLString to URL: \(encountersUploadURLString)")
+            self.showSystemError()
+            result(false)
+            return
+        }
+
+        guard let wlResourceRequest = WLResourceRequest(url: encountersUploadURL, method: "POST", timeout: 0) else {
+            Logger.logError(with: "Get upload data error. Error converting to wlResourceRequest. \(encountersUploadURL)")
+            self.showSystemError()
+            result(false)
+            return
+        }
+
+        wlResourceRequest.queryParameters = ["userId": userid]
+        wlResourceRequest.setHeaderValue("application/json" as NSObject, forName: "content-type")
+        wlResourceRequest.send(with: json) { response, error in
+            guard error == nil else {
+                Logger.logError(with: "Get upload data error. Response: \(response ?? WLResponse()) Error: \(error?.localizedDescription ?? "Error is nil")")
+                guard let error = error as NSError? else {
+                    Logger.DLog("Cloud function error, unable to convert error to NSError.")
                     result(false)
                     return
                 }
-                result(true)
+                let code = error.code
+                let message = error.localizedDescription
+                Logger.DLog("Cloud function error. Code: \(String(describing: code)), Message: \(message)")
+
+                result(false)
+                return
             }
+            result(true)
         }
     }
 }

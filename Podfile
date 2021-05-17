@@ -11,6 +11,8 @@ target 'ABTraceTogether' do
   pod 'lottie-ios', '3.1.6'
   pod 'IBMMobileFirstPlatformFoundation', '8.0.2020050515'
   pod 'Herald', '1.2.0'
+
+  target 'ABTraceTogetherTests' do
+      inherit! :search_paths
+    end
 end
-
-

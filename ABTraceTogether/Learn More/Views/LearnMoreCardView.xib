@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LearnMoreCardView" customModule="ABTTDev" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="421" height="686"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" image="AppBasicsCard1" translatesAutoresizingMaskIntoConstraints="NO" id="gs1-1Z-Xfu">
+                    <rect key="frame" x="0.0" y="0.0" width="421" height="13"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two devices with APP NAME come in close contact" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImT-oL-3yI">
+                    <rect key="frame" x="20" y="425.5" width="381" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.90196078430000004" green="0.94901960780000005" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="gs1-1Z-Xfu" secondAttribute="trailing" id="Dpk-Oo-GVu"/>
+                <constraint firstItem="ImT-oL-3yI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="P4t-xi-gvf"/>
+                <constraint firstItem="ImT-oL-3yI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gs1-1Z-Xfu" secondAttribute="bottom" constant="20" id="Ubp-zS-BYP"/>
+                <constraint firstItem="gs1-1Z-Xfu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Z4w-oh-0hO"/>
+                <constraint firstItem="gs1-1Z-Xfu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="asC-og-t6W"/>
+                <constraint firstAttribute="trailing" secondItem="ImT-oL-3yI" secondAttribute="trailing" constant="20" id="ee0-y3-YhB"/>
+                <constraint firstItem="ImT-oL-3yI" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="5:4" priority="250" id="uC2-GP-t4d"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cardImageView" destination="gs1-1Z-Xfu" id="UR2-TC-5gc"/>
+                <outlet property="label" destination="ImT-oL-3yI" id="F69-5W-46h"/>
+            </connections>
+            <point key="canvasLocation" x="145.6521739130435" y="75.669642857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AppBasicsCard1" width="49" height="13"/>
+    </resources>
+</document>

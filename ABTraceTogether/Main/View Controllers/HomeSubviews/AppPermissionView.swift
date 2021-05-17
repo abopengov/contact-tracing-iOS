@@ -1,147 +1,105 @@
 import UIKit
 
 class AppPermissionView: UIView {
-    @IBOutlet private var appPermissionView: UIView!
-    @IBOutlet private var appPermissionHeaderLabel: UILabel!
-    @IBOutlet private var appPermissionInfoButton: UIButton!
-
-    @IBOutlet private var permissionEnabledView: UIView!
-    @IBOutlet private var permissionEnabledLabel: UILabel!
-    @IBOutlet private var permissionEnabledStatusImageView: UIImageView!
-
-    @IBOutlet private var bluetoothEnabledView: UIView!
-    @IBOutlet private var bluetoothEnabledLabel: UILabel!
-    @IBOutlet private var bluetoothEnabledStatusImageView: UIImageView!
-
-    @IBOutlet private var pushNotificationView: UIView!
-    @IBOutlet private var pushNotificationLabel: UILabel!
-    @IBOutlet private var pushNotificationStatusImageView: UIImageView!
-
-    @IBOutlet private var locationPermissionView: UIView!
-    @IBOutlet private var locationPermissionLabel: UILabel!
-    @IBOutlet private var locationPermissionStatusImageView: UIImageView!
-
     weak var homeViewControllerDelegate: HomeViewControllerDelegate?
+
+    @IBOutlet private var bluetoothPermissionLabel: UILabel!
+    @IBOutlet private var bluetoothPermissionStatusLabel: UILabel!
+    @IBOutlet private var bluetoothPermissionIcon: UIImageView!
+    @IBOutlet private var locationPermissionLabel: UILabel!
+    @IBOutlet private var locationPermissionStatusLabel: UILabel!
+    @IBOutlet private var locationPermissionIcon: UIImageView!
+    @IBOutlet private var pushPermissionLabel: UILabel!
+    @IBOutlet private var pushPermissionStatusLabel: UILabel!
+    @IBOutlet private var pushPermissionIcon: UIImageView!
+    @IBOutlet private var pushPermissionView: UIView!
+    @IBOutlet private var pushPermissionInstructionsView: UIView!
+    @IBOutlet private var pushPermissionInstructionsStep1Label: UILabel!
+    @IBOutlet private var pushPermissionInstructionsStep2Label: UILabel!
+    @IBOutlet private var gotoAppSettingsButton: UIButton!
+    @IBOutlet private var pushPermissionInstructionTopBorder: UIView!
+    @IBOutlet private var pushPermissionInstructionBottomBorder: UIView!
 
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        appPermissionHeaderLabel.setLabel(
-            with: homeAppPermissionsHeader,
-            using: .h2
+        pushPermissionLabel.textAlignment = .left
+        pushPermissionLabel.setLabel(
+            with: homeNotificationPermission,
+            using: .boldBodyText
         )
-        appPermissionHeaderLabel.textAlignment = .left
+        pushPermissionInstructionsStep1Label.setLabel(with: homeNotificationPermissionStep1, using: .blackDescriptionText)
+        pushPermissionInstructionsStep2Label.setLabel(with: homeNotificationPermissionStep2, using: .blackDescriptionText)
 
-        HomeScreenEnum.setUpHomeBackgroundDesign(view: permissionEnabledView)
-        HomeScreenEnum.setUpHomeBackgroundDesign(view: bluetoothEnabledView)
-        HomeScreenEnum.setUpHomeBackgroundDesign(view: pushNotificationView)
-        HomeScreenEnum.setUpHomeBackgroundDesign(view: locationPermissionView)
+        gotoAppSettingsButton.setButton(with: homeGotoAppSettings, and: .secondaryClickout, buttonStyle: .secondaryMedium)
     }
-    @IBAction private func appPermissionInfoButtonPressed(_ sender: Any) {
-       #if DEBUG
-       homeViewControllerDelegate?.presentDebugMode("HomeToDebugSegue")
-       #else
-        let errorAlert = UIAlertController(
-            title: NSLocalizedString(
-                homePermissionsTitle,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[homePermissionsTitle] ?? "",
-                comment: ""
-            ),
-            message: NSLocalizedString(
-                homePermissionsMessage,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[homePermissionsMessage] ?? "",
-                comment: ""
-            ),
-            preferredStyle: .alert
-        )
-        errorAlert.addAction(
-            UIAlertAction(
-                title: NSLocalizedString(
-                    homePermissionsDone,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[homePermissionsDone] ?? "",
-                    comment: ""
-                ),
-                style: .default,
-                handler: nil
-            )
-        )
-        homeViewControllerDelegate?.presentViewController(errorAlert)
-       #endif
+
+    @IBAction private func gotoAppSettingsButtonTapped(_ sender: Any) {
+        NavigationUtils.gotoAppSettings()
     }
 }
 
 extension AppPermissionView: AppPermissionDelegate {
-    func setPermisttionStatus(_ off: Bool) {
-        permissionEnabledLabel.textAlignment = .left
+    func setBluetoothEnabledStatus(_ off: Bool) {
+        bluetoothPermissionLabel.textAlignment = .left
+        bluetoothPermissionLabel.setLabel(
+            with: homeBluetoothPermission,
+            using: .boldBodyText
+        )
         if off {
-            permissionEnabledLabel.setLabel(
-                with: homePermissionsEnabledNo,
+            bluetoothPermissionStatusLabel.setLabel(
+                with: disabled,
                 using: .body
             )
-            permissionEnabledStatusImageView.image = UIImage(named: homeStatusIconOff)
+            bluetoothPermissionIcon.image = UIImage(named: homeStatusIconOff)
         } else {
-            permissionEnabledLabel.setLabel(
-                with: homePermissionsEnabledYes,
+            bluetoothPermissionStatusLabel.setLabel(
+                with: enabled,
                 using: .body
             )
-            permissionEnabledStatusImageView.image = UIImage(named: homeStatusIconOn)
-        }
-    }
-
-    func setBlueToothEnabledStatus(_ off: Bool) {
-        bluetoothEnabledLabel.textAlignment = .left
-        if off {
-            bluetoothEnabledLabel.setLabel(
-                with: homeBluetoothEnabledNo,
-                using: .body
-            )
-            bluetoothEnabledStatusImageView.image = UIImage(named: homeStatusIconOff)
-        } else {
-            bluetoothEnabledLabel.setLabel(
-                with: homeBluetoothEnabledYes,
-                using: .body
-            )
-            bluetoothEnabledStatusImageView.image = UIImage(named: homeStatusIconOn)
+            bluetoothPermissionIcon.image = UIImage(named: homeStatusIconOn)
         }
     }
 
     func setPushNotificationStatus(_ off: Bool) {
-        pushNotificationLabel.textAlignment = .left
+        pushPermissionInstructionsView.isHidden = !off
+        pushPermissionInstructionTopBorder.isHidden = !off
+        pushPermissionInstructionBottomBorder.isHidden = !off
         if off {
-            pushNotificationLabel.setLabel(
-                with: homePushNotificationsEnabledNo,
+            pushPermissionStatusLabel.setLabel(
+                with: disabled,
                 using: .body
             )
-            pushNotificationStatusImageView.image = UIImage(named: homeStatusIconOff)
+            pushPermissionIcon.image = UIImage(named: homeStatusIconOff)
+            pushPermissionView.backgroundColor = UIColor(red: 1.00, green: 0.98, blue: 0.98, alpha: 1.00)
         } else {
-            pushNotificationLabel.setLabel(
-                with: homePushNotificationsEnabledYes,
+            pushPermissionStatusLabel.setLabel(
+                with: enabled,
                 using: .body
             )
-            pushNotificationStatusImageView.image = UIImage(named: homeStatusIconOn)
+            pushPermissionIcon.image = UIImage(named: homeStatusIconOn)
+            pushPermissionView.backgroundColor = UIColor.white
         }
     }
 
     func setLocationServicesStatus(_ off: Bool) {
         locationPermissionLabel.textAlignment = .left
+        locationPermissionLabel.setLabel(
+            with: homeLocationPermission,
+            using: .boldBodyText
+        )
         if off {
-            locationPermissionLabel.setLabel(
-                with: homeLocationPermissionsEnabledNo,
+            locationPermissionStatusLabel.setLabel(
+                with: disabled,
                 using: .body
             )
-            locationPermissionStatusImageView.image = UIImage(named: homeStatusIconOff)
+            locationPermissionIcon.image = UIImage(named: homeStatusIconOff)
         } else {
-            locationPermissionLabel.setLabel(
-                with: homeLocationPermissionsEnabledYes,
+            locationPermissionStatusLabel.setLabel(
+                with: enabled,
                 using: .body
             )
-            locationPermissionStatusImageView.image = UIImage(named: homeStatusIconOn)
+            locationPermissionIcon.image = UIImage(named: homeStatusIconOn)
         }
     }
 }

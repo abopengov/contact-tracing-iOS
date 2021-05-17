@@ -9,4 +9,5 @@ struct DynamicUrl: Decodable {
     let mhr: Bool
     let gis: String
     let helpEmail: String
+    let closeContactsFaq: String
 }

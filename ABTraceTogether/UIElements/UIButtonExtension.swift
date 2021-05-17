@@ -1,9 +1,32 @@
 import UIKit
 
+enum ButtonStyle {
+    case primary
+    case secondary
+    case secondaryMedium
+    case underline
+
+    var textColor: UIColor {
+        switch self {
+        case .primary:
+            return UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+
+        case .secondary, .secondaryMedium:
+            return UIColor(red: 0, green: 0.439, blue: 0.769, alpha: 1)
+
+        case .underline:
+            return UIColor(red: 0, green: 0.439, blue: 0.769, alpha: 1)
+        }
+    }
+}
+
 enum ButtonImage {
     case arrow
     case check
-    case secondaryarrow
+    case clickout
+    case secondaryClickout
+    case secondaryArrow
+    case secondaryShare
 
     var name: String {
         switch self {
@@ -13,43 +36,62 @@ enum ButtonImage {
         case .check:
             return "Checkmark"
 
-        case .secondaryarrow:
+        case .secondaryClickout:
+            return "TakeMeIcon"
+
+        case .clickout:
+            return "TakeMeIconWhite"
+
+        case .secondaryArrow:
             return "Secondary Arrow"
+
+        case .secondaryShare:
+            return "ShareArrowBlue"
         }
     }
-    var textColor: UIColor {
-        switch self {
-        case .arrow:
-            return UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-
-        case .check:
-            return UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-
-        case .secondaryarrow:
-            return UIColor(red: 0, green: 0.439, blue: 0.769, alpha: 1)
-    }
-}
 }
 
 extension UIButton {
-    func setButton(with text: String, and buttonImage: ButtonImage) {
-        guard let font = UIFont(name: "HelveticaNeue-Bold", size: 18) else {
+    func setButton(with text: String, and buttonImage: ButtonImage? = nil, buttonStyle: ButtonStyle = .primary) {
+        let fontName = buttonStyle == .underline
+            ? "HelveticaNeue"
+            : buttonStyle == .secondaryMedium
+            ? "HelveticaNeue-Medium"
+            : "HelveticaNeue-Bold"
+        let fontSize = (buttonStyle == .underline || buttonStyle == .secondaryMedium) ? CGFloat(16) : CGFloat(18)
+
+        guard let font = UIFont(name: fontName, size: fontSize) else {
             return
         }
 
-        if self.isEnabled {
-            self.backgroundColor = UIColor(red: 0, green: 0.439, blue: 0.769, alpha: 1)
-        } else {
-            self.backgroundColor = UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1)
+        switch buttonStyle {
+        case .primary:
+            if self.isEnabled {
+                self.backgroundColor = UIColor(red: 0, green: 0.439, blue: 0.769, alpha: 1)
+            } else {
+                self.backgroundColor = UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1)
+            }
+
+        case .secondary, .secondaryMedium:
+            self.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            self.borderWidth = 1
+            self.borderColor = UIColor(red: 0, green: 0.439, blue: 0.769, alpha: 1)
+
+        case .underline:
+            self.backgroundColor = UIColor.clear
         }
 
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        let attributes: [NSAttributedString.Key: Any] = [
+        var attributes: [NSAttributedString.Key: Any] = [
             .font: font,
-            .foregroundColor: buttonImage.textColor,
+            .foregroundColor: buttonStyle.textColor,
             .paragraphStyle: paragraphStyle
         ]
+
+        if buttonStyle == .underline {
+            attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
+        }
 
         let localizedText = NSLocalizedString(
             text,
@@ -60,10 +102,19 @@ extension UIButton {
         )
 
         let fullString = NSMutableAttributedString(
-            string: localizedText + "  ",
+            string: localizedText,
             attributes: attributes
         )
-        if let buttonImage = UIImage(named: buttonImage.name) {
+
+        fullString.append(NSAttributedString(string: "  "))
+
+        guard let buttonImageName = buttonImage?.name else {
+            self.setAttributedTitle(fullString, for: .normal)
+            self.layoutIfNeeded()
+            return
+        }
+
+        if let buttonImage = UIImage(named: buttonImageName) {
             let image1Attachment = textAttachment(font: font, image: buttonImage)
 
             let image1String = NSAttributedString(attachment: image1Attachment)
@@ -71,6 +122,7 @@ extension UIButton {
             fullString.append(image1String)
             self.setAttributedTitle(fullString, for: .normal)
         }
+
         self.layoutIfNeeded()
     }
 

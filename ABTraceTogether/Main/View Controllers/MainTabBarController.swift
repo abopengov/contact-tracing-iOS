@@ -8,14 +8,15 @@ class MainTabBarController: UITabBarController {
         if let items = tabBar.items {
             // Setting the title text color of all tab bar items:
             for item in items {
+                item.image = item.image?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
                 item.setTitleTextAttributes(
                     [
                         .foregroundColor: UIColor(
-                            red: 0.329,
-                            green: 0.784,
-                            blue: 0.91,
-                            alpha: 1
-                    )
+                            red: 0.00,
+                            green: 0.44,
+                            blue: 0.77,
+                            alpha: 1.00
+                        )
                     ],
                     for: .selected
                 )
@@ -46,10 +47,10 @@ class MainTabBarController: UITabBarController {
                 comment: ""
             )
             items[2].title = NSLocalizedString(
-                faqTabTitle,
+                menuLearnMore,
                 tableName: "",
                 bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[faqTabTitle] ?? "",
+                value: BKLocalizationManager.sharedInstance.defaultStrings[menuLearnMore] ?? "",
                 comment: ""
             )
             items[3].title = NSLocalizedString(

@@ -6,13 +6,20 @@ class UploadDataToNoteViewController: UIViewController {
     @IBOutlet private var uploadDataButton: UIButton!
     @IBOutlet private var uploadDataButtonMHR: UIButton!
     @IBOutlet private var returnHomeButton: UIBarButtonItem!
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ctFlowSegue" {
+            if let destinationVC = segue.destination as? TestDateViewController {
+                destinationVC.contactTracerFlow = true
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.borderWidth = 0
-        navigationController?.navigationBar.borderColor = .white
-        navigationController?.navigationBar.shadowColor = .white
-        navigationController?.navigationBar.barStyle = .blackTranslucent
+        navigationController?.navigationBar.clipsToBounds = true
+
         uploadDataHeader.setLabel(
             with: uploadDataHeaderString,
             using: .h2
@@ -36,15 +43,22 @@ class UploadDataToNoteViewController: UIViewController {
             uploadDataButtonMHR.isHidden = false
             uploadDataButtonMHR.setButton(
                 with: mhrButton,
-                and: .secondaryarrow
+                and: .secondaryArrow,
+                buttonStyle: .secondary
             )
-            uploadDataButtonMHR.backgroundColor = mhrButtonColour
-            uploadDataButtonMHR.borderWidth = 1
-            uploadDataButtonMHR.borderColor = mhrBorderButtonColour
         } else {
             uploadDataButtonMHR.isHidden = true
         }
     }
+
+    @IBAction private func ctButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "ctFlowSegue", sender: self)
+    }
+
+    @IBAction private func mhrButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "mhrFlowSegue", sender: self)
+    }
+
     @IBAction private func returnToHomeScreen(_ sender: UIBarButtonItem) {
         HomeScreenEnum.showHomeScreen()
     }

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="lTp-uQ-2sy" userLabel="Learn More Two Item Card View" customClass="LearnMoreTwoItemCardView" customModule="ABTTDev" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="582"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" verticalHuggingPriority="100" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="100" image="AppBasicsCard3" translatesAutoresizingMaskIntoConstraints="NO" id="y6S-72-JzS">
+                    <rect key="frame" x="0.0" y="0.0" width="420" height="177"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fnl-AC-aG4" userLabel="Item 1 Image View">
+                    <rect key="frame" x="22" y="309" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="k9N-yl-wdL"/>
+                        <constraint firstAttribute="width" constant="22" id="qA0-Gg-FGw"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two devices with APP NAME come in close contact" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wu8-gI-5cO" userLabel="Item 1 Label">
+                    <rect key="frame" x="58" y="309" width="346" height="38.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yZQ-CM-y5M" userLabel="Item 2 Image View">
+                    <rect key="frame" x="22" y="372.5" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="Dkv-wh-t4u"/>
+                        <constraint firstAttribute="width" constant="22" id="web-Y2-tGk"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi4-5J-yOl" userLabel="Item 2 Label">
+                    <rect key="frame" x="58" y="372.5" width="346" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="inD-dD-M90"/>
+            <color key="backgroundColor" red="0.90196078430000004" green="0.94901960780000005" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Wu8-gI-5cO" firstAttribute="top" secondItem="fnl-AC-aG4" secondAttribute="top" id="1Y7-wU-Jlx"/>
+                <constraint firstItem="yZQ-CM-y5M" firstAttribute="top" secondItem="Wu8-gI-5cO" secondAttribute="bottom" constant="25" id="3If-MP-mgw"/>
+                <constraint firstItem="Wu8-gI-5cO" firstAttribute="leading" secondItem="fnl-AC-aG4" secondAttribute="trailing" constant="14" id="4Xm-1y-M3u"/>
+                <constraint firstItem="wi4-5J-yOl" firstAttribute="top" secondItem="Wu8-gI-5cO" secondAttribute="bottom" constant="25" id="AM7-2v-paN"/>
+                <constraint firstAttribute="trailing" secondItem="wi4-5J-yOl" secondAttribute="trailing" constant="16" id="K23-i5-khO"/>
+                <constraint firstItem="fnl-AC-aG4" firstAttribute="centerY" secondItem="inD-dD-M90" secondAttribute="centerY" multiplier="11:10" id="LPU-co-mRg"/>
+                <constraint firstAttribute="trailing" secondItem="y6S-72-JzS" secondAttribute="trailing" id="Pwo-EU-e3y"/>
+                <constraint firstItem="wi4-5J-yOl" firstAttribute="leading" secondItem="yZQ-CM-y5M" secondAttribute="trailing" constant="14" id="QF2-li-wF2"/>
+                <constraint firstItem="y6S-72-JzS" firstAttribute="top" secondItem="lTp-uQ-2sy" secondAttribute="top" id="fph-qP-Ajh"/>
+                <constraint firstAttribute="trailing" secondItem="Wu8-gI-5cO" secondAttribute="trailing" constant="16" id="kwd-98-4Tj"/>
+                <constraint firstItem="fnl-AC-aG4" firstAttribute="leading" secondItem="lTp-uQ-2sy" secondAttribute="leading" constant="22" id="nzh-fC-lh7"/>
+                <constraint firstItem="y6S-72-JzS" firstAttribute="leading" secondItem="lTp-uQ-2sy" secondAttribute="leading" id="pfQ-qB-dJw"/>
+                <constraint firstItem="yZQ-CM-y5M" firstAttribute="leading" secondItem="lTp-uQ-2sy" secondAttribute="leading" constant="22" id="z0S-4B-cbI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cardImageView" destination="y6S-72-JzS" id="e7J-I7-b9k"/>
+                <outlet property="item1ImageView" destination="fnl-AC-aG4" id="u4B-ap-18y"/>
+                <outlet property="item1Label" destination="Wu8-gI-5cO" id="KhC-vh-hjH"/>
+                <outlet property="item2ImageView" destination="yZQ-CM-y5M" id="HTL-jo-G0l"/>
+                <outlet property="item2Label" destination="wi4-5J-yOl" id="vsI-2e-KSQ"/>
+            </connections>
+            <point key="canvasLocation" x="-160.86956521739131" y="40.178571428571423"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AppBasicsCard3" width="334" height="177"/>
+    </resources>
+</document>
