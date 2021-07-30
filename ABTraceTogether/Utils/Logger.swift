@@ -12,7 +12,7 @@ enum Logger {
 
     static func logError(with message: String) {
         // swiftlint:disable:next redundant_type_annotation
-        let logger: OCLogger = OCLogger.getInstanceWithPackage("AbTraceTogether")
+        let logger: OCLogger = OCLogger.getInstanceWithPackage("*APP NAME*")
         logger.logErrorWithMessages(message: message, "Error")
         OCLogger.send()
     }

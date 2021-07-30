@@ -4,124 +4,71 @@ class PushNotificationPermissionViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        generateHowItWorksViews(in: contentView)
+        generate(in: contentView)
+        BlueTraceLocalNotifications.shared.checkAuthorization { _ in }
     }
 }
 
 // MARK: - Button action
 extension PushNotificationPermissionViewController {
     override func buttonAction(_ sender: UIButton) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { _, _ in
-            DispatchQueue.main.async {
-                self.navigator.navigate(from: self.identifier)
-            }
-        }
+        self.navigator.navigate(from: self.identifier)
     }
 }
 
 // MARK: 
 extension PushNotificationPermissionViewController {
-    private func generateHowItWorksViews(in contentView: UIView) {
+    private func generate(in contentView: UIView) {
         clearSubViews(from: contentView)
-
-        let topMargin = UIScreen.main.bounds.height > 600 ? 80 : 20
-
-        let headerImageView = UIImageView()
-        contentView.addSubview(headerImageView)
-        headerImageView.translatesAutoresizingMaskIntoConstraints = false
-        headerImageView.contentMode = .scaleAspectFit
-        headerImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
-        headerImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
-        headerImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: CGFloat(topMargin)).isActive = true
-
-        headerImageView.heightAnchor.constraint(greaterThanOrEqualToConstant: 150).isActive = true
-
-        headerImageView.image = UIImage(named: "NotificationIllustration")
-
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(scrollView)
-
-        let scrollViewContainer = UIStackView()
-
-        scrollViewContainer.axis = .vertical
-        scrollViewContainer.spacing = 10
-
-        scrollViewContainer.translatesAutoresizingMaskIntoConstraints = false
-
-        scrollView.addSubview(scrollViewContainer)
-        generateContent(in: scrollViewContainer)
-
-        scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: -10).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-
-        scrollViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        scrollViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        generateContent(in: contentView)
     }
 
-    private func generateContent(in parentView: UIStackView) {
-        let newView = UIView()
-        parentView.addArrangedSubview(newView)
-        newView.translatesAutoresizingMaskIntoConstraints = false
+    private func generateContent(in parentView: UIView) {
+        let headerImageView = UIImageView()
+        parentView.addSubview(headerImageView)
+        headerImageView.translatesAutoresizingMaskIntoConstraints = false
+        headerImageView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+        headerImageView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
+        headerImageView.topAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
+        headerImageView.image = UIImage(named: "NotificationStep")
+        headerImageView.contentMode = .scaleAspectFit
+        headerImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
 
-        let subHeaderMessageLabel = UILabel()
-        newView.addSubview(subHeaderMessageLabel)
-        subHeaderMessageLabel.translatesAutoresizingMaskIntoConstraints = false
-        subHeaderMessageLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 35).isActive = true
-        subHeaderMessageLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -35).isActive = true
-        subHeaderMessageLabel.topAnchor.constraint(equalTo: newView.topAnchor, constant: subHeaderOffsetTop).isActive = true
+        let headerLabel = UILabel()
+        parentView.addSubview(headerLabel)
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel.setLabel(with: onboardingNotificationsTitle, using: .h2)
+        headerLabel.textAlignment = .left
+        headerLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
+        headerLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
+        headerLabel.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 64).isActive = true
 
-        subHeaderMessageLabel.setLabel(
-            with: permissionStep1,
-            using: .stepText
-        )
+        let descriptionView = UIView()
+        parentView.addSubview(descriptionView)
+        descriptionView.backgroundColor = Colors.LightGrey
+        descriptionView.cornerRadius = 6
+        descriptionView.translatesAutoresizingMaskIntoConstraints = false
+        descriptionView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
+        descriptionView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
+        descriptionView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 10).isActive = true
 
-        let headerMessageLabel1 = UILabel()
-        newView.addSubview(headerMessageLabel1)
-        headerMessageLabel1.translatesAutoresizingMaskIntoConstraints = false
-        headerMessageLabel1.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 35).isActive = true
-        headerMessageLabel1.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -35).isActive = true
-        headerMessageLabel1.topAnchor.constraint(equalTo: subHeaderMessageLabel.bottomAnchor, constant: headerOffsetTop).isActive = true
-
-        headerMessageLabel1.setLabel(
-            with: permissionHeader1,
-            using: .h2
-        )
-
-        let detailMessageLabel1 = UILabel()
-        newView.addSubview(detailMessageLabel1)
-        detailMessageLabel1.translatesAutoresizingMaskIntoConstraints = false
-        detailMessageLabel1.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-        detailMessageLabel1.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        detailMessageLabel1.topAnchor.constraint(equalTo: headerMessageLabel1.bottomAnchor, constant: 20).isActive = true
-
-        detailMessageLabel1.setLabel(
-            with: permissionDetail1,
-            using: .body
-        )
-
-        if let versionLabelString = versionLabelString {
-            let versionLabel = UILabel()
-            newView.addSubview(versionLabel)
-            versionLabel.translatesAutoresizingMaskIntoConstraints = false
-            versionLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-            versionLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-            versionLabel.topAnchor.constraint(equalTo: detailMessageLabel1.bottomAnchor, constant: 20).isActive = true
-
-            versionLabel.setLabel(
-                with: versionLabelString,
-                using: .body
-            )
-
-            newView.bottomAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 20).isActive = true
-        } else {
-            newView.bottomAnchor.constraint(equalTo: detailMessageLabel1.bottomAnchor, constant: 20).isActive = true
-        }
+        
+        let descriptionLabel = UILabel()
+        descriptionView.addSubview(descriptionLabel)
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.setLabel(with: onboardingNotificationsDescription, using: .grayDescriptionText)
+        descriptionLabel.leadingAnchor.constraint(equalTo: descriptionView.leadingAnchor, constant: 16).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor, constant: -16).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 12).isActive = true
+        descriptionLabel.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: -12).isActive = true
+        
+        let spacerView = UIView()
+        parentView.addSubview(spacerView)
+        spacerView.translatesAutoresizingMaskIntoConstraints = false
+        spacerView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
+        spacerView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
+        spacerView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 20).isActive = true
+        
+        parentView.bottomAnchor.constraint(equalTo: spacerView.bottomAnchor, constant: 20).isActive = true
     }
 }

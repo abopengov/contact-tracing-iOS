@@ -32,13 +32,7 @@ class UploadDataToNoteViewController: UIViewController {
             with: ctButton,
             and: .arrow
         )
-        returnHomeButton.title = NSLocalizedString(
-            backButtonString,
-            tableName: "",
-            bundle: BKLocalizationManager.sharedInstance.currentBundle,
-            value: BKLocalizationManager.sharedInstance.defaultStrings[backButtonString] ?? "",
-            comment: ""
-        )
+        returnHomeButton.title = backButtonString.localize()
         if UserDefaults.standard.bool(forKey: mhrKey) {
             uploadDataButtonMHR.isHidden = false
             uploadDataButtonMHR.setButton(

@@ -1,6 +1,8 @@
+import BackgroundTasks
 import CoreBluetooth
 import CoreData
 import CoreMotion
+import GoogleMaps
 import Herald
 import IBMMobileFirstPlatformFoundation
 import UIKit
@@ -13,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         BKLocalizationManager.sharedInstance.setCurrentBundle(forLanguage: Locale.current.languageCode ?? "en")
-        //Enable this to pin own certificate
+// Place MFP SSL Certificate in the project
 //        WLClient.sharedInstance().pinTrustedCertificatePublicKey(fromFile: "customCertificate.cer")
         WLClient.sharedInstance().registerChallengeHandler(SMSCodeChallengeHandler(securityCheck: SMSCodeChallengeHandler.securityCheck))
         WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE)
@@ -26,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setupHerald()
 
+        PauseScheduler.shared.setup()
+
+        GMSServices.provideAPIKey(googleMapsApiKey)
+
         return true
     }
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -34,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SettingsBundleHelper.setVersionAndBuildNumber()
         if (!FairEfficacyInstrumentation.shared.enabled) {
             checkIfAppRegistered()
-            getAllUrls(Locale.current.languageCode ?? "en")
+            UrlsRepository().getAllUrlsAndPersist()
         }
     }
 
@@ -108,51 +114,6 @@ extension AppDelegate {
     }
 }
 
-// MARK: - App Url
-extension AppDelegate {
-    func getAllUrls(_ language: String) {
-        let getStatisticsUrlString = getUrlsApi
-        guard let getStatisticsUrl = URL(string: getStatisticsUrlString) else {
-            Logger.logError(with: "Get Urls error. Error converting from getStatisticsUrlString to URL: \(getStatisticsUrlString)")
-            return
-        }
-        guard let wlResourceRequest = WLResourceRequest(
-            url: getStatisticsUrl,
-            method: getMethodString
-        ) else {
-            Logger.logError(with: "Get Urls error. Error converting to wlResourceRequest. \(getStatisticsUrl)")
-            return
-        }
-        wlResourceRequest.queryParameters = ["lang": language]
-        wlResourceRequest.send {response, error -> Void  in
-            if let error = error {
-                Logger.logError(with: "\(error)")
-            }
-            guard let data = response?.responseData else {
-                return
-            }
-            do {
-                let dynamicUrl = try JSONDecoder().decode(DynamicUrl.self, from: data)
-                UserDefaults.standard.set(dynamicUrl.guidance, forKey: guidanceKey)
-                UserDefaults.standard.set(dynamicUrl.stats, forKey: statisticsKey)
-                UserDefaults.standard.set(dynamicUrl.home, forKey: caseSummaryKey)
-                UserDefaults.standard.set(dynamicUrl.faq, forKey: faqUrlKey)
-                UserDefaults.standard.set(dynamicUrl.privacy, forKey: privacyUrlKey)
-                UserDefaults.standard.set(dynamicUrl.mhr, forKey: mhrKey)
-                UserDefaults.standard.set(dynamicUrl.gis, forKey: gisKey)
-                UserDefaults.standard.set(dynamicUrl.helpEmail, forKey: helpEmailKey)
-                UserDefaults.standard.set(dynamicUrl.closeContactsFaq, forKey: closeContactsFaqKey)
-                NotificationCenter.default.post(
-                    name: Notification.Name(notificationNameUrl),
-                    object: nil,
-                    userInfo: [caseSummaryKey: dynamicUrl.home]
-                )
-                BKLocalizationManager.sharedInstance.dynamicUrl = dynamicUrl
-            } catch {}
-        }
-    }
-}
-
 // MARK: - Network Calls
 extension AppDelegate {
     func checkIfAppRegistered() {
@@ -195,12 +156,47 @@ extension AppDelegate {
 // MARK: - Herald Setup
 extension AppDelegate {
     private func setupHerald() {
-        if onboardingNavigator.successCompleted && BluetoothStateManager.shared.isBluetoothAuthorized() {
-            HeraldManager.shared.start()
+        if !BluetoothStateManager.shared.isBluetoothAuthorized() {
+            Logger.DLog("Bluetooth is not authorized. Herald not started.")
+        } else if !onboardingNavigator.successCompleted {
+            Logger.DLog("Onboarding not yet done. Herald not started.")
+        } else if PauseScheduler.shared.withinPauseSchedule {
+            Logger.DLog("Detection is paused. Herald not started.")
         } else {
-            Logger.DLog("Onboarding not yet done.")
+            HeraldManager.shared.start()
         }
 
         EncounterMessageManager.shared.setup()
+    }
+}
+
+// Google Maps
+extension AppDelegate {
+    private var googleMapsApiKey: String {
+        get {
+            guard let filePath = Bundle.main.path(forResource: "AppProperties", ofType: "plist") else {
+                Logger.DLog("Couldn't find file AppProperties")
+                return ""
+            }
+
+            let plist = NSDictionary(contentsOfFile: filePath)
+            guard let value = plist?.object(forKey: "MAPS_API_KEY") as? String else {
+                Logger.DLog("Couldn't find MAPS_API_KEY from AppProperties.plist")
+                return ""
+            }
+
+            return value
+        }
+    }
+}
+
+// Pause
+extension AppDelegate {
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        Logger.DLog("performFetchWithCompletionHandler")
+
+        PauseScheduler.shared.togglePause()
+
+        completionHandler(.newData)
     }
 }

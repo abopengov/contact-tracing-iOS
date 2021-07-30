@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeStatsView" customModule="ABTTDev" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="416" height="370"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eXQ-6C-keq" customClass="ContentSizedTableView" customModule="ABTTDev" customModuleProvider="target">
+                    <rect key="frame" x="20" y="0.0" width="376" height="370"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="mGL-1i-KLX"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="qt0-0e-SIc"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="eXQ-6C-keq" secondAttribute="trailing" constant="20" id="6Mc-SD-953"/>
+                <constraint firstItem="eXQ-6C-keq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Ajb-OP-qlj"/>
+                <constraint firstAttribute="bottom" secondItem="eXQ-6C-keq" secondAttribute="bottom" id="SOC-M5-LMc"/>
+                <constraint firstItem="eXQ-6C-keq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YKi-nE-VwO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="eXQ-6C-keq" id="16e-8j-nSB"/>
+            </connections>
+            <point key="canvasLocation" x="142.02898550724638" y="-23.4375"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

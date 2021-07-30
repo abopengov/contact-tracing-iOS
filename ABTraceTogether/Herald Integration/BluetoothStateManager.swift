@@ -71,7 +71,7 @@ class BluetoothStateManager {
         #endif
 
         #if RELEASE
-        let alert = UIAlertController(title: "Please turn on your bluetooth", message: "This application requires Bluetooth to be activated to protect you and your loved ones. Please turn on Bluetooth in your iOS settings, then reopen APP NAME.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Please turn on your bluetooth", message: "This application requires Bluetooth to be activated to protect you and your loved ones. Please turn on Bluetooth in your iOS settings, then reopen *APP NAME*.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         DispatchQueue.main.async {
             var topController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController

@@ -1,4 +1,5 @@
 import SafariServices
+import WebKit
 import UIKit
 
 let userConcentedToPrivacy = "userConcentedToPrivacy"
@@ -16,10 +17,23 @@ class PrivacyViewController: BaseViewController {
         }
     }
 
+    var webView: WKWebView?
+    var privacyVersion: Int?
+    let privacyManager = PrivacyManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         generatePrivacyViews(in: contentView)
+
+        privacyManager.getPrivacyPolicy { [weak self] (privacy, version) in
+            if let privacy = privacy, let version = version {
+                self?.privacyVersion = version
+                self?.webView?.loadHTMLString(privacy, baseURL: nil)
+            }
+        }
+
+        privacyConcented = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -46,7 +60,15 @@ extension PrivacyViewController {
         bottomButton.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -30).isActive = true
         bottomButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
         bottomButton.setButton(with: nextButtonText, and: .arrow)
-        bottomButton.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        bottomButton.addTarget(self, action: #selector(nextAction(_:)), for: .touchUpInside)
+    }
+    
+    @objc
+    private func nextAction(_ sender: UIButton) {
+        if let privacyVersion = privacyVersion {
+            privacyManager.acceptPrivacyPolicy(version: privacyVersion)
+        }
+        buttonAction(sender)
     }
 
     @objc
@@ -143,144 +165,16 @@ extension PrivacyViewController {
         parentView.addArrangedSubview(newView)
         newView.translatesAutoresizingMaskIntoConstraints = false
 
-        let headerMessageLabel1 = UILabel()
-        newView.addSubview(headerMessageLabel1)
-        headerMessageLabel1.translatesAutoresizingMaskIntoConstraints = false
-        headerMessageLabel1.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-        headerMessageLabel1.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        headerMessageLabel1.topAnchor.constraint(equalTo: newView.topAnchor, constant: 40).isActive = true
+        let webView = WKWebView()
+        webView.navigationDelegate = self
+        webView.scrollView.isScrollEnabled = false
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        newView.addSubview(webView)
+        webView.topAnchor.constraint(equalTo: newView.topAnchor, constant: 20).isActive = true
+        webView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
+        webView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
 
-        headerMessageLabel1.setLabel(
-            with: privacyHeader,
-            using: .h2
-        )
-        headerMessageLabel1.textAlignment = .left
-
-        let detailMessageLabel1 = UITextView()
-        newView.addSubview(detailMessageLabel1)
-        detailMessageLabel1.translatesAutoresizingMaskIntoConstraints = false
-        detailMessageLabel1.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-        detailMessageLabel1.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        detailMessageLabel1.topAnchor.constraint(equalTo: headerMessageLabel1.bottomAnchor, constant: 20).isActive = true
-
-        detailMessageLabel1.setAttributedEmailLink(
-            with: NSLocalizedString(
-                privacy_policy_text1,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text1] ?? "",
-                comment: ""
-            ) + "\n\n" +
-                NSLocalizedString(
-                    privacy_policy_text2,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text2] ?? "",
-                    comment: ""
-                ) + "\n\n" +
-                NSLocalizedString(
-                    privacy_policy_text3,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text3] ?? "",
-                    comment: ""
-                ) + "\n\n" +
-                NSLocalizedString(
-                    privacy_policy_text4,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text4] ?? "",
-                    comment: ""
-                ) + "\n\n" +
-                NSLocalizedString(
-                    privacy_policy_text5,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text5] ?? "",
-                    comment: ""
-                ) + "\n\n" +
-                NSLocalizedString(
-                    privacy_policy_text6,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text6] ?? "",
-                    comment: ""
-                ).replacingOccurrences(of: NSLocalizedString(
-                    privacy_policy_text6_key,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text6_key] ?? "",
-                    comment: ""
-                ), with: ""),
-            linkText: NSLocalizedString(
-                privacy_policy_text6_key,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text6_key] ?? "",
-                comment: ""
-            ),
-            linkurl: UserDefaults.standard.string(forKey: privacyUrlKey) ?? privacyLink,
-            middleText: "\n\n" + NSLocalizedString(
-                privacy_policy_text7,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text7] ?? "",
-                comment: ""
-            ) + "\n\n" +
-                NSLocalizedString(
-                    privacy_policy_text8,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text8] ?? "",
-                    comment: ""
-                ) + "\n\n" +
-                NSLocalizedString(
-                    privacy_policy_text9,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text9] ?? "",
-                    comment: ""
-                ).replacingOccurrences(of: NSLocalizedString(
-                    privacy_policy_text9_key,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text9] ?? "",
-                    comment: ""
-                ), with: ""),
-            secondLinkText: NSLocalizedString(
-                privacy_policy_text9_key,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text9_key] ?? "",
-                comment: ""
-            ),
-            secondLinkurl: UserDefaults.standard.string(forKey: faqUrlKey) ?? privacyFaqLink,
-            secondMiddleText: "\n\n" + NSLocalizedString(
-                privacy_policy_text10,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text10] ?? "",
-                comment: ""
-            ).replacingOccurrences(of: ".", with: " ") ,
-            firstEmailLink: UserDefaults.standard.string(forKey: helpEmailKey) ?? "help@example.com",
-            endText: ".\n\n" +
-                NSLocalizedString(
-                    privacy_policy_text11,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text11] ?? "",
-                    comment: ""
-                ) + "\n\n" + NSLocalizedString(
-                    privacy_policy_text12,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[privacy_policy_text12] ?? "",
-                    comment: ""
-                ),
-            secondEmailLink: UserDefaults.standard.string(forKey: helpEmailKey) ?? "help@example.com"
-        )
-        detailMessageLabel1.isScrollEnabled = false
-        detailMessageLabel1.isEditable = false
+        self.webView = webView
 
         let privacyPolicyOnlineButton = UIButton()
         newView.addSubview(privacyPolicyOnlineButton)
@@ -288,23 +182,11 @@ extension PrivacyViewController {
         privacyPolicyOnlineButton.translatesAutoresizingMaskIntoConstraints = false
         privacyPolicyOnlineButton.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
         privacyPolicyOnlineButton.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        privacyPolicyOnlineButton.topAnchor.constraint(equalTo: detailMessageLabel1.bottomAnchor, constant: 10).isActive = true
+        privacyPolicyOnlineButton.topAnchor.constraint(equalTo: webView.bottomAnchor, constant: 10).isActive = true
         privacyPolicyOnlineButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        privacyPolicyOnlineButton.setTitle(
-            NSLocalizedString(
-                privacyPolicyButtonText,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[privacyPolicyButtonText] ?? "",
-                comment: ""
-            ),
-            for: .normal
-        )
+        privacyPolicyOnlineButton.setButton(with: privacyPolicyButtonText, buttonStyle: .secondary)
         privacyPolicyOnlineButton.titleLabel?.font = bigButtonFont
-        privacyPolicyOnlineButton.setTitleColor(privacyButtonColor, for: .normal)
         privacyPolicyOnlineButton.addTarget(self, action: #selector(privacyPolicyOnlineButtonAction(_:)), for: .touchUpInside)
-        privacyPolicyOnlineButton.layer.borderWidth = 1.0
-        privacyPolicyOnlineButton.layer.borderColor = privacyButtonColor.cgColor
 
         let faqButton = UIButton()
         newView.addSubview(faqButton)
@@ -314,21 +196,8 @@ extension PrivacyViewController {
         faqButton.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
         faqButton.topAnchor.constraint(equalTo: privacyPolicyOnlineButton.bottomAnchor, constant: 10).isActive = true
         faqButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        faqButton.setTitle(
-            NSLocalizedString(
-                privacyFaqButtonText,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[privacyFaqButtonText] ?? "",
-                comment: ""
-            ),
-            for: .normal
-        )
-        faqButton.titleLabel?.font = bigButtonFont
-        faqButton.setTitleColor(privacyButtonColor, for: .normal)
+        faqButton.setButton(with: privacyFaqButtonText, buttonStyle: .secondary)
         faqButton.addTarget(self, action: #selector(faqButtonAction(_:)), for: .touchUpInside)
-        faqButton.layer.borderWidth = 1.0
-        faqButton.layer.borderColor = privacyButtonColor.cgColor
 
         newView.addSubview(iAgreeCheckbox)
         iAgreeCheckbox.isSelected = false
@@ -376,3 +245,42 @@ extension PrivacyViewController {
         }
     }
 }
+
+extension PrivacyViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange) -> Bool {
+        if url.scheme == "http" || url.scheme == "https" {
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true, completion: nil)
+            return false
+        } else {
+
+            return true
+        }
+    }
+}
+
+extension PrivacyViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            webView.heightAnchor.constraint(equalToConstant: webView.scrollView.contentSize.height).isActive = true
+        }
+    }
+
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard let url = navigationAction.request.url else {
+            decisionHandler(.allow)
+            return
+        }
+
+        if url.scheme == "http" || url.scheme == "https" {
+            decisionHandler(.cancel)
+
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true, completion: nil)
+        } else if (url.scheme == "mailto") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
+    }}

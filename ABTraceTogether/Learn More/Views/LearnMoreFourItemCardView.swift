@@ -3,13 +3,15 @@ import UIKit
 class LearnMoreFourItemCardView: UIView {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var item1ImageView: UIImageView!
-    @IBOutlet private var item1Label: UILabel!
+    @IBOutlet private var item1Label: UILabelWithLink!
     @IBOutlet private var item2ImageView: UIImageView!
-    @IBOutlet private var item2Label: UILabel!
+    @IBOutlet private var item2Label: UILabelWithLink!
     @IBOutlet private var item3ImageView: UIImageView!
-    @IBOutlet private var item3Label: UILabel!
+    @IBOutlet private var item3Label: UILabelWithLink!
     @IBOutlet private var item4ImageView: UIImageView!
-    @IBOutlet private var item4Label: UILabel!
+    @IBOutlet private var item4Label: UILabelWithLink!
+
+    weak var delegate: LearnMoreFourItemCardViewDelegate?
 
     var titleText: String {
         get {
@@ -78,11 +80,12 @@ class LearnMoreFourItemCardView: UIView {
 
     func addLinkToItem(itemIndex: Int, textToFind: String, linkURL: String) {
         if let itemLabel = getItemLabelForIndex(itemIndex: itemIndex) {
-            itemLabel.addLink(textToFind: textToFind, linkURL: linkURL)
+            itemLabel.addLink(textToFind: textToFind, value: linkURL)
+            itemLabel.delegate = self
         }
     }
 
-    private func getItemLabelForIndex(itemIndex: Int) -> UILabel? {
+    private func getItemLabelForIndex(itemIndex: Int) -> UILabelWithLink? {
         switch itemIndex {
         case 1:
             return item1Label
@@ -100,4 +103,14 @@ class LearnMoreFourItemCardView: UIView {
             return nil
         }
     }
+}
+
+extension LearnMoreFourItemCardView: UILabelWithLinkDelegate {
+    func linkClickedWithValue(_ value: Any) {
+        self.delegate?.linkClickedWithValue(value)
+    }
+}
+
+protocol LearnMoreFourItemCardViewDelegate: AnyObject {
+    func linkClickedWithValue(_ value: Any)
 }

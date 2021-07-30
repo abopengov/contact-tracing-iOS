@@ -115,16 +115,21 @@ extension BKLocalizationManager {
         wlResourceRequest.queryParameters = ["lang": language]
         wlResourceRequest.send { response, error -> Void  in
             if let error = error {
-                Logger.logError(with: "\(error)")
+                Logger.logError(with: "Error retrieving localization content: \(error)")
                 NotificationCenter.default.post(name: Notification.Name(LanguageChangeNotification), object: nil)
             }
             guard let data = response?.responseData else {
+                Logger.logError(with: "Localization content is nil or empty")
+                NotificationCenter.default.post(name: Notification.Name(LanguageChangeNotification), object: nil)
                 return
             }
             do {
                 let parsedJson = try self.parseJsonData(data)
                 try self.writeToBundle(with: parsedJson)
-            } catch {}
+            } catch {
+                Logger.logError(with: "Error parsing localization content: \(error)")
+                NotificationCenter.default.post(name: Notification.Name(LanguageChangeNotification), object: nil)
+            }
         }
     }
 }
@@ -167,7 +172,6 @@ extension BKLocalizationManager {
 
 // MARK: - Load local string file
 extension BKLocalizationManager {
-
     func getDefaultLanguageFromLocalFile() -> [String: String]? {
         do {
             guard let bundlePath = Bundle.main.path(

@@ -82,7 +82,7 @@ extension WelcomeViewController {
         logoView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         logoView.heightAnchor.constraint(equalToConstant: 25).isActive = true
 
-        logoView.image = UIImage(named: "org-logo-vector 1")
+        logoView.image = UIImage(named: "government-of-alberta-logo-vector 1")
         let logoMessageLabel = UILabel()
         contentView.addSubview(logoMessageLabel)
         logoMessageLabel.translatesAutoresizingMaskIntoConstraints = false

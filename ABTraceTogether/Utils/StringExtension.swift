@@ -1,7 +1,8 @@
 import Foundation
+
 extension String {
     func localize() -> String {
-        return NSLocalizedString(
+        NSLocalizedString(
             self,
             tableName: "",
             bundle: BKLocalizationManager.sharedInstance.currentBundle,

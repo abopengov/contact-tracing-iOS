@@ -1,6 +1,8 @@
 import UIKit
 
 public class UILabelWithLink: UILabel {
+    weak var delegate: UILabelWithLinkDelegate?
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.configure()
@@ -52,11 +54,13 @@ public class UILabelWithLink: UILabel {
         let attributeValue = self.attributedText?.attribute(NSAttributedString.Key.attachment, at: characterIndex, effectiveRange: nil)
 
         if let value = attributeValue {
-            if let url = value as? URL {
-                UIApplication.shared.open(url)
-            }
+            delegate?.linkClickedWithValue(value)
         }
 
         return superBool
     }
+}
+
+protocol UILabelWithLinkDelegate: AnyObject {
+    func linkClickedWithValue(_ value: Any)
 }
