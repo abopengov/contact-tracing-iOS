@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AppNotWorkingView" customModule="ABTTDev" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="608" height="1098"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfO-XQ-gWc" userLabel="BufferView">
+                    <rect key="frame" x="0.0" y="0.0" width="608" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="qqx-wf-d8E"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P6F-B0-r5f">
+                    <rect key="frame" x="0.0" y="0.0" width="608" height="80"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RedXLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aMK-kb-JSu">
+                            <rect key="frame" x="16" y="34" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="22" id="SwK-LQ-fea"/>
+                                <constraint firstAttribute="height" constant="22" id="U5I-MG-LAt"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your app is not working." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDa-2H-ynR">
+                            <rect key="frame" x="50" y="32" width="538" height="24"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="pDa-2H-ynR" secondAttribute="bottom" id="1OL-gd-ifA"/>
+                        <constraint firstAttribute="trailing" secondItem="pDa-2H-ynR" secondAttribute="trailing" constant="20" id="RiC-G4-RLF"/>
+                        <constraint firstItem="pDa-2H-ynR" firstAttribute="top" secondItem="P6F-B0-r5f" secondAttribute="top" constant="32" id="Weh-nD-gDP"/>
+                        <constraint firstItem="pDa-2H-ynR" firstAttribute="leading" secondItem="aMK-kb-JSu" secondAttribute="trailing" constant="12" id="Y0g-eN-nFb"/>
+                        <constraint firstItem="aMK-kb-JSu" firstAttribute="top" secondItem="P6F-B0-r5f" secondAttribute="top" constant="34" id="Zqx-lF-GR7"/>
+                        <constraint firstItem="aMK-kb-JSu" firstAttribute="leading" secondItem="P6F-B0-r5f" secondAttribute="leading" constant="16" id="gj2-6Q-rOU"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1Dc-sX-MJ3">
+                    <rect key="frame" x="16" y="103" width="576" height="936"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bco-Vg-fkf" userLabel="TurnBluetoothOnView">
+                            <rect key="frame" x="0.0" y="0.0" width="576" height="250"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="How to turn your Bluetooth on" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHn-I9-ot2" userLabel="TurnBluetoothOnLabel">
+                                    <rect key="frame" x="16" y="14" width="544" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="RedIcon1" translatesAutoresizingMaskIntoConstraints="NO" id="c6Z-wM-vHF" userLabel="Bullet1Image">
+                                    <rect key="frame" x="16" y="58.5" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="Ber-Ub-J4o"/>
+                                        <constraint firstAttribute="height" constant="20" id="ezO-6Z-dUN"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tap on the link below to go to your Settings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHJ-dQ-EaA" userLabel="Bullet1Label">
+                                    <rect key="frame" x="49" y="58.5" width="511" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="RedIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="yXc-RZ-NrT" userLabel="Bullet2Image">
+                                    <rect key="frame" x="16" y="98" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="CaL-eJ-z9Q"/>
+                                        <constraint firstAttribute="height" constant="20" id="EL9-6H-aJL"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tap on Bluetooth" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grq-2W-z1i" userLabel="Bullet2Label">
+                                    <rect key="frame" x="49" y="98" width="511" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="RedIcon3" translatesAutoresizingMaskIntoConstraints="NO" id="R3v-RV-vN3" userLabel="Bullet3Image">
+                                    <rect key="frame" x="16" y="137.5" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="TXQ-gs-6kP"/>
+                                        <constraint firstAttribute="height" constant="20" id="swb-mC-E2X"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Set the Bluetooth toggle to ON" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MH5-G6-9Sa" userLabel="Bullet3Label">
+                                    <rect key="frame" x="49" y="137.5" width="511" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nho-39-1JY">
+                                    <rect key="frame" x="16" y="187" width="544" height="45"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="dvg-5c-k8S"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" title="Go to Settings">
+                                        <color key="titleColor" red="0.0" green="0.43921568630000002" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.0" green="0.43921568630000002" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="turnOnBluetoothButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="KZH-UX-p86"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="yXc-RZ-NrT" firstAttribute="top" secondItem="HHJ-dQ-EaA" secondAttribute="bottom" constant="20" id="0Yi-Ws-gTr"/>
+                                <constraint firstAttribute="trailing" secondItem="MH5-G6-9Sa" secondAttribute="trailing" constant="16" id="162-lN-S9N"/>
+                                <constraint firstAttribute="bottom" secondItem="nho-39-1JY" secondAttribute="bottom" constant="18" id="44J-a0-cdc"/>
+                                <constraint firstItem="xHn-I9-ot2" firstAttribute="top" secondItem="bco-Vg-fkf" secondAttribute="top" constant="14" id="4aV-TC-1Xn"/>
+                                <constraint firstAttribute="trailing" secondItem="HHJ-dQ-EaA" secondAttribute="trailing" constant="16" id="8XS-02-yGl"/>
+                                <constraint firstItem="HHJ-dQ-EaA" firstAttribute="top" secondItem="xHn-I9-ot2" secondAttribute="bottom" constant="24" id="93d-pl-aGX"/>
+                                <constraint firstItem="yXc-RZ-NrT" firstAttribute="leading" secondItem="bco-Vg-fkf" secondAttribute="leading" constant="16" id="987-VE-Nws"/>
+                                <constraint firstItem="nho-39-1JY" firstAttribute="leading" secondItem="bco-Vg-fkf" secondAttribute="leading" constant="16" id="9c7-7E-asK"/>
+                                <constraint firstItem="R3v-RV-vN3" firstAttribute="top" secondItem="Grq-2W-z1i" secondAttribute="bottom" constant="20" id="9dz-Md-daa"/>
+                                <constraint firstAttribute="trailing" secondItem="nho-39-1JY" secondAttribute="trailing" constant="16" id="GjI-N4-Mhn"/>
+                                <constraint firstAttribute="trailing" secondItem="xHn-I9-ot2" secondAttribute="trailing" constant="16" id="Hag-9I-Gb2"/>
+                                <constraint firstItem="MH5-G6-9Sa" firstAttribute="leading" secondItem="R3v-RV-vN3" secondAttribute="trailing" constant="13" id="P6f-Sc-zEc"/>
+                                <constraint firstItem="c6Z-wM-vHF" firstAttribute="top" secondItem="xHn-I9-ot2" secondAttribute="bottom" constant="24" id="PcU-9q-dGm"/>
+                                <constraint firstItem="Grq-2W-z1i" firstAttribute="leading" secondItem="yXc-RZ-NrT" secondAttribute="trailing" constant="13" id="Sfg-m3-pbb"/>
+                                <constraint firstItem="c6Z-wM-vHF" firstAttribute="leading" secondItem="bco-Vg-fkf" secondAttribute="leading" constant="16" id="Ylm-xR-HKK"/>
+                                <constraint firstItem="R3v-RV-vN3" firstAttribute="leading" secondItem="bco-Vg-fkf" secondAttribute="leading" constant="16" id="cgt-TL-2lx"/>
+                                <constraint firstItem="MH5-G6-9Sa" firstAttribute="top" secondItem="Grq-2W-z1i" secondAttribute="bottom" constant="20" id="ded-66-eB9"/>
+                                <constraint firstItem="xHn-I9-ot2" firstAttribute="leading" secondItem="bco-Vg-fkf" secondAttribute="leading" constant="16" id="eUI-dM-l5c"/>
+                                <constraint firstItem="nho-39-1JY" firstAttribute="top" secondItem="MH5-G6-9Sa" secondAttribute="bottom" constant="30" id="gzS-oD-ZKj"/>
+                                <constraint firstItem="Grq-2W-z1i" firstAttribute="top" secondItem="HHJ-dQ-EaA" secondAttribute="bottom" constant="20" id="oWN-64-Nkj"/>
+                                <constraint firstAttribute="trailing" secondItem="Grq-2W-z1i" secondAttribute="trailing" constant="16" id="pED-xF-bf4"/>
+                                <constraint firstItem="HHJ-dQ-EaA" firstAttribute="leading" secondItem="c6Z-wM-vHF" secondAttribute="trailing" constant="13" id="pOP-r1-ChN"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.85490196078431369" green="0.75686274509803919" blue="0.75686274509803919" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XqS-Md-GKv" userLabel="AllowBluetoothPermissionView">
+                            <rect key="frame" x="0.0" y="270" width="576" height="250"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="How to turn your Bluetooth permission on" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFf-jT-aR6" userLabel="AllowBluetoothPermissionLabel">
+                                    <rect key="frame" x="16" y="14" width="544" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="RedIcon1" translatesAutoresizingMaskIntoConstraints="NO" id="Og2-eu-0GD" userLabel="Bullet1Image">
+                                    <rect key="frame" x="16" y="58.5" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="1D7-7f-oax"/>
+                                        <constraint firstAttribute="width" constant="20" id="8Zb-OL-G9G"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tap on the link below to go to *APP NAME* in your Settings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mT4-2l-Qj6" userLabel="Bullet1Label">
+                                    <rect key="frame" x="49" y="58.5" width="511" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="RedIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="4i3-DX-LVt" userLabel="Bullet2Image">
+                                    <rect key="frame" x="16" y="98" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="6aZ-x3-o3D"/>
+                                        <constraint firstAttribute="width" constant="20" id="7z6-9r-pCl"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Set the Bluetooth toggle to ON" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hG-W3-jjZ" userLabel="Bullet2Label">
+                                    <rect key="frame" x="49" y="98" width="511" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0y-5k-3HG">
+                                    <rect key="frame" x="16" y="187" width="544" height="45"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="GrC-5u-iD4"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" title="Go to *APP NAME* Settings">
+                                        <color key="titleColor" red="0.0" green="0.43921568630000002" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.0" green="0.43921568630000002" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="allowBluetoothPermissionButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="lxl-hZ-zPj"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="0hG-W3-jjZ" secondAttribute="trailing" constant="16" id="6h7-dZ-o2J"/>
+                                <constraint firstItem="4i3-DX-LVt" firstAttribute="top" secondItem="mT4-2l-Qj6" secondAttribute="bottom" constant="20" id="7WU-Wc-aoi"/>
+                                <constraint firstItem="4i3-DX-LVt" firstAttribute="leading" secondItem="XqS-Md-GKv" secondAttribute="leading" constant="16" id="8QP-dW-hH5"/>
+                                <constraint firstItem="mT4-2l-Qj6" firstAttribute="top" secondItem="cFf-jT-aR6" secondAttribute="bottom" constant="24" id="8Sm-mi-hPn"/>
+                                <constraint firstAttribute="bottom" secondItem="d0y-5k-3HG" secondAttribute="bottom" constant="18" id="BXI-ok-dTy"/>
+                                <constraint firstItem="cFf-jT-aR6" firstAttribute="leading" secondItem="XqS-Md-GKv" secondAttribute="leading" constant="16" id="Fv9-9H-M15"/>
+                                <constraint firstAttribute="trailing" secondItem="cFf-jT-aR6" secondAttribute="trailing" constant="16" id="MCM-Cg-DTH"/>
+                                <constraint firstItem="d0y-5k-3HG" firstAttribute="top" secondItem="0hG-W3-jjZ" secondAttribute="bottom" constant="30" id="NvG-Qd-UfH"/>
+                                <constraint firstAttribute="trailing" secondItem="d0y-5k-3HG" secondAttribute="trailing" constant="16" id="PEJ-Nn-bTD"/>
+                                <constraint firstItem="d0y-5k-3HG" firstAttribute="leading" secondItem="XqS-Md-GKv" secondAttribute="leading" constant="16" id="VSq-2l-9uM"/>
+                                <constraint firstItem="mT4-2l-Qj6" firstAttribute="leading" secondItem="Og2-eu-0GD" secondAttribute="trailing" constant="13" id="YtP-AV-e90"/>
+                                <constraint firstItem="Og2-eu-0GD" firstAttribute="leading" secondItem="XqS-Md-GKv" secondAttribute="leading" constant="16" id="ZrX-uR-LFr"/>
+                                <constraint firstItem="cFf-jT-aR6" firstAttribute="top" secondItem="XqS-Md-GKv" secondAttribute="top" constant="14" id="gas-Vr-dBN"/>
+                                <constraint firstItem="Og2-eu-0GD" firstAttribute="top" secondItem="cFf-jT-aR6" secondAttribute="bottom" constant="24" id="jZy-3I-Hxz"/>
+                                <constraint firstItem="0hG-W3-jjZ" firstAttribute="leading" secondItem="4i3-DX-LVt" secondAttribute="trailing" constant="13" id="mpW-9M-SUe"/>
+                                <constraint firstItem="0hG-W3-jjZ" firstAttribute="top" secondItem="mT4-2l-Qj6" secondAttribute="bottom" constant="20" id="qD8-uj-zdG"/>
+                                <constraint firstAttribute="trailing" secondItem="mT4-2l-Qj6" secondAttribute="trailing" constant="16" id="qdS-Ju-thQ"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.85490196080000003" green="0.75686274509999996" blue="0.75686274509999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7L-Jm-2mO" userLabel="AllowLocationPermissionView">
+                            <rect key="frame" x="0.0" y="540" width="576" height="396"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="How to turn your Location permission on" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8y-lo-9Ar" userLabel="AllowLocationPermissionLabel">
+                                    <rect key="frame" x="16" y="14" width="544" height="147.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="RedIcon1" translatesAutoresizingMaskIntoConstraints="NO" id="JFd-mf-89I" userLabel="Bullet1Image">
+                                    <rect key="frame" x="16" y="185.5" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="huF-MN-26d"/>
+                                        <constraint firstAttribute="width" constant="20" id="t72-bX-XBl"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tap on the link below to go to *APP NAME* in your Settings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Mx-ti-dOE" userLabel="Bullet1Label">
+                                    <rect key="frame" x="49" y="185.5" width="511" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="RedIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="v6n-2f-JdP" userLabel="Bullet2Image">
+                                    <rect key="frame" x="16" y="225" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="bUi-0w-7Yp"/>
+                                        <constraint firstAttribute="width" constant="20" id="giW-fM-P5m"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Set the Location toggle to Always" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5W4-BR-ktb" userLabel="Bullet2Label">
+                                    <rect key="frame" x="49" y="225" width="511" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="RedIcon3" translatesAutoresizingMaskIntoConstraints="NO" id="VUS-qn-CeR" userLabel="Bullet3Image">
+                                    <rect key="frame" x="16" y="264.5" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="HRx-ZS-4Pj"/>
+                                        <constraint firstAttribute="width" constant="20" id="h1b-kt-goV"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KK-ff-aqJ" userLabel="Bullet3Label">
+                                    <rect key="frame" x="49" y="264.5" width="511" height="38.5"/>
+                                    <string key="text">In case the toggle is grey and disabled, then go to your privacy section in your settings and set the location services toggle to ON</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OK0-Or-2H8">
+                                    <rect key="frame" x="16" y="333" width="544" height="45"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="cCg-WI-6Pn"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" title="Go to *APP NAME* Settings">
+                                        <color key="titleColor" red="0.0" green="0.43921568630000002" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.0" green="0.43921568630000002" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="allowLocationPermissionsButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="De1-rG-Otg"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="I8y-lo-9Ar" secondAttribute="trailing" constant="16" id="81B-9J-7U3"/>
+                                <constraint firstItem="v6n-2f-JdP" firstAttribute="top" secondItem="3Mx-ti-dOE" secondAttribute="bottom" constant="20" id="Aoq-8n-q3I"/>
+                                <constraint firstItem="8KK-ff-aqJ" firstAttribute="top" secondItem="5W4-BR-ktb" secondAttribute="bottom" constant="20" id="CpD-Ty-H0U"/>
+                                <constraint firstItem="I8y-lo-9Ar" firstAttribute="top" secondItem="x7L-Jm-2mO" secondAttribute="top" constant="14" id="LZd-a5-Hx9"/>
+                                <constraint firstAttribute="bottom" secondItem="OK0-Or-2H8" secondAttribute="bottom" constant="18" id="R8E-ph-z8s"/>
+                                <constraint firstItem="OK0-Or-2H8" firstAttribute="leading" secondItem="x7L-Jm-2mO" secondAttribute="leading" constant="16" id="RIo-Y2-dTY"/>
+                                <constraint firstItem="I8y-lo-9Ar" firstAttribute="leading" secondItem="x7L-Jm-2mO" secondAttribute="leading" constant="16" id="Ryp-xD-m2F"/>
+                                <constraint firstItem="v6n-2f-JdP" firstAttribute="leading" secondItem="x7L-Jm-2mO" secondAttribute="leading" constant="16" id="SIY-zP-xEv"/>
+                                <constraint firstItem="3Mx-ti-dOE" firstAttribute="leading" secondItem="JFd-mf-89I" secondAttribute="trailing" constant="13" id="Sd2-aO-RFT"/>
+                                <constraint firstItem="5W4-BR-ktb" firstAttribute="leading" secondItem="v6n-2f-JdP" secondAttribute="trailing" constant="13" id="X1N-ZC-V6D"/>
+                                <constraint firstAttribute="trailing" secondItem="3Mx-ti-dOE" secondAttribute="trailing" constant="16" id="XZQ-1n-jSd"/>
+                                <constraint firstItem="3Mx-ti-dOE" firstAttribute="top" secondItem="I8y-lo-9Ar" secondAttribute="bottom" constant="24" id="bOZ-LK-yi8"/>
+                                <constraint firstAttribute="trailing" secondItem="8KK-ff-aqJ" secondAttribute="trailing" constant="16" id="dka-su-6Vl"/>
+                                <constraint firstItem="VUS-qn-CeR" firstAttribute="leading" secondItem="x7L-Jm-2mO" secondAttribute="leading" constant="16" id="gsV-uk-evG"/>
+                                <constraint firstItem="VUS-qn-CeR" firstAttribute="top" secondItem="5W4-BR-ktb" secondAttribute="bottom" constant="20" id="jJw-GG-feB"/>
+                                <constraint firstAttribute="trailing" secondItem="OK0-Or-2H8" secondAttribute="trailing" constant="16" id="ljk-Lt-0by"/>
+                                <constraint firstItem="5W4-BR-ktb" firstAttribute="top" secondItem="3Mx-ti-dOE" secondAttribute="bottom" constant="20" id="pD6-MH-XCC"/>
+                                <constraint firstAttribute="trailing" secondItem="5W4-BR-ktb" secondAttribute="trailing" constant="16" id="quw-7K-ALv"/>
+                                <constraint firstItem="OK0-Or-2H8" firstAttribute="top" secondItem="8KK-ff-aqJ" secondAttribute="bottom" constant="30" id="rM6-S4-eHv"/>
+                                <constraint firstItem="JFd-mf-89I" firstAttribute="top" secondItem="I8y-lo-9Ar" secondAttribute="bottom" constant="24" id="wBQ-jg-9Gp"/>
+                                <constraint firstItem="8KK-ff-aqJ" firstAttribute="leading" secondItem="VUS-qn-CeR" secondAttribute="trailing" constant="13" id="xYI-9o-15O"/>
+                                <constraint firstItem="JFd-mf-89I" firstAttribute="leading" secondItem="x7L-Jm-2mO" secondAttribute="leading" constant="16" id="zOp-7L-wqA"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.85490196080000003" green="0.75686274509999996" blue="0.75686274509999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1Y-Rb-56A" userLabel="CardView">
+                    <rect key="frame" x="-3" y="1073" width="614" height="25"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="jnq-dS-uH0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="1Dc-sX-MJ3" secondAttribute="trailing" constant="16" id="2Vx-ps-IPt"/>
+                <constraint firstItem="n1Y-Rb-56A" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-3" id="K5J-cQ-byB"/>
+                <constraint firstItem="RfO-XQ-gWc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RM2-vf-sgd"/>
+                <constraint firstAttribute="bottom" secondItem="n1Y-Rb-56A" secondAttribute="bottom" id="SVM-TS-zfr"/>
+                <constraint firstItem="P6F-B0-r5f" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zby-k8-nHE"/>
+                <constraint firstItem="1Dc-sX-MJ3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="axR-38-oDh"/>
+                <constraint firstItem="n1Y-Rb-56A" firstAttribute="top" secondItem="1Dc-sX-MJ3" secondAttribute="bottom" constant="34" id="ayF-KT-4fm"/>
+                <constraint firstItem="RfO-XQ-gWc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bU0-E1-92s"/>
+                <constraint firstAttribute="trailing" secondItem="P6F-B0-r5f" secondAttribute="trailing" id="eVL-s1-PN5"/>
+                <constraint firstItem="1Dc-sX-MJ3" firstAttribute="top" secondItem="P6F-B0-r5f" secondAttribute="bottom" constant="23" id="jUd-qG-9m0"/>
+                <constraint firstAttribute="trailing" secondItem="RfO-XQ-gWc" secondAttribute="trailing" id="mAm-IN-yhd"/>
+                <constraint firstItem="P6F-B0-r5f" firstAttribute="top" secondItem="RfO-XQ-gWc" secondAttribute="bottom" id="nZ2-IZ-OdK"/>
+                <constraint firstAttribute="trailing" secondItem="n1Y-Rb-56A" secondAttribute="trailing" constant="-3" id="z8q-3Q-1zX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="allowBluetoothPermissionButton" destination="d0y-5k-3HG" id="dWN-GM-Bf4"/>
+                <outlet property="allowBluetoothPermissionLabel" destination="cFf-jT-aR6" id="WfV-MO-bZW"/>
+                <outlet property="allowBluetoothPermissionStep1Label" destination="mT4-2l-Qj6" id="wEo-fI-zh3"/>
+                <outlet property="allowBluetoothPermissionStep2Label" destination="0hG-W3-jjZ" id="TQJ-2k-QbJ"/>
+                <outlet property="allowBluetoothPermissionView" destination="XqS-Md-GKv" id="5FA-DL-K6d"/>
+                <outlet property="allowLocationPermissionButton" destination="OK0-Or-2H8" id="Hrw-jC-fLr"/>
+                <outlet property="allowLocationPermissionLabel" destination="I8y-lo-9Ar" id="3cF-KL-aKO"/>
+                <outlet property="allowLocationPermissionStep1Label" destination="3Mx-ti-dOE" id="JnA-g3-tOf"/>
+                <outlet property="allowLocationPermissionStep2Label" destination="5W4-BR-ktb" id="4wU-Hx-5pc"/>
+                <outlet property="allowLocationPermissionStep3Label" destination="8KK-ff-aqJ" id="6z5-DW-ULi"/>
+                <outlet property="allowLocationPermissionView" destination="x7L-Jm-2mO" id="E8V-5e-Cdt"/>
+                <outlet property="appNotWorkingIcon" destination="aMK-kb-JSu" id="bwo-78-a5f"/>
+                <outlet property="appNotWorkingLabel" destination="pDa-2H-ynR" id="szc-dT-qB9"/>
+                <outlet property="bufferViewHeightConstraint" destination="qqx-wf-d8E" id="SGk-JB-PX3"/>
+                <outlet property="cardView" destination="n1Y-Rb-56A" id="AsI-re-mcN"/>
+                <outlet property="turnBluetoothOnButton" destination="nho-39-1JY" id="wet-OW-gfN"/>
+                <outlet property="turnBluetoothOnLabel" destination="xHn-I9-ot2" id="zqk-jz-Hew"/>
+                <outlet property="turnBluetoothOnStep1Label" destination="HHJ-dQ-EaA" id="TnA-Dj-BeK"/>
+                <outlet property="turnBluetoothOnStep2Label" destination="Grq-2W-z1i" id="ATZ-JE-A60"/>
+                <outlet property="turnBluetoothOnStep3Label" destination="MH5-G6-9Sa" id="bqT-iA-NxC"/>
+                <outlet property="turnBluetoothOnView" destination="bco-Vg-fkf" id="3V3-Jw-juR"/>
+            </connections>
+            <point key="canvasLocation" x="-618.84057971014499" y="220.98214285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="RedIcon1" width="20" height="20"/>
+        <image name="RedIcon2" width="20" height="20"/>
+        <image name="RedIcon3" width="20" height="20"/>
+        <image name="RedXLarge" width="22" height="22"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

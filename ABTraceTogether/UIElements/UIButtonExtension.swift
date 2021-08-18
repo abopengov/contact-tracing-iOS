@@ -3,7 +3,7 @@ import UIKit
 enum ButtonStyle {
     case primary
     case secondary
-    case secondaryMedium
+    case settings
     case underline
 
     var textColor: UIColor {
@@ -11,7 +11,7 @@ enum ButtonStyle {
         case .primary:
             return UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 
-        case .secondary, .secondaryMedium:
+        case .secondary, .settings:
             return UIColor(red: 0, green: 0.439, blue: 0.769, alpha: 1)
 
         case .underline:
@@ -55,10 +55,10 @@ extension UIButton {
     func setButton(with text: String, and buttonImage: ButtonImage? = nil, buttonStyle: ButtonStyle = .primary) {
         let fontName = buttonStyle == .underline
             ? "HelveticaNeue"
-            : buttonStyle == .secondaryMedium
+            : buttonStyle == .settings
             ? "HelveticaNeue-Medium"
             : "HelveticaNeue-Bold"
-        let fontSize = (buttonStyle == .underline || buttonStyle == .secondaryMedium) ? CGFloat(16) : CGFloat(18)
+        let fontSize = (buttonStyle == .underline || buttonStyle == .settings) ? CGFloat(16) : CGFloat(18)
 
         guard let font = UIFont(name: fontName, size: fontSize) else {
             return
@@ -72,7 +72,7 @@ extension UIButton {
                 self.backgroundColor = UIColor(red: 0.646, green: 0.646, blue: 0.646, alpha: 1)
             }
 
-        case .secondary, .secondaryMedium:
+        case .secondary, .settings:
             self.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             self.borderWidth = 1
             self.borderColor = UIColor(red: 0, green: 0.439, blue: 0.769, alpha: 1)
@@ -80,6 +80,9 @@ extension UIButton {
         case .underline:
             self.backgroundColor = UIColor.clear
         }
+
+        self.layer.cornerRadius = 6
+        self.layer.masksToBounds = true
 
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center

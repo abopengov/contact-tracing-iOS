@@ -36,12 +36,14 @@ class UploadDataStep2VC: UIViewController {
             and: .arrow
         )
         dismissKeyboardOnTap()
+
         NotificationCenter.default.addObserver(
-            self.codeInputView,
+            codeInputView as Any,
             selector: #selector(self.tokenFieldDidChange),
             name: NSNotification.Name(rawValue: "Keyboard Notification"),
             object: nil
         )
+
         uploadErrorMsgLbl.isHidden = true
     }
 

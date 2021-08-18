@@ -1,24 +1,47 @@
 PODS:
-  - Herald (1.2.0)
+  - Google-Maps-iOS-Utils (3.8.0):
+    - Google-Maps-iOS-Utils/Clustering (= 3.8.0)
+    - Google-Maps-iOS-Utils/Geometry (= 3.8.0)
+    - Google-Maps-iOS-Utils/Heatmap (= 3.8.0)
+    - Google-Maps-iOS-Utils/QuadTree (= 3.8.0)
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Clustering (3.8.0):
+    - Google-Maps-iOS-Utils/QuadTree
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Geometry (3.8.0):
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Heatmap (3.8.0):
+    - Google-Maps-iOS-Utils/QuadTree
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/QuadTree (3.8.0):
+    - GoogleMaps
+  - GoogleMaps (5.1.0):
+    - GoogleMaps/Maps (= 5.1.0)
+  - GoogleMaps/Base (5.1.0)
+  - GoogleMaps/Maps (5.1.0):
+    - GoogleMaps/Base
+  - Herald (2.0.0)
   - IBMMobileFirstPlatformFoundation (8.0.2020050515)
-  - lottie-ios (3.1.6)
 
 DEPENDENCIES:
-  - Herald (= 1.2.0)
+  - Google-Maps-iOS-Utils (= 3.8.0)
+  - GoogleMaps (= 5.1.0)
+  - Herald (= 2.0.0)
   - IBMMobileFirstPlatformFoundation (= 8.0.2020050515)
-  - lottie-ios (= 3.1.6)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Google-Maps-iOS-Utils
+    - GoogleMaps
     - Herald
     - IBMMobileFirstPlatformFoundation
-    - lottie-ios
 
 SPEC CHECKSUMS:
-  Herald: a45e5beb91e281da0e10d7d4857e50fd153fcbc0
+  Google-Maps-iOS-Utils: 71c1a52fb5a3622e81a03a67dc3be9fd180cb9c3
+  GoogleMaps: 086ae1dab659eaa7339bdb30fc88e2f44e7c597c
+  Herald: 9b6f83333ae474b597174fd37c167248017c58a9
   IBMMobileFirstPlatformFoundation: 8b98039d8a767150570ee2e923e942f26254e1f3
-  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
 
-PODFILE CHECKSUM: 8195ef170dbe319daa712c5e5fbfd57d38ee0798
+PODFILE CHECKSUM: a51ff8e0086df64d777a4ef99514c484e904ad5c
 
 COCOAPODS: 1.10.1

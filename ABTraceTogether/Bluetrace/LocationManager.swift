@@ -1,5 +1,6 @@
 import CoreBluetooth
 import CoreData
+import CoreLocation
 import UIKit
 
 class LocationManager: NSObject, CLLocationManagerDelegate {

@@ -1,12 +1,12 @@
 import Foundation
 import UIKit
-// swiftlint:disable nslocalizedstring_require_bundle
+// swiftlint:disable nslocalizedstring_require_bundle file_length
 let daysToQuarantine = 14
 let userDefaultsPinKey = "HEALTH_AUTH_VERIFICATION_CODE"
 
 // Tab Bar Titles
 let homeTabTitle = "menu_home"
-let uploadTabTitle = "menu_statistics"
+let statsTabTitle = "menu_statistics"
 let faqTabTitle = "menu_help"
 let guidanceTabTitle = "menu_guidance"
 
@@ -29,7 +29,7 @@ let doneButtonText = "doneButtonText"
 let welcomeScreenHeader = "tv_onboarding_title_iOS"
 let welcomeScreenSubHeader = "tv_onboarding_desc"
 let welcomeScreenButton = "i_want_to_help"
-let generalLogoMessageString = "tv_onboarding_desc_sub"
+let generalLogoMessageString = "tv_onboarding_desc_sub" // brought to you by *THIS ORG*
 
 // How It Works
 let howItWorksWillTitle = "howitworks_will_title"
@@ -84,7 +84,7 @@ let inAppDisclosureTitle = "in_app_disclosure_title"
 
 let privacyFaqButtonText = "view_faq"
 let privacyPolicyButtonText = "view_privacy"
-let privacyLink = UserDefaults.standard.string(forKey: privacyUrlKey) ?? "https://example.com/privacy-policy"
+let privacyLink = UserDefaults.standard.string(forKey: privacyUrlKey) ?? "https://example.com/privacy"
 let privacyFaqLink = UserDefaults.standard.string(forKey: faqUrlKey) ?? "https://example.com/faq"
 let privacyIAgreeLabelText = "agreement"
 let privacyButtonColor = UIColor(red: 0, green: 0.439, blue: 0.769, alpha: 1)
@@ -96,16 +96,15 @@ let privacyChecked = "BlackCheckboxChecked"
 let phoneNumberRegistrationStepNumberText = "ios_enter_number_step"
 let phoneNumberRegistrationHeaderText = "register_number"
 let phoneNumberRegistrationPhoneNumberPlaceHolderText = "enter_number_placeholder"
-let phoneNumberRegistrationSubHeaderText = "register_number_desc_iOS"
+let phoneNumberRegistrationSubHeaderText = "register_number_desc1"
 let phoneNumberRegistrationGetOTPButtonText = "next_button"
 let phoneNumberConnectionError = "phone_error_connection"
 let phoneNumberInvalidPinError = "invalid_otp"
 
 // MARK: - OTP Verification
 let otpScreenStepNumberText = "ios_enter_code_step"
-let otpScreenHeaderText = "enter_otp"
-let otpScreenSubHeaderTextP1 = "otp_sent_iOS1"
-let otpScreenSubHeaderTextP2 = "otp_sent_iOS2"
+let otpScreenHeaderText = "onboarding_otp_title"
+let otpScreenSubHeaderText = "onboarding_otp_description"
 let otpScreenCodeExpireText = "otp_countdown_ios"
 let otpScreenCodeHasExpiredText = "otp_countdown_expired"
 let otpScreenDidntReceiveCodeText = "resend_code_label"
@@ -113,6 +112,7 @@ let otpScreenRequestAnotherCodeButtonText = "resend_code"
 let otpScreenGetOTPButtonText = "next_button"
 let otpScreenInvalidOTP = "must_be_six_digit"
 let otpScreenWrongOTP = "WrongOTP"
+let otpIncorrectOTP = "onboarding_otp_incorrect"
 
 // MARK: - Permission Screen
 
@@ -133,7 +133,7 @@ let locationPermissionMessageStep = "ios_permissions_step3"
 // MARK: - Registration Successful
 let registrationSuccessfulHeader = "app_permission_fully_setup"
 let registrationSuccessfulDetail = "app_permission_fully_setup_desc"
-let registrationSuccessfulFinishButtonText = "finish_button"
+let registrationSuccessfulFinishButtonText = "onboarding_go_to_homepage"
 
 // MARK: - Home Screen
 
@@ -143,6 +143,7 @@ let homeLearnHowItWorks = "home_learn_how_it_works"
 let homeCaseHighlight = "home_case_highlight"
 let homeCaseHighlightContent = "home_case_highlight_content"
 let homeSharedApp = "home_shared_app"
+let homeShareAppBanner = "home_share_app_banner"
 let homeUploadData = "home_upload_data"
 let homeUploadDataContent = "home_upload_data_content"
 let homeBluetoothPermission = "home_bluetooth_permission"
@@ -163,12 +164,36 @@ let homeLocationPermissionStep2 = "home_location_permission_step2_ios"
 let homeLocationPermissionStep3 = "home_location_permission_step3_ios"
 let homeNotificationPermissionStep1 = "home_notification_permission_step1_ios"
 let homeNotificationPermissionStep2 = "home_notification_permission_step2_ios"
+let homeSeeAllStats = "home_see_all_stats"
 let homeGotoSettings = "goto_settings"
 let homeGotoAppSettings = "goto_app_settings"
+
+let statsGotoDashboard = "stats_goto_dashboard"
+let statsNewCases = "stats_new_cases"
+let statsNewVariantCases = "stats_new_variant_cases"
+let statsTotalActiveCases = "stats_total_active_cases"
+let statsActiveCasesOverTime = "stats_active_cases_over_time"
+let statsDosesOverTime = "stats_doses_over_time"
+let statsActiveCases = "stats_active_cases"
+
+let statsVaccinesGiven = "stats_vaccines_given"
+let statsTitle = "stats_title"
+let statsCovidCases = "stats_covid_cases"
+let statsVaccinations = "stats_vaccinations"
+let statsMap = "stats_map"
+let statsVaccinesAdministered = "stats_vaccines_administered"
+let statsFullyVaccinated = "stats_fully_vaccinated"
+let statsActiveCasesByZone = "stats_active_cases_by_zone"
+let statsLast30Days = "stats_last_30_days"
+let statsLastSixMonths = "stats_last_six_months"
+let statsLastThreeMonths = "stats_last_three_months"
+let statsDashboard = "stats_dashboard"
 
 // MARK: - Learn More
 let menuLearnMore = "menu_learn_more"
 let learnMoreTitle = "learn_more_title"
+let menuLearn = "menu_learn"
+let learnTitle = "learn_title"
 let nextText = "next"
 let appBasicsTitle = "app_basics_title"
 let appBasicsPage1Details = "app_basics_page1_details"
@@ -222,12 +247,20 @@ let batteryConsumptionDetails = "battery_consumption_details"
 let whatsNewTitle = "whats_new_title"
 let whatsNewInThisAppTitle = "whats_new_in_this_app_title"
 let faqTitle = "faq_title"
+let howWillIBeNotifiedTitle = "how_will_i_be_notified_title"
+let howWillIBeNotifiedPage1Details = "how_will_i_be_notified_page1_details"
+let howWillIBeNotifiedPage2Details = "how_will_i_be_notified_page2_details"
+let howWillIBeNotifiedPage3Details = "how_will_i_be_notified_page3_details"
+let howWillIBeNotifiedPage4Details = "how_will_i_be_notified_page4_details"
 
-let closeContactsFaqLink = UserDefaults.standard.string(forKey: closeContactsFaqKey) ?? "https://example.com/close-contacts-faq"
+let closeContactsFaqLink = UserDefaults.standard.string(forKey: closeContactsFaqKey) ?? "https://example.com/faq"
 let caseSummaryLink = UserDefaults.standard.string(forKey: caseSummaryKey) ??
     "https://example.com/case-summary"
 let statisticsLink = UserDefaults.standard.string(forKey: statisticsKey) ??
     "https://example.com/statistics"
+let guidanceLink = UserDefaults.standard.string(forKey: guidanceKey) ??
+    "https://example.com/guidance"
+
 // Url keys and app delagate
 let statisticsKey = "StatisticsSummaryUrlKey"
 let guidanceKey = "guidanceKey"
@@ -245,6 +278,8 @@ let notificationNameUrl = "urlFetched"
 let killSwitchMessageString = "wrong_version_msg"
 let errorCodeString = "errorCode"
 let closeContactsFaqKey = "closeContactsFaqKey"
+let guidanceTileKey = "guidanceTileKey"
+let moreLinksKey = "moreLinksKey"
 
 // Header View Strings
 let homeHeader = "home_title_iOS"
@@ -266,6 +301,12 @@ let appVersionLabel = "app_version_label"
 let uploadDataHomeHeader = "menu_upload"
 let uploadDataHomeMessage = "home_upload_title"
 let uploadDataHomeButton = "menu_upload"
+
+// Pause Detection Home View Strings
+let homePauseSetSchedule = "home_pause_set_schedule"
+let homePauseDetectionPaused = "home_pause_detection_paused"
+let homePauseUntil = "home_pause_until"
+let homePauseResume = "home_pause_resume"
 
 // Case Summary View Strings
 let homeCaseSummaryHeader = "highlights"
@@ -297,6 +338,7 @@ let homeMessageDetailedMessage = "info_desc_iOS"
 let homeShareAppHeader = "share_this_app"
 let homeShareAppMessage = "ask_friend"
 let shareText = "share_message_iOS"
+let shareThisApp = "share_this_app"
 
 // Map View Controller Strings
 let mapHeaderLabelString = "map_header"
@@ -355,9 +397,10 @@ let onboardingPhoneoptionNo = "option_no"
 let linkButtonAttributes: [NSAttributedString.Key: Any] = [
     .font: UIFont(
         name: "HelveticaNeue",
-        size: 14
-    ) ?? UIFont.systemFont(ofSize: 14),
-    .foregroundColor: UIColor.blue,
+        size: 16
+    ) ?? UIFont.systemFont(ofSize: 16),
+    .underlineStyle: NSUnderlineStyle.single.rawValue,
+    .foregroundColor: UIColor(red: 0.00, green: 0.44, blue: 0.77, alpha: 1.00)
 ]
 
 let homeScreenBackgroundColor = UIColor.white
@@ -365,3 +408,29 @@ let LanguageChangeNotification = "LanguageChanged"
 let statsCaseHighlights = "stats_case_highlights"
 let statsSeeAllStats = "stats_see_all_stats"
 let failedToLoadData = "failed_to_load_data"
+
+let okString = "ok"
+let cancelString = "cancel"
+
+let onboardingBluetoothTitle = "onboarding_bluetooth_title"
+let onboardingBluetoothDescription = "onboarding_bluetooth_description"
+let onboardingLocationTitle = "onboarding_location_title"
+let onboardingLocationDescription = "onboarding_location_description"
+let onboardingNotificationsTitle = "onboarding_notifications_title"
+let onboardingNotificationsDescription = "onboarding_notifications_description"
+
+let errorCannotFetchData = "error_cannot_fetch_data"
+
+let pauseTitle = "pause_title"
+let pauseDescription = "pause_description"
+let pauseSchedule = "pause_schedule"
+let pauseStartTime = "pause_start_time"
+let pauseEndTime = "pause_end_time"
+let pauseEdit = "pause_edit"
+let pauseSave = "pause_save"
+let pauseInfo = "pause_info"
+let pauseErrorDialogTitle = "pause_error_dialog_title"
+let pauseErrorDialogMessage = "pause_error_dialog_message"
+
+let menuMore = "menu_more"
+let moreTitle = "more_title"

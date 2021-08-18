@@ -5,9 +5,9 @@
 	<key>protocol</key>
 	<string>https</string>
 	<key>host</key>
-	<string></string>
+	<string>Server_URL_goes_here</string>
 	<key>port</key>
-	<string></string>
+	<string>443</string>
 	<key>wlServerContext</key>
 	<string>/mfp/</string>
 	<key>languagePreferences</key>

@@ -51,7 +51,7 @@ class LearnMoreThreeItemCardView: UIView {
         get { item2ImageView.image }
         set { item2ImageView.image = newValue }
     }
-    
+
     var item3Text: String {
         get {
             item3Label?.text ?? ""

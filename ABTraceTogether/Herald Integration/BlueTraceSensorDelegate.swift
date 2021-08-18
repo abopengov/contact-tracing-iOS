@@ -10,7 +10,10 @@ class BlueTraceSensorDelegate {
 
     var recentContactEvents: [String: Date] = [:]
 
-    init(blueTraceDataPersistence: BlueTraceDataPersisting, recentTimeThresholdSeconds: Double = DEFAULT_RECENT_TIME_THRESHOLD_SECONDS) {
+    init(
+        blueTraceDataPersistence: BlueTraceDataPersisting,
+        recentTimeThresholdSeconds: Double = DEFAULT_RECENT_TIME_THRESHOLD_SECONDS
+    ) {
         self.blueTraceDataPersistence = blueTraceDataPersistence
         self.recentTimeThresholdSeconds = recentTimeThresholdSeconds
     }

@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 class LearnMorePagingView: UIView {
-
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.translatesAutoresizingMaskIntoConstraints = false

@@ -1,3 +1,7 @@
+//
+//  ExplanationViewController.swift
+//  *APP NAME*
+
 import Foundation
 import UIKit
 
@@ -103,7 +107,7 @@ extension ExplanationViewController {
     private func createInfoView(contentText: String, titleLabel: UILabel, parentView: UIView) {
         let infoView = UIView()
         infoView.translatesAutoresizingMaskIntoConstraints = false
-        infoView.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.00)
+        infoView.backgroundColor = Colors.LightGrey
         infoView.layer.masksToBounds = true
         infoView.layer.cornerRadius = 6
 

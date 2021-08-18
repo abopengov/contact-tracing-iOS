@@ -4,7 +4,7 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>ca.tracetogether</string>
+		<string>com.example.tracetogether</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
@@ -31,19 +31,19 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>APP NAME exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
+	<string>*APP NAME* exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>APP NAME exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
+	<string>*APP NAME* exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Grant APP NAME permissions to access your camera if you would like to upload a photo as part of a support request</string>
+	<string>Grant *APP NAME* permissions to access your camera if you would like to upload a photo as part of a support request</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location services must be enabled for Bluetooth scan to work and capture encounters when the application is in the background. The APP NAME application does not capture or use information about location. In addition, location data is not collected or shared by *THIS ORG* or *THIS ORG* for any purpose.</string>
+	<string>Location services must be enabled for Bluetooth scan to work and capture encounters when the application is in the background. The *APP NAME* application does not capture or use information about location. In addition, location data is not collected or shared by *THIS ORG* or *THIS ORG* for any purpose.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Location services must be enabled for Bluetooth scan to work and capture encounters when the application is in the background. The APP NAME application does not capture or use information about location. In addition, location data is not collected or shared by *THIS ORG* or *THIS ORG* Services for any purpose.</string>
+	<string>Location services must be enabled for Bluetooth scan to work and capture encounters when the application is in the background. The *APP NAME* application does not capture or use information about location. In addition, location data is not collected or shared by *THIS ORG* or *THIS ORG* for any purpose.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location services must be enabled for Bluetooth scan to work and capture encounters when the application is in the background. The ABTraceTogether application does not capture or use information about location. In addition, location data is not collected or shared by *THIS ORG* or *THIS ORG* for any purpose.</string>
+	<string>Location services must be enabled for Bluetooth scan to work and capture encounters when the application is in the background. The *APP NAME* application does not capture or use information about location. In addition, location data is not collected or shared by *THIS ORG* or *THIS ORG* for any purpose.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Grant ABTraceTogether permissions to access your photo library if you would like to upload a photo as part of a support request</string>
+	<string>Grant *APP NAME* permissions to access your photo library if you would like to upload a photo as part of a support request</string>
 	<key>TRACER_SVC_ID</key>
 	<string>${SERVICE_UUID}</string>
 	<key>UIAppFonts</key>

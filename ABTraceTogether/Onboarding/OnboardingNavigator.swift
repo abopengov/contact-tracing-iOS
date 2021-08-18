@@ -13,6 +13,7 @@ class OnboardingNavigator {
         case locationPermission
         case success
         case legacyOnboardingCompleted
+        case privacyUpdate
 
         var description: String {
             switch  self {
@@ -48,6 +49,8 @@ class OnboardingNavigator {
 
             case .legacyOnboardingCompleted:
                 return "completedBluetoothOnboarding"
+            case .privacyUpdate:
+                return "privacyUpdate"
             }
         }
     }
@@ -60,7 +63,7 @@ class OnboardingNavigator {
     }
     // MARK: - Navigator
     func navigate(from destination: Destination) {
-        guard destination == .success else {
+        guard destination == .success || destination == .privacyUpdate else {
             navigationController?.pushViewController(
                 makeViewController(from: destination),
                 animated: true
@@ -69,6 +72,16 @@ class OnboardingNavigator {
         }
 
         showHomeScreen()
+    }
+
+    func navigateToPrivacyUpdate() {
+        navigationController?.pushViewController(
+            PrivacyViewController(
+                navigator: self,
+                identifier: .privacyUpdate
+            ),
+            animated: true
+        )
     }
 
     func showHomeScreen() {
@@ -114,13 +127,6 @@ class OnboardingNavigator {
 
         case .phoneRegistration:
             phoneRegistrationCompleted = true
-            return PushNotificationPermissionViewController(
-                navigator: self,
-                identifier: .pushNotificationPermission
-            )
-
-        case .pushNotificationPermission:
-            pushNotificationPermissionCompleted = true
             return BluetoothViewController(
                 navigator: self,
                 identifier: .blueToothMessage
@@ -135,6 +141,13 @@ class OnboardingNavigator {
 
         case .locationPermission:
             locationPermissionCompleted = true
+            return PushNotificationPermissionViewController(
+                navigator: self,
+                identifier: .pushNotificationPermission
+            )
+
+        case .pushNotificationPermission:
+            pushNotificationPermissionCompleted = true
             return RegistrationSuccessfulViewController(
                 navigator: self,
                 identifier: .success
@@ -266,14 +279,14 @@ extension OnboardingNavigator {
             return .howItWorks
         } else if !phoneRegistrationCompleted {
             return .privacy
-        } else if !pushNotificationPermissionCompleted {
-            return .phoneRegistration
         } else if !blueToothMessageCompleted {
-            return .pushNotificationPermission
+            return .phoneRegistration
         } else if !locationPermissionCompleted {
             return .blueToothMessage
-        } else if !successCompleted {
+        } else if !pushNotificationPermissionCompleted {
             return .locationPermission
+        } else if !successCompleted {
+            return .pushNotificationPermission
         }
 
         return .success

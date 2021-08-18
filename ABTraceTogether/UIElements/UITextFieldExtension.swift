@@ -5,8 +5,10 @@ extension UITextField {
         target: T,
         doneAction: Selector,
         cancelAction: Selector,
-        minimumDate: Date,
-        maximumDate: Date
+        minimumDate: Date? = nil,
+        maximumDate: Date? = nil,
+        mode: UIDatePicker.Mode = .date,
+        minuteInterval: Int = 1
     ) {
         let screenWidth = UIScreen.main.bounds.width
 
@@ -42,12 +44,18 @@ extension UITextField {
                 height: 216
             )
         )
-        datePicker.datePickerMode = .date
-        datePicker.minimumDate = minimumDate
-        datePicker.maximumDate = maximumDate
+        datePicker.datePickerMode = mode
+        datePicker.minuteInterval = minuteInterval
+        if let minimumDate = minimumDate {
+            datePicker.minimumDate = minimumDate
+        }
+        if let maximumDate = maximumDate {
+            datePicker.maximumDate = maximumDate
+        }
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
         }
+
         self.inputView = datePicker
 
         let toolBar = UIToolbar(
@@ -84,5 +92,13 @@ extension UITextField {
         }
 
         return !text.isEmpty
+    }
+
+    func setTime(time: Date?) {
+        self.text = time?.getHourMinuteString() ?? ""
+
+        if let datePicker = inputView as? UIDatePicker, let time = time {
+            datePicker.date = time
+        }
     }
 }

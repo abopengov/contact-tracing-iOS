@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="kMv-jE-6Fs" customClass="GuidanceView" customModule="ABTTDev" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="444" height="106"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="GuidanceBanner" translatesAutoresizingMaskIntoConstraints="NO" id="IYY-zu-JQ0">
+                    <rect key="frame" x="0.0" y="0.0" width="444" height="106"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="252" text="New Guidance Updates" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4L8-C3-Cvq" userLabel="Title Label">
+                    <rect key="frame" x="20" y="20" width="339" height="21.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn about how these changes affect you." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CR-pg-Fcj">
+                    <rect key="frame" x="20" y="46.5" width="339" height="39.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask" translatesAutoresizingMaskIntoConstraints="NO" id="cOK-Ph-6oS">
+                    <rect key="frame" x="364" y="23" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="5dh-vU-G4H"/>
+                        <constraint firstAttribute="width" constant="60" id="lhy-d4-48v"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="UPE-d8-kxW"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="cOK-Ph-6oS" firstAttribute="leading" secondItem="4L8-C3-Cvq" secondAttribute="trailing" constant="5" id="3Qa-gh-6f0"/>
+                <constraint firstAttribute="bottom" secondItem="IYY-zu-JQ0" secondAttribute="bottom" id="6dl-2Q-Lsx"/>
+                <constraint firstItem="4L8-C3-Cvq" firstAttribute="leading" secondItem="kMv-jE-6Fs" secondAttribute="leading" constant="20" id="7h1-tk-bdm"/>
+                <constraint firstItem="cOK-Ph-6oS" firstAttribute="leading" secondItem="5CR-pg-Fcj" secondAttribute="trailing" constant="5" id="8g8-qg-Mjg"/>
+                <constraint firstItem="IYY-zu-JQ0" firstAttribute="leading" secondItem="kMv-jE-6Fs" secondAttribute="leading" id="AZh-YK-LX8"/>
+                <constraint firstItem="5CR-pg-Fcj" firstAttribute="leading" secondItem="kMv-jE-6Fs" secondAttribute="leading" constant="20" id="D7E-YJ-EmN"/>
+                <constraint firstItem="cOK-Ph-6oS" firstAttribute="centerY" secondItem="kMv-jE-6Fs" secondAttribute="centerY" id="NJX-6X-7cm"/>
+                <constraint firstAttribute="bottom" secondItem="5CR-pg-Fcj" secondAttribute="bottom" constant="20" id="Odk-rh-oPW"/>
+                <constraint firstItem="4L8-C3-Cvq" firstAttribute="top" secondItem="kMv-jE-6Fs" secondAttribute="top" constant="20" id="Tqy-Dk-hnK"/>
+                <constraint firstAttribute="trailing" secondItem="IYY-zu-JQ0" secondAttribute="trailing" id="YFC-yO-tFE"/>
+                <constraint firstAttribute="trailing" secondItem="cOK-Ph-6oS" secondAttribute="trailing" constant="20" id="dLa-Jm-Gun"/>
+                <constraint firstItem="IYY-zu-JQ0" firstAttribute="top" secondItem="kMv-jE-6Fs" secondAttribute="top" id="fvy-uw-CIw"/>
+                <constraint firstItem="5CR-pg-Fcj" firstAttribute="top" secondItem="4L8-C3-Cvq" secondAttribute="bottom" constant="5" id="slY-zU-qjl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="textLabel" destination="5CR-pg-Fcj" id="K7o-Lt-p9Z"/>
+                <outlet property="titleLabel" destination="4L8-C3-Cvq" id="gon-6L-qL6"/>
+            </connections>
+            <point key="canvasLocation" x="136.23188405797103" y="-147.99107142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="GuidanceBanner" width="335" height="105"/>
+        <image name="Mask" width="59" height="50"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

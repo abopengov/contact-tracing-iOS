@@ -32,34 +32,10 @@ class MainTabBarController: UITabBarController {
                     for: .normal
                 )
             }
-            items[0].title = NSLocalizedString(
-                homeTabTitle,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[homeTabTitle] ?? "",
-                comment: ""
-            )
-            items[1].title = NSLocalizedString(
-                uploadTabTitle,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[uploadTabTitle] ?? "",
-                comment: ""
-            )
-            items[2].title = NSLocalizedString(
-                menuLearnMore,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[menuLearnMore] ?? "",
-                comment: ""
-            )
-            items[3].title = NSLocalizedString(
-                guidanceTabTitle,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[guidanceTabTitle] ?? "",
-                comment: ""
-            )
+            items[0].title = homeTabTitle.localize()
+            items[1].title = statsTabTitle.localize()
+            items[2].title = menuLearn.localize()
+            items[3].title = menuMore.localize()
         }
     }
 }

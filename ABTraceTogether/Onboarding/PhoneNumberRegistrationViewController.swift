@@ -79,66 +79,41 @@ extension PhoneNumberRegistrationViewController {
         layoutView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         layoutView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-
-        layoutView.addSubview(scrollView)
-
-        let scrollViewContainer = UIStackView()
-
-        scrollViewContainer.axis = .vertical
-        scrollViewContainer.spacing = 10
-
-        scrollViewContainer.translatesAutoresizingMaskIntoConstraints = false
-
-        scrollView.addSubview(scrollViewContainer)
-        generateContent(in: scrollViewContainer)
-
-        scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: layoutView.topAnchor, constant: -10).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-
-        scrollViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        scrollViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        generateContent(in: layoutView)
     }
 
-    private func generateContent(in parentView: UIStackView) {
-        let newView = UIView()
-        parentView.addArrangedSubview(newView)
-        newView.translatesAutoresizingMaskIntoConstraints = false
+    private func generateContent(in parentView: UIView) {
+        let headerImageView = UIImageView()
+        parentView.addSubview(headerImageView)
+        headerImageView.translatesAutoresizingMaskIntoConstraints = false
+        headerImageView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+        headerImageView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
+        headerImageView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: 60).isActive = true
+        headerImageView.image = UIImage(named: "MobileStep")
+        headerImageView.contentMode = .scaleAspectFit
+        headerImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
 
-        let stepLabel = UILabel()
-        newView.addSubview(stepLabel)
-        stepLabel.translatesAutoresizingMaskIntoConstraints = false
-        stepLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-        stepLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        stepLabel.topAnchor.constraint(equalTo: newView.topAnchor, constant: 100).isActive = true
-        stepLabel.setLabel(
-            with: phoneNumberRegistrationStepNumberText,
-            using: .stepText
-        )
         let headerMessageLabel1 = UILabel()
-        newView.addSubview(headerMessageLabel1)
+        parentView.addSubview(headerMessageLabel1)
         headerMessageLabel1.translatesAutoresizingMaskIntoConstraints = false
         headerMessageLabel1.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
         headerMessageLabel1.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        headerMessageLabel1.topAnchor.constraint(equalTo: stepLabel.topAnchor, constant: 20).isActive = true
+        headerMessageLabel1.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 60).isActive = true
         headerMessageLabel1.setLabel(
             with: phoneNumberRegistrationHeaderText,
             using: .h2
         )
-        newView.addSubview(phoneNumberField)
+        headerMessageLabel1.textAlignment = .left
+
+        parentView.addSubview(phoneNumberField)
         phoneNumberField.translatesAutoresizingMaskIntoConstraints = false
         phoneNumberField.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
         phoneNumberField.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        phoneNumberField.topAnchor.constraint(equalTo: headerMessageLabel1.bottomAnchor, constant: 20).isActive = true
+        phoneNumberField.topAnchor.constraint(equalTo: headerMessageLabel1.bottomAnchor, constant: 10).isActive = true
         phoneNumberField.heightAnchor.constraint(equalToConstant: 46.0).isActive = true
-        phoneNumberField.layer.borderColor = UIColor.gray.cgColor
-        phoneNumberField.layer.borderWidth = 1.0
+        phoneNumberField.layer.borderColor = UIColor(red: 0.32, green: 0.32, blue: 0.32, alpha: 1.00).cgColor
+        phoneNumberField.layer.borderWidth = 2.0
+        phoneNumberField.layer.cornerRadius = 6
         phoneNumberField.placeholder = NSLocalizedString(
             phoneNumberRegistrationPhoneNumberPlaceHolderText,
             tableName: "",
@@ -153,34 +128,24 @@ extension PhoneNumberRegistrationViewController {
         phoneNumberField.leftViewMode = UITextField.ViewMode.always
 
         let detailMessageLabel1 = UILabel()
-        newView.addSubview(detailMessageLabel1)
+        parentView.addSubview(detailMessageLabel1)
         detailMessageLabel1.translatesAutoresizingMaskIntoConstraints = false
         detailMessageLabel1.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
         detailMessageLabel1.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        detailMessageLabel1.topAnchor.constraint(equalTo: phoneNumberField.bottomAnchor, constant: 20).isActive = true
-
+        detailMessageLabel1.topAnchor.constraint(equalTo: phoneNumberField.bottomAnchor, constant: 30).isActive = true
         detailMessageLabel1.setLabel(
             with: phoneNumberRegistrationSubHeaderText,
-            using: .body
+            using: .blackDescriptionText
         )
 
-        if let versionLabelString = versionLabelString {
-            let versionLabel = UILabel()
-            newView.addSubview(versionLabel)
-            versionLabel.translatesAutoresizingMaskIntoConstraints = false
-            versionLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-            versionLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-            versionLabel.topAnchor.constraint(equalTo: detailMessageLabel1.bottomAnchor, constant: 20).isActive = true
+        let spacerView = UIView()
+        parentView.addSubview(spacerView)
+        spacerView.translatesAutoresizingMaskIntoConstraints = false
+        spacerView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
+        spacerView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
+        spacerView.topAnchor.constraint(equalTo: detailMessageLabel1.bottomAnchor, constant: 20).isActive = true
 
-            versionLabel.setLabel(
-                with: versionLabelString,
-                using: .body
-            )
-
-            newView.bottomAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 20).isActive = true
-        } else {
-            newView.bottomAnchor.constraint(equalTo: detailMessageLabel1.bottomAnchor, constant: 20).isActive = true
-        }
+        parentView.bottomAnchor.constraint(equalTo: spacerView.bottomAnchor, constant: 20).isActive = true
     }
 }
 // MARK: - TextField delegates
@@ -240,9 +205,7 @@ extension PhoneNumberRegistrationViewController {
             let range = number.startIndex..<end
             number = number.replacingOccurrences(of: "(\\d{3})(\\d+)", with: "($1) $2", options: .regularExpression, range: range)
         } else {
-            let end = number.index(number.startIndex, offsetBy: number.count)
-            let range = number.startIndex..<end
-            number = number.replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "($1) $2-$3", options: .regularExpression, range: range)
+            number = PhoneNumberFormatter.format(number)
         }
         if number.count == 14 && !shouldRemoveLastDigit {
             getOTPButton.isEnabled = true
@@ -385,13 +348,7 @@ extension PhoneNumberRegistrationViewController {
                 }
                 Logger.DLog("Phone number verification error: \(error.localizedDescription)")
                 let userInfo: [String: Any] = [
-                    NSLocalizedDescriptionKey: NSLocalizedString(
-                        phoneNumberInvalidPinError,
-                        tableName: "",
-                        bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                        value: BKLocalizationManager.sharedInstance.defaultStrings[phoneNumberInvalidPinError] ?? "",
-                        comment: ""
-                    )
+                    NSLocalizedDescriptionKey: otpIncorrectOTP.localize()
                 ]
                 let error = NSError(domain: "System Error", code: 1, userInfo: userInfo)
                 self?.showAlert(with: error)

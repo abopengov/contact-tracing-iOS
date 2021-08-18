@@ -3,16 +3,11 @@ import UIKit
 typealias OTPCompletion = (String, Bool) -> Void
 
 class OTPVerificationViewController: BaseViewController {
-    enum Status {
-        case InvalidOTP
-        case WrongOTP
-        case Success
-    }
-
     let codeInputView = CodeInputView()
     let verifyButton = UIButton()
     var expiredMessageLabel = UILabel()
-    var errorMessageLabel = UILabel()
+    let didntReceiveCodeLabel = UILabelWithLink()
+
 
     var timer: Timer?
     static let timerValue = 180
@@ -33,7 +28,6 @@ class OTPVerificationViewController: BaseViewController {
 
         generatePrivacyViews(in: contentView)
         dismissKeyboardOnTap()
-        errorMessageLabel.textColor = .red
         codeInputView.isOneTimeCode = true
         dismissKeyboardOnTap()
     }
@@ -61,33 +55,28 @@ extension OTPVerificationViewController {
                 )
             ) ?? ""
             expiredMessageLabel.text = String(
-                format: NSLocalizedString(
-                    otpScreenCodeExpireText,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[otpScreenCodeExpireText] ?? "",
-                    comment: ""
-                ),
+                format: otpScreenCodeExpireText.localize(),
                 countdown
             )
             expiredMessageLabel.isHidden = false
         } else {
             timer?.invalidate()
-            expiredMessageLabel.text = NSLocalizedString(
-                otpScreenCodeHasExpiredText,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[otpScreenCodeHasExpiredText] ?? "",
-                comment: ""
+            expiredMessageLabel.text = otpScreenCodeHasExpiredText.localize()
+            expiredMessageLabel.textColor = UIColor(red: 0.65, green: 0.15, blue: 0.15, alpha: 1.00)
+
+            didntReceiveCodeLabel.setLabel(
+                with: otpScreenRequestAnotherCodeButtonText.localize(),
+                using: .blackDescriptionText
             )
-            expiredMessageLabel.textColor = .red
+            didntReceiveCodeLabel.addLink(textToFind: otpScreenRequestAnotherCodeButtonText.localize(),
+                                          value: otpScreenRequestAnotherCodeButtonText.localize())
 
             verifyButton.isEnabled = false
         }
     }
 
     @objc
-    func resendCode(_ sender: UIButton) {
+    func resendCode() {
         guard let _ = UserDefaults.standard.string(forKey: "mobileNumber") else {
             performSegue(withIdentifier: "showEnterMobileNumber", sender: self)
             return
@@ -105,32 +94,25 @@ extension OTPVerificationViewController {
 
     @objc
     func verify(_ sender: UIButton) {
-        verifyOTP { [weak viewController = self] status in
-            switch status {
-            case .InvalidOTP:
-                viewController?.errorMessageLabel.text = NSLocalizedString(
-                    otpScreenInvalidOTP,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[otpScreenInvalidOTP] ?? "",
-                    comment: ""
-                )
-                self.errorMessageLabel.isHidden = false
-
-            case .WrongOTP:
-                viewController?.errorMessageLabel.text = NSLocalizedString(
-                    otpScreenWrongOTP,
-                    tableName: "",
-                    bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                    value: BKLocalizationManager.sharedInstance.defaultStrings[otpScreenWrongOTP] ?? "",
-                    comment: ""
-                )
-                self.errorMessageLabel.isHidden = false
-
-            case .Success:
-                break
-            }
+        if !verifyOTP() {
+            self.showErrorDialog(otpScreenInvalidOTP.localize())
         }
+    }
+    
+    private func showErrorDialog(_ message: String) {
+        self.presentedViewController?.dismiss(animated: false)
+        
+        let alert = UIAlertController(
+            title: generalErrorTitleString.localize(),
+            message: message,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(
+            UIAlertAction(title: generalDoneString.localize(), style: .default)
+        )
+
+        self.present(alert, animated: true)
     }
 }
 
@@ -146,23 +128,23 @@ extension OTPVerificationViewController {
             expiredMessageLabel.textColor = .black
         }
         expiredMessageLabel.isHidden = true
-        errorMessageLabel.isHidden = true
         verifyButton.isEnabled = true
     }
 
     // MARK: - phone number verification
-    func verifyOTP(_ result: @escaping (Status) -> Void) {
+    func verifyOTP() -> Bool {
         let OTP = codeInputView.text
 
         guard OTP.range(of: "^[0-9]{6}$", options: .regularExpression) != nil else {
-            result(.InvalidOTP)
-            return
+            return false
         }
 
         if let oTPCompletion = oTPCompletion {
             oTPCompletion(OTP, true)
         }
         self.dismiss(animated: false, completion: nil)
+
+        return true
     }
 }
 
@@ -209,11 +191,7 @@ extension OTPVerificationViewController {
 
         layoutView.addSubview(scrollView)
 
-        let scrollViewContainer = UIStackView()
-
-        scrollViewContainer.axis = .vertical
-        scrollViewContainer.spacing = 10
-
+        let scrollViewContainer = UIView()
         scrollViewContainer.translatesAutoresizingMaskIntoConstraints = false
 
         scrollView.addSubview(scrollViewContainer)
@@ -231,162 +209,101 @@ extension OTPVerificationViewController {
         scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
 
-    private func generateContent(in parentView: UIStackView) {
-        let newView = UIView()
-        parentView.addArrangedSubview(newView)
-        newView.translatesAutoresizingMaskIntoConstraints = false
-
+    private func generateContent(in parentView: UIView) {
         let backButton = UIButton()
-        newView.addSubview(backButton)
+        parentView.addSubview(backButton)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-        backButton.topAnchor.constraint(equalTo: newView.topAnchor, constant: 40).isActive = true
+        backButton.topAnchor.constraint(equalTo: parentView.topAnchor, constant: 20).isActive = true
 
         let backImage = UIImage(named: "BackArrow")
         backButton.setImage(backImage, for: .normal)
         backButton.setTitle("Back", for: .normal)
         backButton.addTarget(self, action: #selector(wrongNumberButtonPressed(_:)), for: .touchUpInside)
 
-        let stepLabel = UILabel()
-        newView.addSubview(stepLabel)
-        stepLabel.translatesAutoresizingMaskIntoConstraints = false
-        stepLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-        stepLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        stepLabel.topAnchor.constraint(equalTo: newView.topAnchor, constant: 100).isActive = true
-
-        stepLabel.setLabel(
-            with: otpScreenStepNumberText,
-            using: .stepText
-        )
+        let headerImageView = UIImageView()
+        parentView.addSubview(headerImageView)
+        headerImageView.translatesAutoresizingMaskIntoConstraints = false
+        headerImageView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+        headerImageView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
+        headerImageView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 60).isActive = true
+        headerImageView.image = UIImage(named: "MobileStep")
+        headerImageView.contentMode = .scaleAspectFit
+        headerImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
 
         let headerMessageLabel1 = UILabel()
-        newView.addSubview(headerMessageLabel1)
+        parentView.addSubview(headerMessageLabel1)
         headerMessageLabel1.translatesAutoresizingMaskIntoConstraints = false
         headerMessageLabel1.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
         headerMessageLabel1.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        headerMessageLabel1.topAnchor.constraint(equalTo: stepLabel.topAnchor, constant: 20).isActive = true
-
+        headerMessageLabel1.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 60).isActive = true
         headerMessageLabel1.setLabel(
             with: otpScreenHeaderText,
             using: .h2
         )
+        headerMessageLabel1.textAlignment = .left
 
-        newView.addSubview(codeInputView)
+        parentView.addSubview(codeInputView)
         codeInputView.translatesAutoresizingMaskIntoConstraints = false
         codeInputView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 16).isActive = true
         codeInputView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -16).isActive = true
-        codeInputView.topAnchor.constraint(equalTo: headerMessageLabel1.bottomAnchor, constant: 20).isActive = true
+        codeInputView.topAnchor.constraint(equalTo: headerMessageLabel1.bottomAnchor, constant: 15).isActive = true
         codeInputView.heightAnchor.constraint(equalToConstant: 80.0).isActive = true
-        codeInputView.layer.borderColor = UIColor.gray.cgColor
-
+        codeInputView.layer.borderColor = UIColor(red: 0.32, green: 0.32, blue: 0.32, alpha: 1.00).cgColor
+        codeInputView.textColor = UIColor(red: 0.00, green: 0.44, blue: 0.77, alpha: 1.00)
+        codeInputView.font = UIFont(name: "HelveticaNeue", size: 16)
+        
         let detailMessageLabel1 = UILabel()
-        newView.addSubview(detailMessageLabel1)
+        parentView.addSubview(detailMessageLabel1)
         detailMessageLabel1.translatesAutoresizingMaskIntoConstraints = false
         detailMessageLabel1.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
         detailMessageLabel1.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        detailMessageLabel1.topAnchor.constraint(equalTo: codeInputView.bottomAnchor, constant: 20).isActive = true
-
-        let otpScreenSubHeaderTextP1Localized = NSLocalizedString(
-            otpScreenSubHeaderTextP1,
-            tableName: "",
-            bundle: BKLocalizationManager.sharedInstance.currentBundle,
-            value: BKLocalizationManager.sharedInstance.defaultStrings[otpScreenSubHeaderTextP1] ?? "",
-            comment: ""
-        )
-        let otpScreenSubHeaderTextP2Localized = NSLocalizedString(
-            otpScreenSubHeaderTextP2,
-            tableName: "",
-            bundle: BKLocalizationManager.sharedInstance.currentBundle,
-            value: BKLocalizationManager.sharedInstance.defaultStrings[otpScreenSubHeaderTextP2] ?? "",
-            comment: ""
-        )
+        detailMessageLabel1.topAnchor.constraint(equalTo: codeInputView.bottomAnchor, constant: 30).isActive = true
 
         let mobileNumber = UserDefaults.standard.string(forKey: "mobileNumber") ?? "Unknown"
-        let otpScreenSubHeaderText = "\(otpScreenSubHeaderTextP1Localized) \(mobileNumber) \( otpScreenSubHeaderTextP2Localized)"
+        let detailsMessageFormatText = otpScreenSubHeaderText.localize().replacingOccurrences(of: "%s", with: "%@")
+        let detailsMessageText = String(format: detailsMessageFormatText, PhoneNumberFormatter.format(mobileNumber))
 
         detailMessageLabel1.setLabel(
-            with: otpScreenSubHeaderText,
-            using: .body
+            with: detailsMessageText,
+            using: .blackDescriptionText
         )
+        detailMessageLabel1.textAlignment = .left
 
-        newView.addSubview(errorMessageLabel)
-        errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
-        errorMessageLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-        errorMessageLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        errorMessageLabel.topAnchor.constraint(equalTo: detailMessageLabel1.bottomAnchor, constant: 10).isActive = true
-
-        errorMessageLabel.setLabel(
-            with: "test",
-            using: .body
-        )
-
-        newView.addSubview(expiredMessageLabel)
+        parentView.addSubview(expiredMessageLabel)
         expiredMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         expiredMessageLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
         expiredMessageLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        expiredMessageLabel.topAnchor.constraint(equalTo: errorMessageLabel.bottomAnchor, constant: 10).isActive = true
+        expiredMessageLabel.topAnchor.constraint(equalTo: detailMessageLabel1.bottomAnchor, constant: 20).isActive = true
 
         expiredMessageLabel.setLabel(
-            with: NSLocalizedString(
-                otpScreenCodeExpireText,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[otpScreenCodeExpireText] ?? "",
-                comment: ""
-            ),
-            using: .body,
+            with: otpScreenCodeExpireText.localize(),
+            using: .blackDescriptionText,
             localize: false
         )
+        expiredMessageLabel.textAlignment = .left
 
-        let didntReceiveCodeLabel = UILabel()
-        newView.addSubview(didntReceiveCodeLabel)
+        parentView.addSubview(didntReceiveCodeLabel)
         didntReceiveCodeLabel.translatesAutoresizingMaskIntoConstraints = false
         didntReceiveCodeLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-        didntReceiveCodeLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
         didntReceiveCodeLabel.topAnchor.constraint(equalTo: expiredMessageLabel.bottomAnchor, constant: 20).isActive = true
 
         didntReceiveCodeLabel.setLabel(
-            with: otpScreenDidntReceiveCodeText,
-            using: .body
+            with: otpScreenDidntReceiveCodeText.localize() + " " + otpScreenRequestAnotherCodeButtonText.localize(),
+            using: .blackDescriptionText
         )
+        didntReceiveCodeLabel.addLink(textToFind: otpScreenRequestAnotherCodeButtonText.localize(),
+                                      value: otpScreenRequestAnotherCodeButtonText.localize())
+        didntReceiveCodeLabel.textAlignment = .left
 
-        let requestAnotherButton = UIButton()
-        newView.addSubview(requestAnotherButton)
-        requestAnotherButton.translatesAutoresizingMaskIntoConstraints = false
-        requestAnotherButton.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-        requestAnotherButton.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-        requestAnotherButton.topAnchor.constraint(equalTo: didntReceiveCodeLabel.bottomAnchor, constant: 0).isActive = true
+        didntReceiveCodeLabel.delegate = self
 
-        let resendCodeButtonTitle = NSMutableAttributedString(
-            string: NSLocalizedString(
-                otpScreenRequestAnotherCodeButtonText,
-                tableName: "",
-                bundle: BKLocalizationManager.sharedInstance.currentBundle,
-                value: BKLocalizationManager.sharedInstance.defaultStrings[otpScreenRequestAnotherCodeButtonText] ?? "",
-                comment: ""
-            ),
-            attributes: linkButtonAttributes
-        )
+        parentView.bottomAnchor.constraint(equalTo: didntReceiveCodeLabel.bottomAnchor, constant: 20).isActive = true
+    }
+}
 
-        requestAnotherButton.setAttributedTitle(resendCodeButtonTitle, for: .normal)
-        requestAnotherButton.addTarget(self, action: #selector(resendCode(_:)), for: .touchUpInside)
-
-        if let versionLabelString = versionLabelString {
-            let versionLabel = UILabel()
-            newView.addSubview(versionLabel)
-            versionLabel.translatesAutoresizingMaskIntoConstraints = false
-            versionLabel.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 20).isActive = true
-            versionLabel.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -20).isActive = true
-            versionLabel.topAnchor.constraint(equalTo: requestAnotherButton.bottomAnchor, constant: 20).isActive = true
-
-            versionLabel.setLabel(
-                with: versionLabelString,
-                using: .body
-            )
-
-            newView.bottomAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 20).isActive = true
-        } else {
-            newView.bottomAnchor.constraint(equalTo: requestAnotherButton.bottomAnchor, constant: 20).isActive = true
-        }
+extension OTPVerificationViewController: UILabelWithLinkDelegate {
+    func linkClickedWithValue(_ value: Any) {
+        self.resendCode()
     }
 }

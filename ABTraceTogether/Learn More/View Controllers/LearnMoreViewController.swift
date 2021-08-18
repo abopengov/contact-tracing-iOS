@@ -1,3 +1,4 @@
+import SafariServices
 import UIKit
 
 class LearnMoreViewController: UIViewController {
@@ -27,15 +28,18 @@ class LearnMoreViewController: UIViewController {
         let potentialExposureRow = createRow(imageName: "PotentialExposuresLight", text: potentialExposuresTitle, segue: "PotentialExposuresSegue")
         stackView.addArrangedSubview(potentialExposureRow)
 
+        let howWillIBeNotifiedRow = createRow(imageName: "PeepsLight", text: howWillIBeNotifiedTitle, segue: "HowWillIBeNotifiedSegue")
+        stackView.addArrangedSubview(howWillIBeNotifiedRow)
+
         let batteryConsumptionRow = createRow(imageName: "LightningBoltLight", text: batteryConsumptionTitle, segue: "BatteryConsumptionSegue")
         stackView.addArrangedSubview(batteryConsumptionRow)
 
         let faqRow = createRow(imageName: "FaqLight", text: faqTitle, gestureRecognizer: UITapGestureRecognizer(target: self, action: #selector(self.handleOpenFaq(_:))))
         stackView.addArrangedSubview(faqRow)
 
-        learnMoreTitleLabel.setLabel(with: learnMoreTitle, using: .blackTitleText)
+        learnMoreTitleLabel.setLabel(with: learnTitle, using: .blackTitleText)
 
-        whatsNewLabel.setLabel(with: whatsNewTitle, using: .blueLinkText)
+        whatsNewLabel.setLabel(with: whatsNewTitle, using: .blueLinkTextBold)
         whatsNewLabel.underline()
         whatsNewLabel.addGestureRecognizer(RowGestureRecognizer(target: self, action: #selector(self.handleTap(_:)), segue: "WhatsNewSegue"))
     }
@@ -57,7 +61,8 @@ class LearnMoreViewController: UIViewController {
     @objc
     private func handleOpenFaq(_ sender: Any) {
         if let url = URL(string: privacyFaqLink) {
-            UIApplication.shared.open(url)
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
         }
     }
 
@@ -70,7 +75,7 @@ class LearnMoreViewController: UIViewController {
     }
 
     private func createRow(imageName: String, text: String, segue: String) -> LearnMoreRowView {
-        return createRow(imageName: imageName, text: text, gestureRecognizer: RowGestureRecognizer(target: self, action: #selector(self.handleTap(_:)), segue: segue))
+        createRow(imageName: imageName, text: text, gestureRecognizer: RowGestureRecognizer(target: self, action: #selector(self.handleTap(_:)), segue: segue))
     }
 }
 

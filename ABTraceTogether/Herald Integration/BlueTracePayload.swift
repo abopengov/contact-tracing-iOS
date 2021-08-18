@@ -45,6 +45,7 @@ struct BlueTracePayload {
             var modelC = ""
             var rssi: Int8 = 0
             var txPower: UInt16 = 0
+
             let extendedData = ConcreteExtendedDataV1(PayloadData(payloadData.subdata(in: (9 + Int(tempIdLength))..<payloadData.count)))
 
             for section in extendedData.getSections() {

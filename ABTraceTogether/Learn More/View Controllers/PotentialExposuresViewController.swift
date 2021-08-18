@@ -1,3 +1,4 @@
+import SafariServices
 import UIKit
 
 class PotentialExposuresViewController: UIViewController {
@@ -33,6 +34,7 @@ class PotentialExposuresViewController: UIViewController {
         page4.item4Image = UIImage(named: "Help")
 
         page4.addLinkToItem(itemIndex: 4, textToFind: potentialExposuresPage4Details4LinkText, linkURL: closeContactsFaqLink)
+        page4.delegate = self
 
         let pages = [page1, page2, page3, page4]
 
@@ -44,5 +46,14 @@ class PotentialExposuresViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+    }
+}
+
+extension PotentialExposuresViewController: LearnMoreFourItemCardViewDelegate {
+    func linkClickedWithValue(_ value: Any) {
+        if let urlString = value as? String, let url = URL(string: urlString) {
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
+        }
     }
 }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,64 +16,64 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxj-Kv-BuE" userLabel="Title Label">
-                    <rect key="frame" x="16" y="170.5" width="382" height="21"/>
+                    <rect key="frame" x="16" y="168.5" width="382" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" verticalHuggingPriority="1" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="Wnr-Bk-6Uz" userLabel="Spacer 1">
-                    <rect key="frame" x="0.0" y="201.5" width="414" height="40"/>
+                    <rect key="frame" x="0.0" y="199.5" width="414" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="250" constant="40" id="AYs-G9-QGm"/>
                     </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b8T-Km-BTd" userLabel="Item 1 Image View">
-                    <rect key="frame" x="20" y="251.5" width="22" height="22"/>
+                    <rect key="frame" x="20" y="249.5" width="22" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="22" id="J4k-oT-odM"/>
                         <constraint firstAttribute="height" constant="22" id="lXV-a8-Zh6"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Two devices with APP NAME come in close contact" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXJ-V5-bKl" userLabel="Item 1 Label">
-                    <rect key="frame" x="56" y="251.5" width="342" height="38.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Two devices with *APP NAME* come in close contact" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXJ-V5-bKl" userLabel="Item 1 Label">
+                    <rect key="frame" x="56" y="249.5" width="342" height="38.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="JsF-ch-ZTB" userLabel="Spacer 2">
-                    <rect key="frame" x="0.0" y="295" width="414" height="40"/>
+                    <rect key="frame" x="0.0" y="293" width="414" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="250" constant="40" id="R7u-Fe-vkm"/>
                     </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lG4-vk-spW" userLabel="Item 2 Image View">
-                    <rect key="frame" x="20" y="340" width="22" height="22"/>
+                    <rect key="frame" x="20" y="338" width="22" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="22" id="QJX-m5-qkQ"/>
                         <constraint firstAttribute="height" constant="22" id="VUx-Pm-FkF"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6b8-FU-8h0" userLabel="Item 2 Label">
-                    <rect key="frame" x="56" y="340" width="342" height="21"/>
+                    <rect key="frame" x="56" y="338" width="342" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="BLr-S3-b63" userLabel="Spacer 3">
-                    <rect key="frame" x="0.0" y="366" width="414" height="40"/>
+                    <rect key="frame" x="0.0" y="364" width="414" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="250" constant="40" id="U8v-2k-jyd"/>
                     </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XA2-i6-EhE" userLabel="Item 3 Image View">
-                    <rect key="frame" x="20" y="411" width="22" height="22"/>
+                    <rect key="frame" x="20" y="409" width="22" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="XyH-7f-op9"/>
                         <constraint firstAttribute="width" constant="22" id="k5t-5P-rb8"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7J-xn-v1k" userLabel="Item 3 Label">
-                    <rect key="frame" x="56" y="411" width="342" height="21"/>
+                    <rect key="frame" x="56" y="409" width="342" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

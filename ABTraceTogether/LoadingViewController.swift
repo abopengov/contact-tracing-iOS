@@ -30,6 +30,23 @@ class LoadingViewController: UIViewController {
     @objc
     func refreshView() {
         removeSpinner()
+
+        let privacyManager = PrivacyManager()
+
+        if (onboardingNavigator.successCompleted && privacyManager.shouldCheckForUpdate()) {
+            privacyManager.checkForNewPrivacyPolicy { [weak self] updateAvailable in
+                if updateAvailable {
+                    self?.onboardingNavigator.navigateToPrivacyUpdate()
+                } else {
+                    self?.navigateToNextScreen()
+                }
+            }
+        } else {
+            navigateToNextScreen()
+        }
+    }
+
+    private func navigateToNextScreen() {
         onboardingNavigator.navigate(from: onboardingNavigator.getLastCompletedScreen())
     }
 }
